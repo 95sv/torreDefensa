@@ -26,19 +26,19 @@ public class Logica {
 	}
 	
 	private void agregarJugador() {
-		Celda celda = mapa.getCelda(3,1);
+		Celda celda = mapa.getCelda(0,0);
 
 		System.out.println("FILAS MAPA : "+ mapa.getFilas());
 		System.out.println("COLUMNAS MAPA : "+ mapa.getColumnas());
 		System.out.println("CELDA : X = "+ celda.getX() +" Y = "+ celda.getY());
 	
-		Jugador j = new Jugador1(3,1);
+		Jugador j = new Jugador1(celda);
 		jugadores.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);
 		grafica.graficarEntidad(j);
 		
-		System.out.println("QUE HAY EN LA CELDA X Y "+mapa.getCelda(3, 1).getEntidad().toString());
+		System.out.println("QUE HAY EN LA CELDA X Y "+mapa.getCelda(0, 0).getEntidad().toString());
 		System.out.println("Jugadores : "+jugadores.size());
 		
 		grafica.repaint();

@@ -1,5 +1,6 @@
 package Grafica;
 
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.Icon;
@@ -26,9 +27,9 @@ public class Grafica extends JFrame {
 
 	public Grafica() {
 		getContentPane().setLayout(null);
-		setSize(800, 560);
+		setSize(650, 430);
 		setLocationRelativeTo(null);
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		panelFondo = new BackgroundPanel();
@@ -36,7 +37,7 @@ public class Grafica extends JFrame {
 		setContentPane(panelFondo);
 
 		logica = new Logica(this);
-		//graficar();
+		menuCompra();
 	}
 
 	class BackgroundPanel extends JPanel {
@@ -60,8 +61,17 @@ public class Grafica extends JFrame {
 		System.out.println("IMAGEN : "+ icon.toString());
 		label.setIcon(icon);
 		panelFondo.add(label);
-		label.setBounds(e.getCelda().getX()*32,e.getCelda().getY()*32, 32,32);
+		label.setBounds(e.getCelda().getX()*64,e.getCelda().getY()*64,64,64);
 		label.setVisible(true);
+	}
+	
+	public void menuCompra() {
+		//Creo panel de compras.
+		JPanel panelCompras = new JPanel();
+		panelCompras.setLayout(new FlowLayout());
+		panelFondo.add(panelCompras);
+		panelCompras.setSize(200, 560);
+		panelCompras.setBounds(800, 0,200,560);
 	}
 
 }

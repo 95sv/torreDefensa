@@ -13,9 +13,9 @@ public abstract class Jugador extends Entidad{
 	protected Logica logica;
 	protected Mapa mapa;
 	
-	public Jugador(int x, int y) {
-		this.x = x;
-		this.y = y;
+	public Jugador(Celda celda) {
+		this.x = celda.getX();
+		this.y = celda.getY();
 	}
 	
 	public int getX() {
