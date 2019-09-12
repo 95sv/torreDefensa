@@ -26,4 +26,5 @@ public class Mapa {
 	public Celda getCelda(int x, int y){
 		return mapa[x][y];
 	}
+	
 }

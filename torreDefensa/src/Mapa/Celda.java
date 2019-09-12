@@ -27,6 +27,10 @@ public class Celda {
 		this.entidad = e;
 	}
 	
+	public void eliminarEntidad() {
+		this.entidad = null;
+	}
+	
 	public Entidad getEntidad() {
 		return entidad;
 	}

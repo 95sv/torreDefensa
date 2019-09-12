@@ -17,20 +17,30 @@ public class Logica {
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
 		mapa = new Mapa();
-	//	agregarJugador();
+		jugadores = new LinkedList<Jugador>();
+		agregarJugador();
 	}
 	
 	public Mapa getMapa() {
 		return mapa;
 	}
 	
-	/*private void agregarJugador() {
-		jugadores = new LinkedList<Jugador>();
-		Celda celda = mapa.getCelda(3,0);
-		
-		Jugador j = new Jugador1(3,0);
+	private void agregarJugador() {
+		Celda celda = mapa.getCelda(3,1);
+
+		System.out.println("FILAS MAPA : "+ mapa.getFilas());
+		System.out.println("COLUMNAS MAPA : "+ mapa.getColumnas());
+		System.out.println("CELDA : X = "+ celda.getX() +" Y = "+ celda.getY());
+	
+		Jugador j = new Jugador1(3,1);
+		jugadores.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);
+		grafica.graficarEntidad(j);
+		
+		System.out.println("QUE HAY EN LA CELDA X Y "+mapa.getCelda(3, 1).getEntidad().toString());
+		System.out.println("Jugadores : "+jugadores.size());
+		
 		grafica.repaint();
-	}*/
+	}
 }
