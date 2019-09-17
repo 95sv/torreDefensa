@@ -18,14 +18,18 @@ public class Logica {
 		this.grafica = grafica;
 		mapa = new Mapa();
 		jugadores = new LinkedList<Jugador>();
-		agregarJugador();
+		//agregarJugador();
 	}
 	
 	public Mapa getMapa() {
 		return mapa;
 	}
 	
-	private void agregarJugador() {
+	public int getJugadores() {
+		return jugadores.size();
+	}
+	
+	public void agregarJugador() {
 		Celda celda = mapa.getCelda(0,0);
 
 		System.out.println("FILAS MAPA : "+ mapa.getFilas());
@@ -38,7 +42,9 @@ public class Logica {
 		j.setCelda(celda);
 		grafica.graficarEntidad(j);
 		
-		System.out.println("QUE HAY EN LA CELDA X Y "+mapa.getCelda(0, 0).getEntidad().toString());
+		//System.out.println("QUE HAY EN LA CELDA X Y "+mapa.getCelda(0, 0).getEntidad().toString());
+
+		System.out.println("QUE HAY EN LA CELDA X Y "+ j.getCelda().getEntidad().toString());
 		System.out.println("Jugadores : "+jugadores.size());
 		
 		grafica.repaint();
