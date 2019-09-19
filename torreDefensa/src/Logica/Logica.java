@@ -30,7 +30,8 @@ public class Logica {
 	}
 	
 	public void agregarJugador() {
-		Celda celda = mapa.getCelda(0,0);
+		// Celda: getCelda( [0..9], [0..5]). 
+		Celda celda = mapa.getCelda(9,2);
 
 		System.out.println("FILAS MAPA : "+ mapa.getFilas());
 		System.out.println("COLUMNAS MAPA : "+ mapa.getColumnas());
@@ -42,11 +43,7 @@ public class Logica {
 		j.setCelda(celda);
 		grafica.graficarEntidad(j);
 		
-		//System.out.println("QUE HAY EN LA CELDA X Y "+mapa.getCelda(0, 0).getEntidad().toString());
-
 		System.out.println("QUE HAY EN LA CELDA X Y "+ j.getCelda().getEntidad().toString());
 		System.out.println("Jugadores : "+jugadores.size());
-		
-		grafica.repaint();
 	}
 }
