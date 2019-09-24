@@ -2,6 +2,7 @@ package Logica;
 
 import java.util.LinkedList;
 
+import Entidad.Entidad;
 import Entidad.Jugador;
 import Entidad.Jugador1;
 import Grafica.Grafica;
@@ -9,24 +10,27 @@ import Mapa.Celda;
 import Mapa.Mapa;
 
 public class Logica {
-	
+
 	protected Grafica grafica;
 	protected Mapa mapa;
-	protected LinkedList<Jugador> jugadores;
+	protected LinkedList<Entidad> misEntidades;
 	
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
-		mapa = new Mapa();
-		jugadores = new LinkedList<Jugador>();
-		//agregarJugador();
+		mapa = new Mapa(this);
+		misEntidades = new LinkedList<Entidad>();
+	}
+	
+	public Grafica getGrafica() {
+		return grafica;
 	}
 	
 	public Mapa getMapa() {
 		return mapa;
 	}
 	
-	public int getJugadores() {
-		return jugadores.size();
+	public int cantidadEntidades() {
+		return misEntidades.size();
 	}
 	
 	public void agregarJugador() {
@@ -38,12 +42,70 @@ public class Logica {
 		System.out.println("CELDA : X = "+ celda.getX() +" Y = "+ celda.getY());
 	
 		Jugador j = new Jugador1(celda);
-		jugadores.add(j);
+		misEntidades.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);
 		grafica.graficarEntidad(j);
 		
 		System.out.println("QUE HAY EN LA CELDA X Y "+ j.getCelda().getEntidad().toString());
-		System.out.println("Jugadores : "+jugadores.size());
+		System.out.println("Jugadores : "+misEntidades.size());
 	}
+	
+	public void agregarEntidad(Entidad e) {
+		misEntidades.add(e);
+	}
+	/*
+	 *  hacerMitrabajo(){
+	* 	mapa.getState().crearOleada()
+	* 	mientras tengo enemigos en mis lista de enemigos
+	* 	Agarrar un enimgo de la lista, 
+	* 	obtener un numero randpm entre 0 y 5.
+	* y coloca enemeigo en [random][0]
+	* }
+	* 
+	* 
+	*/
+	
+	
+	
+	/* idea de pulso de juego (hilo)
+	 * por cada pulso
+	 * 	tomo una entidad (Enemigos)
+	 * y decido acciones a partir de lo que haya en el mapa...
+	 * 
+	 * 
+	 *
+	 */
+	
+	
+	/*
+	 * Disparo
+	 * 	DisparoAliado
+	 * 	DisparoEnemigo
+	 *  Visitor (Aca van a tener un visit por cada entidad (EntidadRespectiva r)
+	 *  	VisitadorEnemigo
+	 *  	Visitador aliado
+	 */
+	
+	/*
+	 * enemigo ataca():
+	 * 	new DisparoEnemigo(this, miX, miY)
+	 * ----
+	 * en DisparoEnemigo // la vida del disparo
+	 * memuero(); memuevo() hagoDanio()
+	 * 	entidadEnFrente.aceptar(new VisitadorEnemigo())
+	 * 
+	 * En entidad un metodo que se llama aceptar(Visitor v){
+	 * 	v.visit(this).
+	 * }
+	 * 
+	 * En visitadorEnemigo tienen entre tantos visit
+	 * 
+	 * visit(Aliado: a){
+	 * 	a.recibirdanio(miEnemigo.getDanio());
+	 * 
+	 * 
+	 * 
+	 * */
+	
 }

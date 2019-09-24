@@ -21,8 +21,6 @@ public class Grafica extends JFrame {
 
 	private JPanel panelFondo;
 	private Logica logica;
-	private JLabel fondoImagen;
-	private Icon iconoFondo;
 	private JButton boton1;
 
 	public static void main(String[] args) {
@@ -64,7 +62,6 @@ public class Grafica extends JFrame {
 	public void graficarEntidad(Entidad e) {
 		ImageIcon icon = e.getImagen();
 		JLabel label = new JLabel();
-		System.out.println("IMAGEN : " + icon.toString());
 		label.setIcon(icon);
 		panelFondo.add(label);
 		label.setBounds(e.getCelda().getX() * 64, e.getCelda().getY() * 64, 64, 64);
@@ -92,7 +89,7 @@ public class Grafica extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-			if (logica.getJugadores() == 0) {
+			if (logica.cantidadEntidades() == 0) {
 				logica.agregarJugador();
 				boton1.setEnabled(false);
 			}
