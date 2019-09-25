@@ -17,11 +17,13 @@ public class Logica {
 	protected Grafica grafica;
 	protected Mapa mapa;
 	protected LinkedList<Entidad> misEntidades;
+	protected LinkedList<Enemigo> misEnemigos;
 	
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
 		mapa = new Mapa(this);
 		misEntidades = new LinkedList<Entidad>();
+		misEnemigos = new LinkedList<Enemigo>();
 	}
 	
 	public Grafica getGrafica() {
@@ -60,10 +62,23 @@ public class Logica {
 		
 		Celda celda = mapa.getCelda(random, 3);
 		Enemigo e = new Enemigo1(celda);
-		misEntidades.add(e);
+		misEnemigos.add(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
 	}
+	
+	public void eliminarEnemigo() {
+		if(misEnemigos.size() > 0) {
+			System.out.println("ENEMIGOS : "+ misEnemigos.size());
+			Celda celda = misEnemigos.getFirst().getCelda();
+			celda.eliminarEntidad();	
+			grafica.eliminarEntidad(misEnemigos.getFirst());
+			misEnemigos.remove();
+			System.out.println("ENEMIGOS : "+ misEnemigos.size());
+			
+		}
+	}
+	
 	/*
 	 *  hacerMitrabajo(){
 	* 	mapa.getState().crearOleada()

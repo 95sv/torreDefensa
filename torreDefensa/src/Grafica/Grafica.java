@@ -23,6 +23,7 @@ public class Grafica extends JFrame {
 	private Logica logica;
 	private JButton boton1;
 	private JButton boton2;
+	private JButton boton3;
 
 	public static void main(String[] args) {
 		Grafica grafica = new Grafica();
@@ -68,7 +69,13 @@ public class Grafica extends JFrame {
 		label.setBounds(e.getCelda().getX() * 64, e.getCelda().getY() * 64, 64, 64);
 		label.setVisible(true);
 	}
-
+	
+	public void eliminarEntidad(Entidad e) {
+		ImageIcon icon = e.getImagen();
+		JLabel label = new JLabel();
+		label.setIcon(icon);
+		panelFondo.remove(label);
+	}
 	public void menuCompra() {
 		// Creo panel de compras.
 		JPanel panelCompras = new JPanel();
@@ -89,6 +96,12 @@ public class Grafica extends JFrame {
 		boton2.setSize(32,32);
 		oyenteEnemigo oyenteE = new oyenteEnemigo();
 		boton2.addActionListener(oyenteE);
+		
+		boton3 = new JButton("Eliminar Enemigo");
+		panelCompras.add(boton3);
+		boton3.setSize(32,32);
+		oyenteEliminar oyenteEE = new oyenteEliminar();
+		boton3.addActionListener(oyenteEE);;
 	}
 
 	private class oyenteJugador implements ActionListener {
@@ -111,5 +124,16 @@ public class Grafica extends JFrame {
 			logica.agregarEnemigo();
 			boton2.setEnabled(false);
 		}	
+	}
+	
+	private class oyenteEliminar implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			logica.eliminarEnemigo();
+			
+		}
+		
 	}
 }
