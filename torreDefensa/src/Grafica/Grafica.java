@@ -22,6 +22,7 @@ public class Grafica extends JFrame {
 	private JPanel panelFondo;
 	private Logica logica;
 	private JButton boton1;
+	private JButton boton2;
 
 	public static void main(String[] args) {
 		Grafica grafica = new Grafica();
@@ -82,6 +83,12 @@ public class Grafica extends JFrame {
 		boton1.setSize(32, 32);
 		oyenteJugador oyente = new oyenteJugador();
 		boton1.addActionListener(oyente);
+		
+		boton2 = new JButton("Agregar enemigo");
+		panelCompras.add(boton2);
+		boton2.setSize(32,32);
+		oyenteEnemigo oyenteE = new oyenteEnemigo();
+		boton2.addActionListener(oyenteE);
 	}
 
 	private class oyenteJugador implements ActionListener {
@@ -94,6 +101,15 @@ public class Grafica extends JFrame {
 				boton1.setEnabled(false);
 			}
 		}
+	}
+	
+	private class oyenteEnemigo implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			logica.agregarEnemigo();
+			boton2.setEnabled(false);
+		}	
 	}
 }

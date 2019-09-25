@@ -1,7 +1,10 @@
 package Logica;
 
 import java.util.LinkedList;
+import java.util.Random;
 
+import Entidad.Enemigo;
+import Entidad.Enemigo1;
 import Entidad.Entidad;
 import Entidad.Jugador;
 import Entidad.Jugador1;
@@ -51,8 +54,15 @@ public class Logica {
 		System.out.println("Jugadores : "+misEntidades.size());
 	}
 	
-	public void agregarEntidad(Entidad e) {
+	public void agregarEnemigo() {
+		Random rnd = new Random();
+		int random = rnd.nextInt(8);
+		
+		Celda celda = mapa.getCelda(random, 3);
+		Enemigo e = new Enemigo1(celda);
 		misEntidades.add(e);
+		e.setCelda(celda);
+		grafica.graficarEntidad(e);
 	}
 	/*
 	 *  hacerMitrabajo(){
