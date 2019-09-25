@@ -18,8 +18,6 @@ public class Nivel1 extends Nivel {
 
 	public void cargarNivel() {
 		System.out.println("NIVEL 1 ");
-		int numeroFilas = mapa.getFilas();
-		int numeroColumnas = mapa.getColumnas();
 		Random numeroRandom = new Random();
 		int aguas = 0;
 		int rocas = 0;

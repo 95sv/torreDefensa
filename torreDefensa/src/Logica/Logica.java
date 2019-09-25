@@ -62,7 +62,8 @@ public class Logica {
 		
 		Celda celda = mapa.getCelda(random, 3);
 		Enemigo e = new Enemigo1(celda);
-		misEnemigos.add(e);
+		celda.agregarEntidad(e);
+		misEnemigos.addFirst(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
 	}
@@ -71,11 +72,12 @@ public class Logica {
 		if(misEnemigos.size() > 0) {
 			System.out.println("ENEMIGOS : "+ misEnemigos.size());
 			Celda celda = misEnemigos.getFirst().getCelda();
-			celda.eliminarEntidad();	
+			System.out.println("CELDA ENEMIGO : "+ celda.getEntidad().toString());
 			grafica.eliminarEntidad(misEnemigos.getFirst());
-			misEnemigos.remove();
+			celda.eliminarEntidad();	
+	//		System.out.println("CELDA ENEMIGO : "+ celda.getEntidad().toString());
+			misEnemigos.removeFirst();
 			System.out.println("ENEMIGOS : "+ misEnemigos.size());
-			
 		}
 	}
 	

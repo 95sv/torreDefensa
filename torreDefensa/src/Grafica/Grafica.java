@@ -6,8 +6,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,10 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Entidad.Entidad;
 import Logica.Logica;
-import Mapa.Mapa;
 
 public class Grafica extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel panelFondo;
 	private Logica logica;
 	private JButton boton1;
@@ -62,19 +63,18 @@ public class Grafica extends JFrame {
 	}
 
 	public void graficarEntidad(Entidad e) {
-		ImageIcon icon = e.getImagen();
-		JLabel label = new JLabel();
-		label.setIcon(icon);
+		JLabel label = e.getImagen();
 		panelFondo.add(label);
 		label.setBounds(e.getCelda().getX() * 64, e.getCelda().getY() * 64, 64, 64);
 		label.setVisible(true);
+		panelFondo.setComponentZOrder(label, 0);
 	}
 	
 	public void eliminarEntidad(Entidad e) {
-		ImageIcon icon = e.getImagen();
-		JLabel label = new JLabel();
-		label.setIcon(icon);
+		JLabel label = e.getImagen();
 		panelFondo.remove(label);
+		panelFondo.revalidate();
+		panelFondo.repaint();
 	}
 	public void menuCompra() {
 		// Creo panel de compras.

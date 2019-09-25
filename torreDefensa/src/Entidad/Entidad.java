@@ -1,6 +1,8 @@
 package Entidad;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import Mapa.Celda;
 
 public abstract class Entidad {
@@ -16,7 +18,7 @@ public abstract class Entidad {
 	 * 
 	 * mover() // lo hace graficamente.
 	 * **/
-	protected ImageIcon imagen;
+	protected JLabel imagen;
 
 	public void setCelda(Celda c) {
 		miCelda = c;
@@ -26,11 +28,11 @@ public abstract class Entidad {
 		return miCelda;
 	}
 
-	public ImageIcon getImagen() {
+	public JLabel getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(ImageIcon i) {
+	public void setImagen(JLabel i) {
 		imagen = i;
 	}
 	
