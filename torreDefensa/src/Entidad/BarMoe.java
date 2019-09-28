@@ -7,13 +7,14 @@ import Disparo.DisparoAliado;
 import Disparo.DisparoEnemigo;
 import Mapa.Celda;
 
-public class Enemigo1 extends Enemigo {
+public class BarMoe extends Torre{
 
-	public Enemigo1(Celda celda) {
+	public BarMoe(Celda celda) {
 		super(celda);
 		imagen = new JLabel();
-		//imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/Enemigo2/Attack__004.png")));
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/bart64.png")));
+		//imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/Enemigo1/Walk (2)i.png")));
+		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/MoeBar64.png")));
+
 	}
 
 	@Override
@@ -32,5 +33,6 @@ public class Enemigo1 extends Enemigo {
 	public void visit() {
 		// TODO Auto-generated method stub
 		
-	}	
+	}
+
 }

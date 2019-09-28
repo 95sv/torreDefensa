@@ -6,8 +6,8 @@ import java.util.Random;
 import Entidad.Enemigo;
 import Entidad.Enemigo1;
 import Entidad.Entidad;
-import Entidad.Jugador;
-import Entidad.Jugador1;
+import Entidad.Torre;
+import Entidad.BarMoe;
 import Grafica.Grafica;
 import Mapa.Celda;
 import Mapa.Mapa;
@@ -46,7 +46,7 @@ public class Logica {
 		System.out.println("COLUMNAS MAPA : "+ mapa.getColumnas());
 		System.out.println("CELDA : X = "+ celda.getX() +" Y = "+ celda.getY());
 	
-		Jugador j = new Jugador1(celda);
+		Torre j = new BarMoe(celda);
 		misEntidades.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);

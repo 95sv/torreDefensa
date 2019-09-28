@@ -1,19 +1,20 @@
-package Entidad;
+package Disparo;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import Disparo.DisparoAliado;
-import Disparo.DisparoEnemigo;
 import Mapa.Celda;
 
-public class Enemigo1 extends Enemigo {
+import Mapa.Mapa;
 
-	public Enemigo1(Celda celda) {
-		super(celda);
+public class DisparoBasico extends DisparoAliado {
+
+	public DisparoBasico(Celda celda, float daño, int velocidad) {
+		super(celda, daño, velocidad);
+		
 		imagen = new JLabel();
-		//imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/Enemigo2/Attack__004.png")));
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/bart64.png")));
+		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/CarlitosBala.png")));
+		
 	}
 
 	@Override
@@ -32,5 +33,7 @@ public class Enemigo1 extends Enemigo {
 	public void visit() {
 		// TODO Auto-generated method stub
 		
-	}	
+	}
+	
+	
 }

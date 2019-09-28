@@ -3,6 +3,8 @@ package Entidad;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Disparo.DisparoEnemigo;
+import Disparo.DisparoAliado;
 import Mapa.Celda;
 
 public abstract class Entidad {
@@ -51,5 +53,15 @@ public abstract class Entidad {
 	public void setY(int y) {
 		this.y = y;
 	}
+	
+	//LLEGARON LOS VISIT 
+	
+	public abstract boolean visit(DisparoAliado d);
+	
+	public abstract boolean visit(DisparoEnemigo d);
+	
+	public abstract void visit();
+	
+	//faltan visitors
 
 }
