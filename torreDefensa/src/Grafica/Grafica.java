@@ -123,6 +123,7 @@ public class Grafica extends JFrame {
 			// TODO Auto-generated method stub
 			logica.agregarEnemigo();
 			boton2.setEnabled(false);
+			logica.crearHilos();
 		}	
 	}
 	
