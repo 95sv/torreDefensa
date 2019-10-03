@@ -14,8 +14,15 @@ public class Nivel1 extends Nivel {
 	public Nivel1(Mapa mapa) {
 		super(mapa);
 		cargarNivel();
+	//	cargarOleada();
 	}
 
+	public void cargarOleada() {
+	/*	for(int i = 0 ; i < 6 ; i++) {
+			mapa.getLogica().agregarEnemigo(i);
+		}
+	*/	
+	}
 	public void cargarNivel() {
 		System.out.println("NIVEL 1 ");
 		Random numeroRandom = new Random();

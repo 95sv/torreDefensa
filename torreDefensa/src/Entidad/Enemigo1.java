@@ -13,7 +13,6 @@ public class Enemigo1 extends Enemigo {
 	public Enemigo1(Celda celda, Mapa mapa) {
 		super(celda,mapa);
 		imagen = new JLabel();
-		//imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/Enemigo2/Attack__004.png")));
 		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/bart64.png")));
 	}
 
@@ -32,7 +31,7 @@ public class Enemigo1 extends Enemigo {
 	@Override
 	public void visit() {
 		// TODO Auto-generated method stub
-	}	
+	}
 	
 	public void mover() {
 		int x = miCelda.getX();

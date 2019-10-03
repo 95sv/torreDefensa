@@ -56,6 +56,10 @@ public class Logica {
 		System.out.println("COLUMNAS MAPA : " + mapa.getColumnas());
 		System.out.println("CELDA : X = " + celda.getX() + " Y = " + celda.getY());
 
+		System.out.println("FILAS MAPA : "+ mapa.getFilas());
+		System.out.println("COLUMNAS MAPA : "+ mapa.getColumnas());
+		System.out.println("CELDA : X = "+ celda.getX() +" Y = "+ celda.getY());
+	
 		Torre j = new BarMoe(celda);
 		misEntidades.add(j);
 		celda.agregarEntidad(j);

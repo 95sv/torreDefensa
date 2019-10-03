@@ -11,16 +11,9 @@ public abstract class Entidad {
 	protected Celda miCelda;
 	protected int x;
 	protected int y;
-	//protected EntidadGrafica miGrafica
-	/*
-	 * 	tiene ImageIcon =../Enemigo1..
-	 * 
-	 * getSprite(): ImageIcon
-	 * 
-	 * mover() // lo hace graficamente.
-	 * **/
 	protected JLabel imagen;
-
+	//protected EntidadGrafica miGrafica
+	
 	public void setCelda(Celda c) {
 		miCelda = c;
 	}
@@ -53,14 +46,12 @@ public abstract class Entidad {
 		this.y = y;
 	}
 	
-	//LLEGARON LOS VISIT 
+	public abstract void visit();
 	
 	public abstract boolean visit(DisparoAliado d);
 	
 	public abstract boolean visit(DisparoEnemigo d);
 	
-	public abstract void visit();
-	
-	//faltan visitors
+
 
 }
