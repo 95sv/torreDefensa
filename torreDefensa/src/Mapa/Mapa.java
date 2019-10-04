@@ -1,5 +1,7 @@
 package Mapa;
 
+
+import Entidad.Entidad;
 import Logica.Logica;
 
 public class Mapa {
@@ -57,4 +59,13 @@ public class Mapa {
 		return logica;
 	}
 
+	
+	//AGREGADO POR EL TEMA DE EL VISITOR
+	
+	public Entidad getEntidad(int x, int y) {
+		return mapa[x][y].getEntidad();
+	}
+	
+	
+	
 }

@@ -3,12 +3,16 @@ package Logica;
 import java.util.LinkedList;
 import java.util.Random;
 
+import Disparo.Disparo;
+import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Entidad.Enemigo;
 import Entidad.Enemigo1;
 import Entidad.Entidad;
 import Entidad.Torre;
 import Entidad.BarMoe;
 import Grafica.Grafica;
+import Hilos.HiloBala;
 import Hilos.HiloEnemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
@@ -19,14 +23,20 @@ public class Logica {
 	protected Mapa mapa;
 	protected LinkedList<Entidad> misEntidades;
 	protected LinkedList<Enemigo> misEnemigos;
-
+	
+	//temporal esta lista(luego se pone todo en entidades)
+	protected LinkedList<Disparo> misDisparos;
+    protected HiloBala hiloBala;
+	
 	protected HiloEnemigo hiloEnemigo;
+	
 
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
 		mapa = new Mapa(this);
 		misEntidades = new LinkedList<Entidad>();
 		misEnemigos = new LinkedList<Enemigo>();
+        misDisparos = new LinkedList<Disparo>();	
 	}
 
 	public void crearHilos() {
@@ -36,6 +46,8 @@ public class Logica {
 		}
 	}
 
+	
+	
 	public Grafica getGrafica() {
 		return grafica;
 	}
@@ -74,7 +86,7 @@ public class Logica {
 		Random rnd = new Random();
 		int random = rnd.nextInt(8);
 
-		Celda celda = mapa.getCelda(random, 3);
+		Celda celda = mapa.getCelda(random, 2);//----------------------------------3
 		Enemigo e = new Enemigo1(celda, mapa);
 		celda.agregarEntidad(e);
 		misEnemigos.addFirst(e);
@@ -141,4 +153,36 @@ public class Logica {
 	 * 
 	 */
 
+	public void agregarBala() { //Agregar bala
+		
+        //abria que ponerlo que arranque desde la celda de la torre (vertical+1, horizontal)
+		Celda celda = mapa.getCelda(8,2);
+		Disparo e = new DisparoBasico(celda,1,1, mapa); //temporalmente le puse 1 para ver como funciona.
+		celda.agregarEntidad(e);
+		misDisparos.addFirst(e);
+		e.setCelda(celda);
+		grafica.graficarEntidad(e);
+	}
+	
+	public void crearHilosBala() {
+		hiloBala = new HiloBala(this);
+		if (misDisparos.size() != 0) {
+			hiloBala.start();
+		}
+	}
+	
+	public void moverBala() {
+		for (Disparo e : misDisparos) {
+			e.mover();
+			grafica.graficarEntidad(e);
+		}
+	}
+	
+	
+	public Entidad getEntidad(int x, int y) {
+		return mapa.getEntidad(x, y);
+	}
+	
+	
+	
 }

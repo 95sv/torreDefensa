@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 
 import Disparo.DisparoEnemigo;
 import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Mapa.Celda;
 
 public abstract class Entidad {
@@ -48,7 +49,7 @@ public abstract class Entidad {
 	
 	public abstract void visit();
 	
-	public abstract boolean visit(DisparoAliado d);
+	public abstract boolean visit(DisparoBasico d);
 	
 	public abstract boolean visit(DisparoEnemigo d);
 	

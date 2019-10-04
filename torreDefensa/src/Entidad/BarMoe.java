@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Disparo.DisparoEnemigo;
 import Mapa.Celda;
 
@@ -16,23 +17,13 @@ public class BarMoe extends Torre{
 		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/MoeBar64.png")));
 
 	}
+	
+	protected void crearDisparo() {
+			logica.agregarBala();
+		}
 
-	@Override
-	public boolean visit(DisparoAliado d) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean visit(DisparoEnemigo d) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void visit() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }
+	
+

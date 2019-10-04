@@ -111,7 +111,11 @@ public class Grafica extends JFrame {
 			// TODO Auto-generated method stub
 			if (logica.cantidadEntidades() == 0) {
 				logica.agregarJugador();
+				logica.agregarBala();//----------------------------------------------------
+				
 				boton1.setEnabled(false);
+				logica.crearHilosBala();
+				
 			}
 		}
 	}

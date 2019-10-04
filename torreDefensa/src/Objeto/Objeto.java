@@ -1,6 +1,7 @@
 package Objeto;
 
 import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Disparo.DisparoEnemigo;
 import Entidad.Entidad;
 import Mapa.Celda;
@@ -13,7 +14,7 @@ public class Objeto extends Entidad{
 	}
 
 	@Override
-	public boolean visit(DisparoAliado d) {
+	public boolean visit(DisparoBasico d) {
 		// TODO Auto-generated method stub
 		return false;
 	}
