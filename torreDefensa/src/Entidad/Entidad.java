@@ -2,18 +2,20 @@ package Entidad;
 
 import javax.swing.JLabel;
 
+import Disparo.DisparoAliado;
 import Disparo.DisparoEnemigo;
-import Disparo.DisparoBasico;
 import Mapa.Celda;
 import Mapa.Mapa;
+import Visitor.Visitor;
 
 public abstract class Entidad {
 
 	protected Celda miCelda;
 	protected JLabel imagen;
+	protected Mapa miMapa;
+	protected Visitor miVisitor;
 	protected int x;
 	protected int y;
-	protected Mapa miMapa;
 
 	public Entidad(Celda celda, Mapa mapa) {
 		this.x = celda.getX();
@@ -51,14 +53,17 @@ public abstract class Entidad {
 	public int getY() {
 		return y;
 	}
+	
+	public Visitor getVisitor() {
+		return miVisitor;
+	}
 
 
 	public abstract void mover();
 	
-	public abstract void visit();
-
-	public abstract boolean visit(DisparoBasico d);
-
-	public abstract boolean visit(DisparoEnemigo d);
+	public abstract void morir();
+	
+	public abstract boolean aceptar(Visitor visitor);
+	
 
 }

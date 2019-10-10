@@ -25,5 +25,4 @@ public abstract class Disparo extends Entidad {
 	
 	public abstract void mover();
 	
-	
 }

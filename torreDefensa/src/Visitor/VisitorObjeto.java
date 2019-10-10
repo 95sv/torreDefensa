@@ -6,14 +6,15 @@ import Entidad.Enemigo;
 import Entidad.Torre;
 import Objeto.Objeto;
 
-public class VisitorDisparoAliado extends Visitor{
+public class VisitorObjeto extends Visitor{
 	
-	public VisitorDisparoAliado(DisparoAliado miDisparo) {
-		this.miEntidad = miDisparo;
+	public VisitorObjeto(Objeto objeto) {
+		miEntidad = objeto;
 	}
+	
 	@Override
 	public boolean visit(Enemigo e) {
-		e.morir();
+		// Si un enemigo se choca con un objeto, el enemigo debe quedarse en el lugar.
 		return true;
 	}
 
@@ -34,6 +35,7 @@ public class VisitorDisparoAliado extends Visitor{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 	@Override
 	protected boolean visit(Objeto objeto) {
 		// TODO Auto-generated method stub

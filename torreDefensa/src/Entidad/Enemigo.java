@@ -1,7 +1,5 @@
 package Entidad;
 
-import Disparo.DisparoBasico;
-import Disparo.DisparoEnemigo;
 import Logica.Logica;
 import Mapa.Celda;
 import Mapa.Mapa;
@@ -21,19 +19,8 @@ public abstract class Enemigo extends Entidad {
 	public abstract void mover();
 
 	public void morir() {
+		logica.eliminarEntidad(this);
 	}
 	
-	@Override
-	public boolean visit(DisparoBasico d) {
-		return true;
-	}
-
-	@Override
-	public boolean visit(DisparoEnemigo d) {
-		return false;
-	}
-
-	@Override
-	public void visit() {	
-	}	
+	
 }

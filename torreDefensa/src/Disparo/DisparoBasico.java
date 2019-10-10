@@ -2,8 +2,12 @@ package Disparo;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import Entidad.Enemigo;
+import Entidad.Torre;
 import Mapa.Celda;
 import Mapa.Mapa;
+import Visitor.Visitor;
 
 
 public class DisparoBasico extends DisparoAliado {
@@ -15,25 +19,25 @@ public class DisparoBasico extends DisparoAliado {
 		
 	}
 
-	
-	
-	@Override
 	public boolean visit(DisparoBasico d) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean visit(DisparoEnemigo d) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public void visit() {
-		// TODO Auto-generated method stub
-
 	}
-	
+
+	public void morir() {
+	}
+
+	@Override
+	public boolean aceptar(Visitor visitor) {
+		// TODO Auto-generated method stub
+		return visitor.visit(this);
+	}
+
 	
 }

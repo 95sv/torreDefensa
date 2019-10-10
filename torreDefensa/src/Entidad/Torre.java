@@ -1,7 +1,5 @@
 package Entidad;
 
-import Disparo.DisparoBasico;
-import Disparo.DisparoEnemigo;
 import Logica.Logica;
 import Mapa.Celda;
 import Mapa.Mapa;
@@ -17,18 +15,5 @@ public abstract class Torre extends Entidad {
 		super(celda,mapa);
 	}
 
-	@Override
-	public boolean visit(DisparoBasico d) {
-		return false;
-	}
-
-	@Override
-	public boolean visit(DisparoEnemigo d) {
-		return false;
-	}
-
-	@Override
-	public void visit() {
-	}
 
 }

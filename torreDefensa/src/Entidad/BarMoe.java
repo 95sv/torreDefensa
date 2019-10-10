@@ -2,8 +2,12 @@ package Entidad;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import Disparo.DisparoAliado;
+import Disparo.DisparoEnemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
+import Visitor.Visitor;
 
 public class BarMoe extends Torre{
 
@@ -20,6 +24,16 @@ public class BarMoe extends Torre{
 
 	@Override
 	public void mover() {
+	}
+
+	@Override
+	public void morir() {
+	}
+
+	@Override
+	public boolean aceptar(Visitor visitor) {
+		// TODO Auto-generated method stub
+		return visitor.visit(this);
 	}
 
 }

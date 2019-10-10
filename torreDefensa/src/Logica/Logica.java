@@ -22,11 +22,10 @@ public class Logica {
 	protected Mapa mapa;
 	protected LinkedList<Entidad> misEntidades;
 	protected LinkedList<Disparo> misDisparos;
-    protected HiloBala hiloBala;
-	
+    
+	protected HiloBala hiloBala;
 	protected HiloEnemigo hiloEnemigo;
 	
-
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
 		mapa = new Mapa(this);
