@@ -13,7 +13,7 @@ public abstract class Disparo extends Entidad {
     	
 
 	public Disparo( Celda celda, float daño, int velocidad,Mapa mapa) {
-		this.celda = celda;
+		super(celda,mapa);
 		this.daño = daño;
 		this.velocidad = velocidad;
 		this.mapa=mapa;

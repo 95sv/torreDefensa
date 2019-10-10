@@ -2,18 +2,14 @@ package Entidad;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import Disparo.DisparoAliado;
-import Disparo.DisparoBasico;
-import Disparo.DisparoEnemigo;
 import Mapa.Celda;
+import Mapa.Mapa;
 
 public class BarMoe extends Torre{
 
-	public BarMoe(Celda celda) {
-		super(celda);
+	public BarMoe(Celda celda,Mapa mapa) {
+		super(celda,mapa);
 		imagen = new JLabel();
-		//imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/Enemigo1/Walk (2)i.png")));
 		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/MoeBar64.png")));
 
 	}
@@ -22,8 +18,8 @@ public class BarMoe extends Torre{
 			logica.agregarBala();
 		}
 
-	
+	@Override
+	public void mover() {
+	}
 
 }
-	
-

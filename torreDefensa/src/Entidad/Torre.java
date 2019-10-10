@@ -1,6 +1,5 @@
 package Entidad;
 
-import Disparo.DisparoAliado;
 import Disparo.DisparoBasico;
 import Disparo.DisparoEnemigo;
 import Logica.Logica;
@@ -14,29 +13,22 @@ public abstract class Torre extends Entidad {
 	protected Logica logica;
 	protected Mapa mapa;
 
-	public Torre(Celda celda) {
-		x = celda.getX();
-		y = celda.getY();
+	public Torre(Celda celda,Mapa mapa) {
+		super(celda,mapa);
 	}
 
 	@Override
 	public boolean visit(DisparoBasico d) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean visit(DisparoEnemigo d) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void visit() {
-		// TODO Auto-generated method stub
-		
-	}	
-	
-	
-	
+	}
+
 }

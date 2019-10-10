@@ -7,21 +7,25 @@ import Objeto.Roca;
 
 public class Nivel1 extends Nivel {
 
-	/*
-	 * public Nivel siguienteNivel(Mapa mapa){ mapa.setState(this); }
-	 */
-
 	public Nivel1(Mapa mapa) {
 		super(mapa);
 		cargarNivel();
-	//	cargarOleada();
+	}
+	
+	public void run() {
+		int cantEnemigos = 10;
+		while(cantEnemigos > 0) {
+			mapa.getLogica().agregarEnemigo();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void cargarOleada() {
-	/*	for(int i = 0 ; i < 6 ; i++) {
-			mapa.getLogica().agregarEnemigo(i);
-		}
-	*/	
+		
 	}
 	public void cargarNivel() {
 		System.out.println("NIVEL 1 ");
@@ -36,7 +40,7 @@ public class Nivel1 extends Nivel {
 			j = numeroRandom.nextInt(6);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				rocas++;
-				Roca roca = new Roca(mapa.getCelda(i, j));
+				Roca roca = new Roca(mapa.getCelda(i, j),mapa);
 				mapa.getCelda(i, j).agregarEntidad(roca);
 				roca.setCelda(mapa.getCelda(i, j));
 				mapa.getLogica().getGrafica().graficarEntidad(roca);
@@ -49,7 +53,7 @@ public class Nivel1 extends Nivel {
 			j = numeroRandom.nextInt(6);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				aguas++;
-				Agua agua = new Agua(mapa.getCelda(i, j));
+				Agua agua = new Agua(mapa.getCelda(i, j),mapa);
 				mapa.getCelda(i, j).agregarEntidad(agua);
 				agua.setCelda(mapa.getCelda(i, j));
 				mapa.getLogica().getGrafica().graficarEntidad(agua);

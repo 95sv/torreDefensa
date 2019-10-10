@@ -1,10 +1,7 @@
 package Disparo;
 
-
 import Mapa.Celda;
 import Mapa.Mapa;
-
-
 
 public abstract class DisparoAliado extends Disparo {
 

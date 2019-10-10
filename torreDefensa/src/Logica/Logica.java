@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import Disparo.Disparo;
-import Disparo.DisparoAliado;
 import Disparo.DisparoBasico;
 import Entidad.Enemigo;
 import Entidad.Enemigo1;
@@ -22,9 +21,6 @@ public class Logica {
 	protected Grafica grafica;
 	protected Mapa mapa;
 	protected LinkedList<Entidad> misEntidades;
-	protected LinkedList<Enemigo> misEnemigos;
-	
-	//temporal esta lista(luego se pone todo en entidades)
 	protected LinkedList<Disparo> misDisparos;
     protected HiloBala hiloBala;
 	
@@ -35,18 +31,21 @@ public class Logica {
 		this.grafica = grafica;
 		mapa = new Mapa(this);
 		misEntidades = new LinkedList<Entidad>();
-		misEnemigos = new LinkedList<Enemigo>();
         misDisparos = new LinkedList<Disparo>();	
+        
+        cargarOleada();
+        
+	}
+	
+	public void cargarOleada() {
+		mapa.getNivel().cargarOleada();
+		crearHilos();
 	}
 
 	public void crearHilos() {
 		hiloEnemigo = new HiloEnemigo(this);
-		if (misEnemigos.size() != 0) {
 			hiloEnemigo.start();
-		}
 	}
-
-	
 	
 	public Grafica getGrafica() {
 		return grafica;
@@ -72,7 +71,7 @@ public class Logica {
 		System.out.println("COLUMNAS MAPA : "+ mapa.getColumnas());
 		System.out.println("CELDA : X = "+ celda.getX() +" Y = "+ celda.getY());
 	
-		Torre j = new BarMoe(celda);
+		Torre j = new BarMoe(celda,mapa);
 		misEntidades.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);
@@ -84,30 +83,27 @@ public class Logica {
 
 	public void agregarEnemigo() {
 		Random rnd = new Random();
-		int random = rnd.nextInt(8);
+		int random = rnd.nextInt(5);
 
-		Celda celda = mapa.getCelda(random, 2);//----------------------------------3
+		Celda celda = mapa.getCelda(0, random);
 		Enemigo e = new Enemigo1(celda, mapa);
 		celda.agregarEntidad(e);
-		misEnemigos.addFirst(e);
+		LinkedList<Entidad> misEntidades2 = new LinkedList<Entidad>(misEntidades);
+		misEntidades2.addFirst(e);
+		misEntidades = misEntidades2;
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
 	}
 
-	public void eliminarEnemigo() {
-		if (misEnemigos.size() > 0) {
-			System.out.println("ENEMIGOS : " + misEnemigos.size());
-			Celda celda = misEnemigos.getFirst().getCelda();
-			System.out.println("CELDA ENEMIGO : " + celda.getEntidad().toString());
-			grafica.eliminarEntidad(misEnemigos.getFirst());
-			celda.eliminarEntidad();
-			misEnemigos.removeFirst();
-			System.out.println("ENEMIGOS : " + misEnemigos.size());
-		}
+	public void eliminarEntidad(Entidad e) {
+		Celda celda = e.getCelda();
+		grafica.eliminarEntidad(e);
+		celda.eliminarEntidad();
+		misEntidades.remove(e);
 	}
-
+	
 	public void moverEnemigos() {
-		for (Enemigo e : misEnemigos) {
+		for (Entidad e : misEntidades) {
 			e.mover();
 			grafica.graficarEntidad(e);
 		}
@@ -117,47 +113,9 @@ public class Logica {
 		this.grafica = grafica;
 	}
 
-	/*
-	 * hacerMitrabajo(){ mapa.getState().crearOleada() mientras tengo enemigos en
-	 * mis lista de enemigos Agarrar un enimgo de la lista, obtener un numero randpm
-	 * entre 0 y 5. y coloca enemeigo en [random][0] }
-	 * 
-	 * 
-	 */
-
-	/*
-	 * idea de pulso de juego (hilo) por cada pulso tomo una entidad (Enemigos) y
-	 * decido acciones a partir de lo que haya en el mapa...
-	 * 
-	 * 
-	 *
-	 */
-
-	/*
-	 * Disparo DisparoAliado DisparoEnemigo Visitor (Aca van a tener un visit por
-	 * cada entidad (EntidadRespectiva r) VisitadorEnemigo Visitador aliado
-	 */
-
-	/*
-	 * enemigo ataca(): new DisparoEnemigo(this, miX, miY) ---- en DisparoEnemigo //
-	 * la vida del disparo memuero(); memuevo() hagoDanio()
-	 * entidadEnFrente.aceptar(new VisitadorEnemigo())
-	 * 
-	 * En entidad un metodo que se llama aceptar(Visitor v){ v.visit(this). }
-	 * 
-	 * En visitadorEnemigo tienen entre tantos visit
-	 * 
-	 * visit(Aliado: a){ a.recibirdanio(miEnemigo.getDanio());
-	 * 
-	 * 
-	 * 
-	 */
-
-	public void agregarBala() { //Agregar bala
-		
-        //abria que ponerlo que arranque desde la celda de la torre (vertical+1, horizontal)
+	public void agregarBala() { 
 		Celda celda = mapa.getCelda(8,2);
-		Disparo e = new DisparoBasico(celda,1,1, mapa); //temporalmente le puse 1 para ver como funciona.
+		Disparo e = new DisparoBasico(celda,1,1, mapa); 
 		celda.agregarEntidad(e);
 		misDisparos.addFirst(e);
 		e.setCelda(celda);
@@ -182,7 +140,5 @@ public class Logica {
 	public Entidad getEntidad(int x, int y) {
 		return mapa.getEntidad(x, y);
 	}
-	
-	
-	
+		
 }

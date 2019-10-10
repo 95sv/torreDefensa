@@ -109,14 +109,13 @@ public class Grafica extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-			if (logica.cantidadEntidades() == 0) {
 				logica.agregarJugador();
 				logica.agregarBala();//----------------------------------------------------
 				
 				boton1.setEnabled(false);
 				logica.crearHilosBala();
 				
-			}
+			
 		}
 	}
 	
@@ -124,10 +123,7 @@ public class Grafica extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			logica.agregarEnemigo();
 			boton2.setEnabled(false);
-			logica.crearHilos();
 		}	
 	}
 	
@@ -135,9 +131,7 @@ public class Grafica extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			logica.eliminarEnemigo();
-			
+			boton3.setEnabled(false);
 		}
 		
 	}

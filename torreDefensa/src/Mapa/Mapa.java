@@ -1,6 +1,9 @@
 package Mapa;
 
 
+import java.util.LinkedList;
+
+import Entidad.Enemigo;
 import Entidad.Entidad;
 import Logica.Logica;
 
@@ -10,12 +13,14 @@ public class Mapa {
 	protected int filas, columnas;
 	protected Nivel siguienteNivel;
 	protected Logica logica;
+	protected LinkedList<Enemigo> misEnemigos;
 
 	public Mapa(Logica logica) {
 		filas = 6;
 		columnas = 10;
 		mapa = new Celda[10][6];
 		this.logica = logica;
+		misEnemigos = new LinkedList<Enemigo>();
 		
 		for (int i = 0; i < columnas; i++) {
 			for (int j = 0; j < filas; j++) {
@@ -24,22 +29,22 @@ public class Mapa {
 		}
 		
 		siguienteNivel = new Nivel1(this);
+		siguienteNivel.start();
 
 	}
-	
-	/*
-	 * public void cargarNivel(Nivel nivel){
-	 * 		this.siguienteNivel = new Nivel1();
-	 * }
-	 * 
-	 * public void setNivel(Nivel nivel){
-	 * 		this.siguienteNivel = nivel;
-	 * }
-	 * 
-	 * public Nivel getNivel(){
-	 * 		return this.siguienteNivel;
-	 * }	
-	 */
+
+	  public void cargarNivel(Nivel nivel){
+	  		this.siguienteNivel = new Nivel1(this);
+	  }
+	  
+	  public void setNivel(Nivel nivel){
+	  		this.siguienteNivel = nivel;
+	  }
+	  
+	  public Nivel getNivel(){
+	  		return this.siguienteNivel;
+	  }	
+	 
 
 	public int getFilas() {
 		return filas;
@@ -58,7 +63,6 @@ public class Mapa {
 	public Logica getLogica() {
 		return logica;
 	}
-
 	
 	//AGREGADO POR EL TEMA DE EL VISITOR
 	
