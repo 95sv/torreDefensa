@@ -24,8 +24,9 @@ public class Objeto extends Entidad{
 
 	@Override
 	public boolean aceptar(Visitor visitor) {
-		return true;
+		return false;
 	}
+	
 
 
 }

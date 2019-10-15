@@ -32,12 +32,6 @@ public class DisparoBasico extends DisparoAliado {
 
 	public void morir() {
 	}
-
-	@Override
-	public boolean aceptar(Visitor visitor) {
-		// TODO Auto-generated method stub
-		return visitor.visit(this);
-	}
-
+	
 	
 }

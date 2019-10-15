@@ -37,9 +37,6 @@ public class Enemigo1 extends Enemigo {
 		}
 	}
 
-	@Override
-	public boolean aceptar(Visitor visitor) {
-		return visitor.visit(this);
-	}
+	
 
 }

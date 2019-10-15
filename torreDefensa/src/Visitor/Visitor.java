@@ -1,6 +1,7 @@
 package Visitor;
 
 import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Entidad;
@@ -19,4 +20,5 @@ public abstract class Visitor {
 	public abstract boolean visit(DisparoEnemigo e);
 
 	protected abstract boolean visit(Objeto objeto);
+	
 }

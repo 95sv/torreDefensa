@@ -1,6 +1,7 @@
 package Visitor;
 
 import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;
@@ -27,7 +28,7 @@ public class VisitorEnemigo extends Visitor{
 	@Override
 	public boolean visit(DisparoAliado d) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -41,5 +42,6 @@ public class VisitorEnemigo extends Visitor{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
 
 }

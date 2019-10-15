@@ -3,6 +3,7 @@ package Entidad;
 import Logica.Logica;
 import Mapa.Celda;
 import Mapa.Mapa;
+import Visitor.Visitor;
 
 public abstract class Enemigo extends Entidad {
 	
@@ -22,5 +23,10 @@ public abstract class Enemigo extends Entidad {
 		logica.eliminarEntidad(this);
 	}
 	
+
+	public boolean aceptar(Visitor visitor) {
+		return visitor.visit(this);
+	}
 	
+
 }

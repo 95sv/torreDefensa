@@ -14,10 +14,6 @@ public abstract class DisparoAliado extends Disparo {
 		miVisitor = new VisitorDisparoAliado(this);
 	}
 	
-	public boolean aceptar(Visitor visitor) {
-		return visitor.visit(this);
-	}
-	
 	public void mover() {
 		int x = miCelda.getX();
 		int y = miCelda.getY();
@@ -25,15 +21,26 @@ public abstract class DisparoAliado extends Disparo {
 			if(x<9 && x>=1) {
 				 x = x-1;
 				 Celda nuevaCelda = mapa.getCelda(x, y);
-				 
-				 miCelda.eliminarEntidad();
-				 setCelda(nuevaCelda);
-				 nuevaCelda.agregarEntidad(this);
+				 if(nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
+					 
+				 }else
+				       {
+				        miCelda.eliminarEntidad();
+				        setCelda(nuevaCelda);
+				        nuevaCelda.agregarEntidad(this);
+				       }
 		  }
 	   }
 		
+
+	   public boolean aceptar(Visitor visitor) {
+		  return visitor.visit(this);
+	     
+	   }
 	
-	public boolean visit(Enemigo enemigo) {
-		return true;
-	}
+	   public boolean visit(Enemigo enemigo) {
+			return true;
+	    }
+
+
 }

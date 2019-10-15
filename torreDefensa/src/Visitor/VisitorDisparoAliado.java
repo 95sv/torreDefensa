@@ -1,6 +1,7 @@
 package Visitor;
 
 import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;
@@ -35,9 +36,10 @@ public class VisitorDisparoAliado extends Visitor{
 		return false;
 	}
 	@Override
-	protected boolean visit(Objeto objeto) {
+	public boolean visit(Objeto objeto) {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 
 }
