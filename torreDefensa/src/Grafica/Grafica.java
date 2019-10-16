@@ -110,10 +110,10 @@ public class Grafica extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 				logica.agregarJugador();
-				logica.agregarBala();//----------------------------------------------------
+				logica.agregarDisparo();//---------------------------------------------------
 				
 				boton1.setEnabled(false);
-				logica.crearHilosBala();
+				logica.crearHiloDisparo();
 				
 			
 		}

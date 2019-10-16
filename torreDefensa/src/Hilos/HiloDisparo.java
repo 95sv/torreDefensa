@@ -2,10 +2,10 @@ package Hilos;
 
 import Logica.Logica;
 
-public class HiloBala extends Thread {
+public class HiloDisparo extends Thread {
 	protected Logica logica;
 
-	public HiloBala(Logica logica) {
+	public HiloDisparo(Logica logica) {
 		super();
 		this.logica = logica;
 	}

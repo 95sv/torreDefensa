@@ -40,7 +40,7 @@ public class Nivel1 extends Nivel {
 			j = numeroRandom.nextInt(6);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				rocas++;
-				Roca roca = new Roca(mapa.getCelda(i, j),mapa);
+				Roca roca = new Roca(mapa,mapa.getCelda(i, j));
 				mapa.getCelda(i, j).agregarEntidad(roca);
 				roca.setCelda(mapa.getCelda(i, j));
 				mapa.getLogica().getGrafica().graficarEntidad(roca);
@@ -53,7 +53,7 @@ public class Nivel1 extends Nivel {
 			j = numeroRandom.nextInt(6);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				aguas++;
-				Agua agua = new Agua(mapa.getCelda(i, j),mapa);
+				Agua agua = new Agua(mapa,mapa.getCelda(i, j));
 				mapa.getCelda(i, j).agregarEntidad(agua);
 				agua.setCelda(mapa.getCelda(i, j));
 				mapa.getLogica().getGrafica().graficarEntidad(agua);

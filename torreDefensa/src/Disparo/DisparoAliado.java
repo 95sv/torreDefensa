@@ -1,16 +1,21 @@
 package Disparo;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import Entidad.Enemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
 import Visitor.VisitorDisparoAliado;
 
-public abstract class DisparoAliado extends Disparo {
+public class DisparoAliado extends Disparo {
 
 	
-	public DisparoAliado(Celda celda, float daño, int velocidad, Mapa mapa) {
-		super(celda, daño, velocidad,mapa);
+	public DisparoAliado(Mapa miMapa,Celda miCelda, float daño, int velocidad) {
+		super(miMapa,miCelda, daño, velocidad);
+		imagen = new JLabel();
+		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/CarlitosBala.png")));
 		miVisitor = new VisitorDisparoAliado(this);
 	}
 	
@@ -20,7 +25,7 @@ public abstract class DisparoAliado extends Disparo {
 		
 			if(x<9 && x>=1) {
 				 x = x-1;
-				 Celda nuevaCelda = mapa.getCelda(x, y);
+				 Celda nuevaCelda = miMapa.getCelda(x, y);
 				 if(nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
 					 
 				 }else
@@ -38,9 +43,10 @@ public abstract class DisparoAliado extends Disparo {
 	     
 	   }
 	
-	   public boolean visit(Enemigo enemigo) {
-			return true;
-	    }
 
+
+	   public void morir() {
+			miMapa.getLogica().eliminarDisparo(this);
+		}
 
 }

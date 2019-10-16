@@ -17,7 +17,7 @@ public abstract class Entidad {
 	protected int x;
 	protected int y;
 
-	public Entidad(Celda celda, Mapa mapa) {
+	public Entidad( Mapa mapa,Celda celda) {
 		this.x = celda.getX();
 		this.y = celda.getY();
 		miMapa = mapa;

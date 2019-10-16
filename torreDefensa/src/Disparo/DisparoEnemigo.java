@@ -4,10 +4,12 @@ import Mapa.Mapa;
 
 public abstract class DisparoEnemigo extends Disparo  {
 
-	public DisparoEnemigo(Celda celda, float daño, int velocidad,Mapa mapa) {
-		super(celda, daño, velocidad,mapa);
+	public DisparoEnemigo(Mapa miMapa,Celda miCelda, float daño, int velocidad) {
+		super(miMapa,miCelda, daño, velocidad);
 	}
 	
-	
+	public void morir() {
+		miMapa.getLogica().eliminarEntidad(this);
+	}
 	
 }

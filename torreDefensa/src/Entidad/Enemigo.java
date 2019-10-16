@@ -1,5 +1,7 @@
 package Entidad;
 
+
+import Disparo.DisparoEnemigo;
 import Logica.Logica;
 import Mapa.Celda;
 import Mapa.Mapa;
@@ -7,14 +9,13 @@ import Visitor.Visitor;
 
 public abstract class Enemigo extends Entidad {
 	
-	protected int disparo;
+	protected DisparoEnemigo disparo;
 	protected int alcance;
 	protected Logica logica;
-	protected Mapa mapa;
 	
-	public Enemigo(Celda celda, Mapa mapa) {
-		super(celda,mapa);
-		this.logica = mapa.getLogica();
+	public Enemigo(Celda miCelda, Mapa miMapa) {
+		super(miMapa,miCelda);
+		this.logica = miMapa.getLogica();
 	}
 	
 	public abstract void mover();

@@ -1,7 +1,7 @@
 package Visitor;
 
 import Disparo.DisparoAliado;
-import Disparo.DisparoBasico;
+
 import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;

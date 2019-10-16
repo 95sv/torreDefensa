@@ -8,8 +8,8 @@ import Mapa.Mapa;
 
 public class Agua extends Objeto {
 	
-	public Agua(Celda celda,Mapa mapa) {
-		super(celda,mapa);
+	public Agua(Mapa miMapa,Celda miCelda) {
+		super(miMapa,miCelda);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Objetos/lake.png")));
 	}

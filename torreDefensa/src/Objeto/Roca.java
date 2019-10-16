@@ -8,8 +8,8 @@ import Mapa.Mapa;
 
 public class Roca extends Objeto{
 
-	public Roca(Celda celda, Mapa mapa) {
-		super(celda,mapa);
+	public Roca(Mapa miMapa,Celda miCelda) {
+		super(miMapa,miCelda);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Objetos/rock.png")));
 	}

@@ -11,16 +11,18 @@ import Visitor.Visitor;
 
 public class BarMoe extends Torre{
 
-	public BarMoe(Celda celda,Mapa mapa) {
-		super(celda,mapa);
+	public BarMoe(Mapa miMapa,Celda miCelda) {
+		super(miMapa,miCelda);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/MoeBar64.png")));
 
 	}
 	
-	protected void crearDisparo() {
-			logica.agregarBala();
-		}
+	public void crearDisparo() {
+		System.out.println("CREO DISPARO EN : "+miCelda.getX());
+		//miMapa.getLogica().agregarDisparo(new DisparoAliado(miMapa,miCelda,1,1));
+		miMapa.getLogica().crearHiloDisparo();
+	}
 
 	@Override
 	public void mover() {

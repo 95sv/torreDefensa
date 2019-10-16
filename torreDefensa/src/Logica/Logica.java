@@ -4,14 +4,14 @@ import java.util.LinkedList;
 import java.util.Random;
 
 import Disparo.Disparo;
-import Disparo.DisparoBasico;
+import Disparo.DisparoAliado;
 import Entidad.Enemigo;
 import Entidad.Enemigo1;
 import Entidad.Entidad;
 import Entidad.Torre;
 import Entidad.BarMoe;
 import Grafica.Grafica;
-import Hilos.HiloBala;
+import Hilos.HiloDisparo;
 import Hilos.HiloEnemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
@@ -23,7 +23,7 @@ public class Logica {
 	protected LinkedList<Entidad> misEntidades;
 	protected LinkedList<Disparo> misDisparos;
     
-	protected HiloBala hiloBala;
+	protected HiloDisparo hiloDisparo;
 	protected HiloEnemigo hiloEnemigo;
 	
 	public Logica(Grafica grafica) {
@@ -70,7 +70,7 @@ public class Logica {
 		System.out.println("COLUMNAS MAPA : "+ mapa.getColumnas());
 		System.out.println("CELDA : X = "+ celda.getX() +" Y = "+ celda.getY());
 	
-		Torre j = new BarMoe(celda,mapa);
+		Torre j = new BarMoe(mapa,celda);
 		misEntidades.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);
@@ -101,6 +101,14 @@ public class Logica {
 		misEntidades.remove(e);
 	}
 	
+	public void eliminarDisparo(Disparo d) {
+		Celda celda = d.getCelda();
+		grafica.eliminarEntidad(d);
+		celda.eliminarEntidad();
+		misDisparos.remove(d);
+	}
+
+	
 	public void moverEnemigos() {
 		for (Entidad e : misEntidades) {
 			e.mover();
@@ -112,19 +120,34 @@ public class Logica {
 		this.grafica = grafica;
 	}
 
-	public void agregarBala() { 
+	
+	public void agregarDisparo() { 
 		Celda celda = mapa.getCelda(8,2);
-		Disparo e = new DisparoBasico(celda,1,1, mapa); 
+		Disparo e = new DisparoAliado(mapa,celda,1,1); 
 		celda.agregarEntidad(e);
 		misDisparos.addFirst(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
 	}
 	
-	public void crearHilosBala() {
-		hiloBala = new HiloBala(this);
+
+	/*
+	 //EL PUESTO POR SANTI
+	   public void agregarDisparo(Disparo d) {
+		//LinkedList<Entidad> misEntidades2 = new LinkedList<Entidad>(misEntidades);
+		//misEntidades2.addFirst(e);
+		//misEntidades = misEntidades2;
+		misDisparos.add(d);
+		d.getCelda().agregarEntidad(d);
+		grafica.graficarEntidad(d);
+	}
+	*/
+	
+	
+	public void crearHiloDisparo() {
+		hiloDisparo = new HiloDisparo(this);
 		if (misDisparos.size() != 0) {
-			hiloBala.start();
+			hiloDisparo.start();
 		}
 	}
 	

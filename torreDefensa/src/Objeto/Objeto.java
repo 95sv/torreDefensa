@@ -11,8 +11,8 @@ import Visitor.Visitor;
 
 public class Objeto extends Entidad{
 	
-	public Objeto(Celda celda,Mapa mapa) {
-		super(celda,mapa);
+	public Objeto(Mapa miMapa,Celda miCelda) {
+		super(miMapa,miCelda);
 	}
 
 	
