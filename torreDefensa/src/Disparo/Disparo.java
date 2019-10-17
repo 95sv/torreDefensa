@@ -19,10 +19,7 @@ public abstract class Disparo extends Entidad {
 		return daño;
 	}
 
-	public boolean moverA() {
-		return false;
-	}
+	public abstract boolean mover();
 
-	public abstract void mover();
-
+	
 }

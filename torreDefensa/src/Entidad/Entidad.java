@@ -2,8 +2,7 @@ package Entidad;
 
 import javax.swing.JLabel;
 
-import Disparo.DisparoAliado;
-import Disparo.DisparoEnemigo;
+
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
@@ -57,9 +56,8 @@ public abstract class Entidad {
 	public Visitor getVisitor() {
 		return miVisitor;
 	}
-
-
-	public abstract void mover();
+	
+	public abstract boolean mover();
 	
 	public abstract void morir();
 	

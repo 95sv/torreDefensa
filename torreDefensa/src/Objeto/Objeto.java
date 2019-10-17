@@ -1,10 +1,6 @@
 package Objeto;
 
-import Disparo.DisparoAliado;
-import Disparo.DisparoEnemigo;
-import Entidad.Enemigo;
 import Entidad.Entidad;
-import Entidad.Torre;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
@@ -18,7 +14,8 @@ public class Objeto extends Entidad{
 	
 	public void morir() {}
 	
-	public void mover() {		
+	public boolean mover() {	
+		return false;
 	}
 
 

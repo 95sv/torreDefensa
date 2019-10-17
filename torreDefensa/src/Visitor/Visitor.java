@@ -6,7 +6,6 @@ import Entidad.Enemigo;
 import Entidad.Entidad;
 import Entidad.Torre;
 import Objeto.Agua;
-import Objeto.Objeto;
 import Objeto.Roca;
 
 public abstract class Visitor {

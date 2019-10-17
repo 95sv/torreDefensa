@@ -15,7 +15,7 @@ public class Enemigo1 extends Enemigo {
 		miVisitor = new VisitorEnemigo(this);
 	}
 
-	public void mover() {
+	public boolean mover() {
 		int x = miCelda.getX();
 		int y = miCelda.getY();
 
@@ -23,14 +23,16 @@ public class Enemigo1 extends Enemigo {
 			x = x + 1;
 			Celda nuevaCelda = miMapa.getCelda(x, y);
 			if(nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
-				
+				return false;
 			}
 			else {
 				miCelda.eliminarEntidad();
 				setCelda(nuevaCelda);
 				nuevaCelda.agregarEntidad(this);
+				return true;
 			}
 		}
+	return false;
 	}
 
 	

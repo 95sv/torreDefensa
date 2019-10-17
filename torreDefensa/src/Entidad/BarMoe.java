@@ -2,9 +2,6 @@ package Entidad;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import Disparo.DisparoAliado;
-import Disparo.DisparoEnemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
@@ -24,18 +21,18 @@ public class BarMoe extends Torre{
 		miMapa.getLogica().crearHiloDisparo();
 	}
 
-	@Override
-	public void mover() {
-	}
-
-	@Override
+	
 	public void morir() {
 	}
 
-	@Override
+	public boolean mover() {
+		return false;
+	}
+	
 	public boolean aceptar(Visitor visitor) {
 		// TODO Auto-generated method stub
 		return visitor.visit(this);
 	}
 
+	
 }

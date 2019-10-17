@@ -2,8 +2,6 @@ package Disparo;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import Entidad.Enemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
@@ -19,7 +17,7 @@ public class DisparoAliado extends Disparo {
 		miMapa.getLogica().crearHiloDisparo();
 	}
 
-	public boolean moverA() {
+	public boolean mover() {
 		int x = miCelda.getX();
 		int y = miCelda.getY();
 
@@ -50,10 +48,6 @@ public class DisparoAliado extends Disparo {
 
 	public void morir() {
 		miMapa.getLogica().eliminarDisparo(this);
-	}
-
-	@Override
-	public void mover() {	
 	}
 
 }

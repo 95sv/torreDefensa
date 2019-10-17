@@ -18,7 +18,7 @@ public abstract class Enemigo extends Entidad {
 		this.logica = miMapa.getLogica();
 	}
 	
-	public abstract void mover();
+	public abstract boolean mover();
 
 	public void morir() {
 		logica.eliminarEntidad(this);

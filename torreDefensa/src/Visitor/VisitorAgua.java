@@ -5,7 +5,6 @@ import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;
 import Objeto.Agua;
-import Objeto.Objeto;
 import Objeto.Roca;
 
 public class VisitorAgua extends Visitor {

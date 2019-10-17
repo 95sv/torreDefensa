@@ -101,7 +101,7 @@ public class Logica {
 
 	public void moverEnemigos() {
 		for (Entidad e : misEntidades) {
-			e.mover();
+			e.mover();//----------------------------------CASTEO HORRIBLE ANTES DE CAMBIAR EL TEMA DEL BOOLEAN MOVER
 			grafica.graficarEntidad(e);
 		}
 	}
@@ -126,7 +126,7 @@ public class Logica {
 
 	public void moverBala() {
 		for (Disparo e : misDisparos) {
-			if (e.moverA()) {
+			if (e.mover()) {
 				// Aca tengo que preguntar por la vida.
 				grafica.graficarEntidad(e);
 			}
