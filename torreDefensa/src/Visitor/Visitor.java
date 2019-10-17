@@ -5,7 +5,9 @@ import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Entidad;
 import Entidad.Torre;
+import Objeto.Agua;
 import Objeto.Objeto;
+import Objeto.Roca;
 
 public abstract class Visitor {
 	protected Entidad miEntidad;
@@ -18,6 +20,8 @@ public abstract class Visitor {
 
 	public abstract boolean visit(DisparoEnemigo e);
 
-	protected abstract boolean visit(Objeto objeto);
+	public abstract boolean visit(Agua a);
+	
+	public abstract boolean visit(Roca r);
 	
 }

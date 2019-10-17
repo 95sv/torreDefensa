@@ -4,17 +4,18 @@ import Disparo.DisparoAliado;
 import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;
+import Objeto.Agua;
 import Objeto.Objeto;
+import Objeto.Roca;
 
-public class VisitorObjeto extends Visitor{
+public class VisitorAgua extends Visitor {
 	
-	public VisitorObjeto(Objeto objeto) {
-		miEntidad = objeto;
+	public VisitorAgua(Agua agua) {
+		miEntidad = agua;
 	}
-	
 	@Override
 	public boolean visit(Enemigo e) {
-		// Si un enemigo se choca con un objeto, el enemigo debe quedarse en el lugar.
+		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -37,10 +38,14 @@ public class VisitorObjeto extends Visitor{
 	}
 
 	@Override
-	protected boolean visit(Objeto objeto) {
+	public boolean visit(Agua a) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	@Override
+	public boolean visit(Roca r) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

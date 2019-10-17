@@ -4,7 +4,9 @@ import Disparo.DisparoAliado;
 import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;
+import Objeto.Agua;
 import Objeto.Objeto;
+import Objeto.Roca;
 
 public class VisitorTorre extends Visitor{
 
@@ -35,8 +37,14 @@ public class VisitorTorre extends Visitor{
 		return false;
 	}
 
+	
 	@Override
-	protected boolean visit(Objeto objeto) {
+	public boolean visit(Agua a) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean visit(Roca r) {
 		// TODO Auto-generated method stub
 		return false;
 	}

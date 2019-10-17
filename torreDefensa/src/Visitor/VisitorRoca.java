@@ -1,22 +1,19 @@
 package Visitor;
 
 import Disparo.DisparoAliado;
-
 import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;
 import Objeto.Agua;
-import Objeto.Objeto;
 import Objeto.Roca;
 
-public class VisitorDisparoAliado extends Visitor{
-	
-	public VisitorDisparoAliado(DisparoAliado miDisparo) {
-		this.miEntidad = miDisparo;
+public class VisitorRoca extends Visitor{
+	public VisitorRoca(Roca roca) {
+		miEntidad = roca;
 	}
 	@Override
 	public boolean visit(Enemigo e) {
-		e.morir();
+		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -48,6 +45,5 @@ public class VisitorDisparoAliado extends Visitor{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
 
 }

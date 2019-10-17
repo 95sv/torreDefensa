@@ -24,9 +24,9 @@ public class Objeto extends Entidad{
 
 	@Override
 	public boolean aceptar(Visitor visitor) {
-		return false;
+		// TODO Auto-generated method stub
+		return true;
 	}
-	
 
 
 }

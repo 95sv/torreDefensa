@@ -2,12 +2,8 @@ package Entidad;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import Disparo.DisparoAliado;
-import Disparo.DisparoEnemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
-import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
 public class Enemigo1 extends Enemigo {
