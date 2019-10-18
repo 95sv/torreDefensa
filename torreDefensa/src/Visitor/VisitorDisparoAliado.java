@@ -46,7 +46,7 @@ public class VisitorDisparoAliado extends Visitor{
 	@Override
 	public boolean visit(Roca r) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 

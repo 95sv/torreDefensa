@@ -26,7 +26,8 @@ public class VisitorRoca extends Visitor{
 	@Override
 	public boolean visit(DisparoAliado d) {
 		// TODO Auto-generated method stub
-		return false;
+		d.morir();
+		return true;
 	}
 
 	@Override

@@ -73,8 +73,8 @@ public class Grafica extends JFrame {
 	public void eliminarEntidad(Entidad e) {
 		JLabel label = e.getImagen();
 		panelFondo.remove(label);
-		panelFondo.revalidate();
 		panelFondo.repaint();
+		System.out.println("GRAFICA : "+ e.getX());
 	}
 	public void menuCompra() {
 		// Creo panel de compras.
@@ -110,12 +110,9 @@ public class Grafica extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 				logica.agregarJugador();
-				logica.agregarDisparo();//---------------------------------------------------
-				
+				logica.agregarDisparo();
 				boton1.setEnabled(false);
-				logica.crearHiloDisparo();
-				
-			
+//				logica.crearHiloDisparo();				
 		}
 	}
 	

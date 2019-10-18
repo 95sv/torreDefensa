@@ -1,8 +1,8 @@
 package Logica;
 
-import java.util.LinkedList;
+import java.util.Collection;
 import java.util.Random;
-
+import java.util.concurrent.ConcurrentLinkedDeque;
 import Disparo.Disparo;
 import Disparo.DisparoAliado;
 import Entidad.Enemigo;
@@ -20,8 +20,8 @@ public class Logica {
 
 	protected Grafica grafica;
 	protected Mapa mapa;
-	protected LinkedList<Entidad> misEntidades;
-	protected LinkedList<Disparo> misDisparos;
+	protected Collection<Entidad> misEntidades;
+	protected Collection<Disparo> misDisparos;
 
 	protected HiloDisparo hiloDisparo;
 	protected HiloEnemigo hiloEnemigo;
@@ -29,8 +29,8 @@ public class Logica {
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
 		mapa = new Mapa(this);
-		misEntidades = new LinkedList<Entidad>();
-		misDisparos = new LinkedList<Disparo>();
+		misEntidades = new ConcurrentLinkedDeque<Entidad>();
+		misDisparos = new ConcurrentLinkedDeque<Disparo>();
 
 		cargarOleada();
 
@@ -61,23 +61,12 @@ public class Logica {
 	public void agregarJugador() {
 		// Celda: getCelda( [0..9], [0..5]).
 		Celda celda = mapa.getCelda(9, 2);
-
-		System.out.println("FILAS MAPA : " + mapa.getFilas());
-		System.out.println("COLUMNAS MAPA : " + mapa.getColumnas());
-		System.out.println("CELDA : X = " + celda.getX() + " Y = " + celda.getY());
-
-		System.out.println("FILAS MAPA : " + mapa.getFilas());
-		System.out.println("COLUMNAS MAPA : " + mapa.getColumnas());
-		System.out.println("CELDA : X = " + celda.getX() + " Y = " + celda.getY());
-
 		Torre j = new BarMoe(mapa, celda);
 		misEntidades.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);
 		grafica.graficarEntidad(j);
 
-		System.out.println("QUE HAY EN LA CELDA X Y " + j.getCelda().getEntidad().toString());
-		System.out.println("Jugadores : " + misEntidades.size());
 	}
 
 	public void agregarEnemigo() {
@@ -87,9 +76,10 @@ public class Logica {
 		Celda celda = mapa.getCelda(0, random);
 		Enemigo e = new Enemigo1(celda, mapa);
 		celda.agregarEntidad(e);
-		LinkedList<Entidad> misEntidades2 = new LinkedList<Entidad>(misEntidades);
-		misEntidades2.addFirst(e);
-		misEntidades = misEntidades2;
+		//LinkedList<Entidad> misEntidades2 = new LinkedList<Entidad>(misEntidades);
+		//misEntidades2.addFirst(e);
+		//misEntidades = misEntidades2;
+		misEntidades.add(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
 	}
@@ -102,10 +92,11 @@ public class Logica {
 	}
 
 	public void eliminarDisparo(Disparo d) {
+		System.out.println("Eliminar Disparo " + misDisparos.size());
 		Celda celda = d.getCelda();
-		grafica.eliminarEntidad(d);
 		celda.eliminarEntidad();
 		misDisparos.remove(d);
+		grafica.eliminarEntidad(d);
 	}
 
 	public void moverEnemigos() {
@@ -123,30 +114,22 @@ public class Logica {
 		Celda celda = mapa.getCelda(8, 2);
 		Disparo e = new DisparoAliado(mapa, celda, 1, 1);
 		celda.agregarEntidad(e);
-		misDisparos.addFirst(e);
+		misDisparos.add(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
 	}
 
-	/*
-	 * //EL PUESTO POR SANTI public void agregarDisparo(Disparo d) {
-	 * //LinkedList<Entidad> misEntidades2 = new LinkedList<Entidad>(misEntidades);
-	 * //misEntidades2.addFirst(e); //misEntidades = misEntidades2;
-	 * misDisparos.add(d); d.getCelda().agregarEntidad(d);
-	 * grafica.graficarEntidad(d); }
-	 */
-
 	public void crearHiloDisparo() {
 		hiloDisparo = new HiloDisparo(this);
-		if (misDisparos.size() != 0) {
-			hiloDisparo.start();
-		}
+		hiloDisparo.start();
 	}
 
 	public void moverBala() {
 		for (Disparo e : misDisparos) {
-			e.mover();
-			grafica.graficarEntidad(e);
+			if (e.moverA()) {
+				// Aca tengo que preguntar por la vida.
+				grafica.graficarEntidad(e);
+			}
 		}
 	}
 

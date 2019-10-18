@@ -5,13 +5,12 @@ import Mapa.Celda;
 import Mapa.Mapa;
 
 public abstract class Disparo extends Entidad {
-	
+
 	protected float daño;
 	protected int velocidad;
-	
-    
+
 	public Disparo(Mapa miMapa, Celda miCelda, float daño, int velocidad) {
-		super(miMapa,miCelda);
+		super(miMapa, miCelda);
 		this.daño = daño;
 		this.velocidad = velocidad;
 	}
@@ -19,7 +18,11 @@ public abstract class Disparo extends Entidad {
 	public float getDaño() {
 		return daño;
 	}
-	
+
+	public boolean moverA() {
+		return false;
+	}
+
 	public abstract void mover();
-	
+
 }
