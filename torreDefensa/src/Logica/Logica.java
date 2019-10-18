@@ -6,10 +6,11 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import Disparo.Disparo;
 import Disparo.DisparoAliado;
 import Entidad.Enemigo;
-import Entidad.Enemigo1;
 import Entidad.Entidad;
 import Entidad.Torre;
 import Entidad.BarMoe;
+import Entidad.Bart;
+import Entidad.CasaSimpson;
 import Grafica.Grafica;
 import Hilos.HiloDisparo;
 import Hilos.HiloEnemigo;
@@ -36,6 +37,8 @@ public class Logica {
 
 	}
 
+	
+	
 	public void cargarOleada() {
 		mapa.getNivel().cargarOleada();
 		crearHilos();
@@ -60,21 +63,25 @@ public class Logica {
 
 	public void agregarJugador() {
 		// Celda: getCelda( [0..9], [0..5]).
-		Celda celda = mapa.getCelda(9, 2);
+		Random rnd = new Random();
+		int random = rnd.nextInt(5);
+		Celda celda = mapa.getCelda(9,random);
 		Torre j = new BarMoe(mapa, celda);
 		misEntidades.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);
 		grafica.graficarEntidad(j);
+		agregarDisparo(j.getX()-1,j.getY());
 
 	}
+
 
 	public void agregarEnemigo() {
 		Random rnd = new Random();
 		int random = rnd.nextInt(5);
 
 		Celda celda = mapa.getCelda(0, random);
-		Enemigo e = new Enemigo1(celda, mapa);
+		Enemigo e = new Bart(celda, mapa);
 		celda.agregarEntidad(e);
 		//LinkedList<Entidad> misEntidades2 = new LinkedList<Entidad>(misEntidades);
 		//misEntidades2.addFirst(e);
@@ -110,8 +117,8 @@ public class Logica {
 		this.grafica = grafica;
 	}
 
-	public void agregarDisparo() {
-		Celda celda = mapa.getCelda(8, 2);
+	public void agregarDisparo(int x, int y) {
+		Celda celda = mapa.getCelda(x,y);
 		Disparo e = new DisparoAliado(mapa, celda, 1, 1);
 		celda.agregarEntidad(e);
 		misDisparos.add(e);

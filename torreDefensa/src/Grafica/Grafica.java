@@ -6,13 +6,19 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Entidad.BarMoe;
 import Entidad.Entidad;
+import Entidad.Torre;
 import Logica.Logica;
+import Mapa.Celda;
 
 public class Grafica extends JFrame {
 
@@ -109,11 +115,13 @@ public class Grafica extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-				logica.agregarJugador();
-				logica.agregarDisparo();
+				
+			    logica.agregarJugador();
+				//logica.agregarDisparo(8,2);
 				boton1.setEnabled(false);
 //				logica.crearHiloDisparo();				
 		}
+	
 	}
 	
 	private class oyenteEnemigo implements ActionListener {

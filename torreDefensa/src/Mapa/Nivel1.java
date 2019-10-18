@@ -36,8 +36,8 @@ public class Nivel1 extends Nivel {
 
 		while (rocas < 4) {
 			// Genero rocas en columnas distintas al princio y final del mapa.
-			i = numeroRandom.nextInt(6) + 2;
-			j = numeroRandom.nextInt(6);
+			i = numeroRandom.nextInt(5) + 2;
+			j = numeroRandom.nextInt(5);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				rocas++;
 				Roca roca = new Roca(mapa,mapa.getCelda(i, j));
@@ -49,8 +49,8 @@ public class Nivel1 extends Nivel {
 
 		while (aguas < 5) {
 			// Genero aguas en columnas distintas al princio y final del mapa.
-			i = numeroRandom.nextInt(6) + 2; // Entre 2 y 7
-			j = numeroRandom.nextInt(6);
+			i = numeroRandom.nextInt(5) + 2; // Entre 2 y 6
+			j = numeroRandom.nextInt(5);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				aguas++;
 				Agua agua = new Agua(mapa,mapa.getCelda(i, j));

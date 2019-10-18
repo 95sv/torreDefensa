@@ -6,9 +6,9 @@ import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.VisitorEnemigo;
 
-public class Enemigo1 extends Enemigo {
+public class Bart extends Enemigo {
 
-	public Enemigo1(Celda miCelda, Mapa miMapa) {
+	public Bart(Celda miCelda, Mapa miMapa) {
 		super(miCelda, miMapa);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/bart64.png")));
