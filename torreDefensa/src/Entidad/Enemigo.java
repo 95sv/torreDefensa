@@ -13,7 +13,7 @@ public abstract class Enemigo extends Entidad {
 	protected int alcance;
 	protected Logica logica;
 	
-	public Enemigo(Celda miCelda, Mapa miMapa) {
+	public Enemigo(Mapa miMapa,Celda miCelda) {
 		super(miMapa,miCelda);
 		this.logica = miMapa.getLogica();
 	}

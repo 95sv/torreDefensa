@@ -34,11 +34,8 @@ public class Logica {
 		misDisparos = new ConcurrentLinkedDeque<Disparo>();
 
 		cargarOleada();
-
 	}
 
-	
-	
 	public void cargarOleada() {
 		mapa.getNivel().cargarOleada();
 		crearHilos();
@@ -65,27 +62,23 @@ public class Logica {
 		// Celda: getCelda( [0..9], [0..5]).
 		Random rnd = new Random();
 		int random = rnd.nextInt(5);
-		Celda celda = mapa.getCelda(9,random);
+		Celda celda = mapa.getCelda(9, random);
 		Torre j = new BarMoe(mapa, celda);
 		misEntidades.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);
 		grafica.graficarEntidad(j);
-		agregarDisparo(j.getX()-1,j.getY());
+		agregarDisparo(j);
 
 	}
-
 
 	public void agregarEnemigo() {
 		Random rnd = new Random();
 		int random = rnd.nextInt(5);
 
 		Celda celda = mapa.getCelda(0, random);
-		Enemigo e = new Bart(celda, mapa);
+		Enemigo e = new Bart(mapa, celda);
 		celda.agregarEntidad(e);
-		//LinkedList<Entidad> misEntidades2 = new LinkedList<Entidad>(misEntidades);
-		//misEntidades2.addFirst(e);
-		//misEntidades = misEntidades2;
 		misEntidades.add(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
@@ -108,7 +101,7 @@ public class Logica {
 
 	public void moverEnemigos() {
 		for (Entidad e : misEntidades) {
-			e.mover();//----------------------------------CASTEO HORRIBLE ANTES DE CAMBIAR EL TEMA DEL BOOLEAN MOVER
+			e.mover();
 			grafica.graficarEntidad(e);
 		}
 	}
@@ -117,9 +110,9 @@ public class Logica {
 		this.grafica = grafica;
 	}
 
-	public void agregarDisparo(int x, int y) {
-		Celda celda = mapa.getCelda(x,y);
-		Disparo e = new DisparoAliado(mapa, celda, 1, 1);
+	private void agregarDisparo(Torre miTorre) {
+		Celda celda = mapa.getCelda(miTorre.getX()-1, miTorre.getY());
+		Disparo e = new DisparoAliado(mapa, celda, miTorre, 1, 1);
 		celda.agregarEntidad(e);
 		misDisparos.add(e);
 		e.setCelda(celda);
@@ -131,10 +124,9 @@ public class Logica {
 		hiloDisparo.start();
 	}
 
-	public void moverBala() {
+	public void moverDisparos() {
 		for (Disparo e : misDisparos) {
 			if (e.mover()) {
-				// Aca tengo que preguntar por la vida.
 				grafica.graficarEntidad(e);
 			}
 		}

@@ -17,7 +17,7 @@ public class HiloDisparo extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			logica.moverBala();
+			logica.moverDisparos();
 		}
 	}
 

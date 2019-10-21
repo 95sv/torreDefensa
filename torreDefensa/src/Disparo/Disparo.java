@@ -1,6 +1,7 @@
 package Disparo;
 
 import Entidad.Entidad;
+import Entidad.Torre;
 import Mapa.Celda;
 import Mapa.Mapa;
 
@@ -20,6 +21,8 @@ public abstract class Disparo extends Entidad {
 	}
 
 	public abstract boolean mover();
+	
+	public abstract Torre getTorre();
 
 	
 }

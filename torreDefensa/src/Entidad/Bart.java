@@ -8,8 +8,8 @@ import Visitor.VisitorEnemigo;
 
 public class Bart extends Enemigo {
 
-	public Bart(Celda miCelda, Mapa miMapa) {
-		super(miCelda, miMapa);
+	public Bart(Mapa miMapa,Celda miCelda) {
+		super(miMapa,miCelda);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/bart64.png")));
 		miVisitor = new VisitorEnemigo(this);
