@@ -4,7 +4,7 @@ import Mapa.Mapa;
 
 public abstract class DisparoEnemigo extends Disparo  {
 
-	public DisparoEnemigo(Mapa miMapa,Celda miCelda, float daño, int velocidad) {
+	public DisparoEnemigo(Mapa miMapa,Celda miCelda, int daño, int velocidad) {
 		super(miMapa,miCelda, daño, velocidad);
 	}
 	

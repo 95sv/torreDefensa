@@ -12,6 +12,8 @@ public abstract class Enemigo extends Entidad {
 	protected DisparoEnemigo disparo;
 	protected int alcance;
 	protected Logica logica;
+	protected int vida=100;
+	
 	
 	public Enemigo(Mapa miMapa,Celda miCelda) {
 		super(miMapa,miCelda);
@@ -27,6 +29,14 @@ public abstract class Enemigo extends Entidad {
 
 	public boolean aceptar(Visitor visitor) {
 		return visitor.visit(this);
+	}
+	
+	public void recibirDaño(int daño) {
+		vida= vida-daño;
+		if(vida<=0) {
+			morir();	
+		}
+		
 	}
 	
 

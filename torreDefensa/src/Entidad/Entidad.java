@@ -63,5 +63,8 @@ public abstract class Entidad {
 	
 	public abstract boolean aceptar(Visitor visitor);
 	
+	//ver si esta bien
 
-}
+	
+	}
+

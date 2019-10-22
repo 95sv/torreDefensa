@@ -7,12 +7,15 @@ import Mapa.Mapa;
 import Visitor.VisitorEnemigo;
 
 public class Bart extends Enemigo {
+	
+
 
 	public Bart(Mapa miMapa,Celda miCelda) {
 		super(miMapa,miCelda);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/bart64.png")));
 		miVisitor = new VisitorEnemigo(this);
+		vida=100;
 	}
 
 	public boolean mover() {
@@ -34,7 +37,11 @@ public class Bart extends Enemigo {
 		}
 	return false;
 	}
+	
+	
 
+	
+	
 	
 
 }

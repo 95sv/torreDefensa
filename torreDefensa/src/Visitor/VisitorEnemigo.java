@@ -10,7 +10,7 @@ import Objeto.Roca;
 public class VisitorEnemigo extends Visitor{
 	
 	public VisitorEnemigo(Enemigo e) {
-		miEntidad = e;
+		this.miEntidad = e;
 	}
 	
 	@Override
@@ -27,7 +27,7 @@ public class VisitorEnemigo extends Visitor{
 
 	@Override
 	public boolean visit(DisparoAliado d) {
-		// TODO Auto-generated method stub
+		//miEntidad.recibirDaño(d.getDaño());
 		return true;
 	}
 

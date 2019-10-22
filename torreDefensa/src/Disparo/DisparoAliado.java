@@ -12,7 +12,7 @@ import Visitor.VisitorDisparoAliado;
 public class DisparoAliado extends Disparo {
 	protected Torre miTorre;
 	
-	public DisparoAliado(Mapa miMapa, Celda miCelda, Torre miTorre,float daño, int velocidad) {
+	public DisparoAliado(Mapa miMapa, Celda miCelda, Torre miTorre,int daño, int velocidad) {
 		super(miMapa, miCelda, daño, velocidad);
 		this.miTorre = miTorre;
 		imagen = new JLabel();
@@ -42,9 +42,12 @@ public class DisparoAliado extends Disparo {
 				return true;
 			}
 		}
-		else {
-			morir();//habria que ponerlo como esta antes para que vuelva a aparecer
-			return false;
+		else {// si llega al final del mapa se reinicia el disparo
+			   miCelda.eliminarEntidad();
+			   Celda celdaReinicio = miMapa.getCelda(miTorre.getX()-1, miTorre.getY());
+			   setCelda(celdaReinicio);
+			   celdaReinicio.agregarEntidad(this);
+			return true;
 		}
 	}
 
@@ -61,4 +64,8 @@ public class DisparoAliado extends Disparo {
 		miMapa.getLogica().eliminarDisparo(this);
 	}
 
+	public int getDaño() {
+		return 50;
+	}
+	
 }

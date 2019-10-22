@@ -1,5 +1,6 @@
 package Visitor;
 
+import Disparo.Disparo;
 import Disparo.DisparoAliado;
 
 import Disparo.DisparoEnemigo;
@@ -15,7 +16,7 @@ public class VisitorDisparoAliado extends Visitor{
 	}
 	@Override
 	public boolean visit(Enemigo e) {
-		e.morir();
+		e.recibirDaño(((Disparo) miEntidad).getDaño());
 		return true;
 	}
 
