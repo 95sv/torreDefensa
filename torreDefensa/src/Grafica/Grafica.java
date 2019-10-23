@@ -6,14 +6,19 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Random;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Botonera.Boton;
+import Botonera.BotonBarMoe;
 import Entidad.BarMoe;
 import Entidad.Entidad;
 import Entidad.Torre;
@@ -29,8 +34,7 @@ public class Grafica extends JFrame {
 	private JPanel panelFondo;
 	private Logica logica;
 	private JButton boton1;
-	private JButton boton2;
-	private JButton boton3;
+	private Boton botonTorre;
 
 	public static void main(String[] args) {
 		Grafica grafica = new Grafica();
@@ -53,10 +57,27 @@ public class Grafica extends JFrame {
 		menuCompra();
 	}
 
+	public void menuCompra() {
+		// Creo panel de compras.
+		JPanel panelCompras = new JPanel();
+		panelCompras.setLayout(new FlowLayout());
+		panelFondo.add(panelCompras);
+		panelCompras.setBackground(Color.BLACK);
+		panelCompras.setSize(200, 560);
+		panelCompras.setBounds(650, 0, 200, 560);
+		
+		panelFondo.addMouseListener(new crearTorre());
+		panelCompras.add(new BotonBarMoe(new oyenteJugador()));
+		
+		/*boton1 = new JButton("Agregar Jugador");
+		panelCompras.add(boton1);
+		boton1.setSize(32, 32);
+		oyenteJugador oyente = new oyenteJugador();
+		boton1.addActionListener(oyente);*/
+
+	}
+
 	class BackgroundPanel extends JPanel {
-		/**
-		 * 
-		 */
 		private static final long serialVersionUID = 1L;
 		private Image imagen = new ImageIcon("./src/Recursos/Background/battleback1.png").getImage();
 
@@ -75,69 +96,36 @@ public class Grafica extends JFrame {
 		label.setVisible(true);
 		panelFondo.setComponentZOrder(label, 0);
 	}
-	
+
 	public void eliminarEntidad(Entidad e) {
 		JLabel label = e.getImagen();
 		panelFondo.remove(label);
 		panelFondo.repaint();
-		System.out.println("GRAFICA : "+ e.getX());
-	}
-	public void menuCompra() {
-		// Creo panel de compras.
-		JPanel panelCompras = new JPanel();
-		panelCompras.setLayout(new FlowLayout());
-		panelFondo.add(panelCompras);
-		panelCompras.setBackground(Color.BLACK);
-		panelCompras.setSize(200, 560);
-		panelCompras.setBounds(650, 0, 200, 560);
-
-		boton1 = new JButton("Agregar Jugador");
-		panelCompras.add(boton1);
-		boton1.setSize(32, 32);
-		oyenteJugador oyente = new oyenteJugador();
-		boton1.addActionListener(oyente);
-		
-		boton2 = new JButton("Agregar enemigo");
-		panelCompras.add(boton2);
-		boton2.setSize(32,32);
-		oyenteEnemigo oyenteE = new oyenteEnemigo();
-		boton2.addActionListener(oyenteE);
-		
-		boton3 = new JButton("Eliminar Enemigo");
-		panelCompras.add(boton3);
-		boton3.setSize(32,32);
-		oyenteEliminar oyenteEE = new oyenteEliminar();
-		boton3.addActionListener(oyenteEE);;
 	}
 
 	private class oyenteJugador implements ActionListener {
 
 		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-				
-			    logica.agregarJugador();
-				//logica.agregarDisparo(8,2);
-				boton1.setEnabled(false);
-//				logica.crearHiloDisparo();				
-		}
-	
-	}
-	
-	private class oyenteEnemigo implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			boton2.setEnabled(false);
-		}	
-	}
-	
-	private class oyenteEliminar implements ActionListener{
-
-		@Override
 		public void actionPerformed(ActionEvent e) {
-			boton3.setEnabled(false);
+			//logica.agregarJugador();
+			if(botonTorre != null) {
+				botonTorre.setBorder(null);
+			}
+			botonTorre = (Boton)e.getSource();
+			botonTorre.setBorder(BorderFactory.createLineBorder(Color.RED));
 		}
-		
+	}
+
+	private class crearTorre extends MouseAdapter{
+		public void mouseClicked(MouseEvent e) {
+			if(botonTorre != null) {
+				System.out.println("X = " +e.getX()/64 + " Y ="+e.getY()/64);
+				if(e.getX()>=196 && logica.getMapa().getCelda(e.getX()/64, e.getY()/64).getEntidad()==null && e.getButton()==MouseEvent.BUTTON1)
+					botonTorre.crearTorre(logica.getMapa(),logica.getMapa().getCelda(e.getX()/64, e.getY()/64));
+					System.out.println("X = " +e.getX()/64+ " Y ="+e.getY()/64);
+			}
+			botonTorre.setBorder(null);
+			botonTorre = null;
+		}
 	}
 }

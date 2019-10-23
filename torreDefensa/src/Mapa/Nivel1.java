@@ -16,6 +16,7 @@ public class Nivel1 extends Nivel {
 		int cantEnemigos = 10;
 		while(cantEnemigos > 0) {
 			mapa.getLogica().agregarEnemigo();
+			cantEnemigos--;
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

@@ -71,6 +71,15 @@ public class Logica {
 		agregarDisparo(j);
 
 	}
+	
+	public void agregarJugador(Torre torre) {
+		Celda celda = mapa.getCelda(torre.getX(), torre.getY());
+		misEntidades.add(torre);
+		celda.agregarEntidad(torre);
+		torre.setCelda(celda);
+		grafica.graficarEntidad(torre);
+		agregarDisparo(torre);
+	}
 
 	public void agregarEnemigo() {
 		Random rnd = new Random();
