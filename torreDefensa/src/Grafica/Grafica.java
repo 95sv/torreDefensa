@@ -117,16 +117,17 @@ public class Grafica extends JFrame {
 		public void mouseClicked(MouseEvent e) {
 			if (botonTorre != null) {
 				System.out.println("X = " + e.getX() / 64 + " Y =" + e.getY() / 64);
-				if (e.getX() >= 196 && e.getY()<= 640) {
+				if (e.getX() >= 196 && e.getX()<= 640) {
 						if(logica.getMapa().getCelda(e.getX() / 64, e.getY() / 64).getEntidad() == null) {
 						
 					       botonTorre.crearTorre(logica.getMapa(), logica.getMapa().getCelda(e.getX() / 64, e.getY() / 64));
 					       System.out.println("X = " + e.getX() / 64 + " Y =" + e.getY() / 64);
-				
+					      
 						}
+						 botonTorre.setBorder(null);
+						botonTorre = null;
 				}		
-				botonTorre.setBorder(null);
-				botonTorre = null;
+				
 			}
 			
 		}

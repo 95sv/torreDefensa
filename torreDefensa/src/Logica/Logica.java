@@ -7,6 +7,7 @@ import Disparo.Disparo;
 import Disparo.DisparoAliado;
 import Entidad.Enemigo;
 import Entidad.Entidad;
+import Entidad.HomeroBasico;
 import Entidad.Torre;
 import Entidad.BarMoe;
 import Entidad.Bart;
@@ -106,7 +107,9 @@ public class Logica {
 		int random = rnd.nextInt(5);
 
 		Celda celda = mapa.getCelda(0, random);
-		Enemigo e = new Bart(mapa, celda);//esto no va
+		
+		Enemigo e= new HomeroBasico(mapa, celda);
+		//Enemigo e = new Bart(mapa, celda);//esto no va
 		celda.agregarEntidad(e);
 		misEnemigos.add(e);
 		e.setCelda(celda);
