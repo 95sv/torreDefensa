@@ -101,12 +101,12 @@ public class Logica {
 		agregarDisparo(torre);
 	}
 
-	public void agregarEnemigo() {
+	public void agregarEnemigo() {//le paso por parametro el enemigo
 		Random rnd = new Random();
 		int random = rnd.nextInt(5);
 
 		Celda celda = mapa.getCelda(0, random);
-		Enemigo e = new Bart(mapa, celda);
+		Enemigo e = new Bart(mapa, celda);//esto no va
 		celda.agregarEntidad(e);
 		misEnemigos.add(e);
 		e.setCelda(celda);

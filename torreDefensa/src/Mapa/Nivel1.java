@@ -27,6 +27,11 @@ public class Nivel1 extends Nivel {
 
 	public void cargarOleada() {
 		
+		/*random 0..10
+		 if 0..4 creo entidad entidad bart
+		 mapa.getlogica().agregarEnemigos(bart)
+		
+		*/
 	}
 	public void cargarNivel() {
 		Random numeroRandom = new Random();
