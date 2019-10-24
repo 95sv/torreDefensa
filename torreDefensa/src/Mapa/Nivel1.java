@@ -13,7 +13,7 @@ public class Nivel1 extends Nivel {
 	}
 	
 	public void run() {
-		int cantEnemigos = 10;
+		int cantEnemigos = 7;
 		while(cantEnemigos > 0) {
 			mapa.getLogica().agregarEnemigo();
 			cantEnemigos--;
@@ -29,7 +29,6 @@ public class Nivel1 extends Nivel {
 		
 	}
 	public void cargarNivel() {
-		System.out.println("NIVEL 1 ");
 		Random numeroRandom = new Random();
 		int aguas = 0;
 		int rocas = 0;

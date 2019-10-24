@@ -23,7 +23,7 @@ public abstract class Enemigo extends Entidad {
 	public abstract boolean mover();
 
 	public void morir() {
-		logica.eliminarEntidad(this);
+		logica.eliminarEnemigo(this);
 	}
 	
 

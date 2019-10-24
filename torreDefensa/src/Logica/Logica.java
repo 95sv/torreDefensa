@@ -22,15 +22,19 @@ public class Logica {
 	protected Grafica grafica;
 	protected Mapa mapa;
 	protected Collection<Entidad> misEntidades;
+	protected Collection<Enemigo> misEnemigos;
 	protected Collection<Disparo> misDisparos;
 
 	protected HiloDisparo hiloDisparo;
 	protected HiloEnemigo hiloEnemigo;
+	
+	protected boolean perder = false;
 
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
 		mapa = new Mapa(this);
 		misEntidades = new ConcurrentLinkedDeque<Entidad>();
+		misEnemigos= new ConcurrentLinkedDeque<Enemigo>();
 		misDisparos = new ConcurrentLinkedDeque<Disparo>();
 
 		cargarOleada();
@@ -56,6 +60,22 @@ public class Logica {
 
 	public int cantidadEntidades() {
 		return misEntidades.size();
+	}
+	
+	public boolean perder() {
+		perder = true;
+		return terminar();
+	}
+	
+	public boolean terminar() {
+		if(perder == true) {
+			for(Enemigo e : misEnemigos) {
+				eliminarEnemigo(e);
+				System.out.println("Enemigo eliminado : " + e.toString());
+			}
+		}
+		System.out.println("Enemigos total : "+ misEnemigos.size());
+		return perder;
 	}
 
 	public void agregarJugador() {
@@ -88,9 +108,10 @@ public class Logica {
 		Celda celda = mapa.getCelda(0, random);
 		Enemigo e = new Bart(mapa, celda);
 		celda.agregarEntidad(e);
-		misEntidades.add(e);
+		misEnemigos.add(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
+		System.out.println("Enemigo creado : " + e.toString());
 	}
 
 	public void eliminarEntidad(Entidad e) {
@@ -98,6 +119,13 @@ public class Logica {
 		grafica.eliminarEntidad(e);
 		celda.eliminarEntidad();
 		misEntidades.remove(e);
+	}
+	
+	public void eliminarEnemigo(Enemigo e) {
+		Celda celda = e.getCelda();
+		grafica.eliminarEntidad(e);
+		celda.eliminarEntidad();
+		misEnemigos.remove(e);
 	}
 
 	public void eliminarDisparo(Disparo d) {
@@ -109,7 +137,7 @@ public class Logica {
 	}
 
 	public void moverEnemigos() {
-		for (Entidad e : misEntidades) {
+		for (Enemigo e : misEnemigos) {
 			e.mover();
 			grafica.graficarEntidad(e);
 		}

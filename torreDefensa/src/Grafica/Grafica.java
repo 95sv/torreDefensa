@@ -31,9 +31,9 @@ public class Grafica extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
 	private JPanel panelFondo;
 	private Logica logica;
-	private JButton boton1;
 	private Boton botonTorre;
 
 	public static void main(String[] args) {
@@ -44,15 +44,19 @@ public class Grafica extends JFrame {
 
 	public Grafica() {
 		getContentPane().setLayout(null);
+		contentPane = new JPanel();
+		//setContentPane(contentPane);
 		setSize(850, 430);
+		//contentPane.setSize(850,430);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		panelFondo = new BackgroundPanel();
 		panelFondo.setLayout(null);
+		panelFondo.setSize(640,384);
 		setContentPane(panelFondo);
-
+		
 		logica = new Logica(this);
 		menuCompra();
 	}
@@ -65,24 +69,18 @@ public class Grafica extends JFrame {
 		panelCompras.setBackground(Color.BLACK);
 		panelCompras.setSize(200, 560);
 		panelCompras.setBounds(650, 0, 200, 560);
-		
+
 		panelFondo.addMouseListener(new crearTorre());
 		panelCompras.add(new BotonBarMoe(new oyenteJugador()));
-		
-		/*boton1 = new JButton("Agregar Jugador");
-		panelCompras.add(boton1);
-		boton1.setSize(32, 32);
-		oyenteJugador oyente = new oyenteJugador();
-		boton1.addActionListener(oyente);*/
 
 	}
 
 	class BackgroundPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
 		private Image imagen = new ImageIcon("./src/Recursos/Background/battleback1.png").getImage();
-
+		
 		public void paint(Graphics g) {
-			g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
+			g.drawImage(imagen, 0, 0, 650, 390, this);
 			setOpaque(false);
 			super.paint(g);
 		}
@@ -107,25 +105,27 @@ public class Grafica extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			//logica.agregarJugador();
-			if(botonTorre != null) {
+			if (botonTorre != null) {
 				botonTorre.setBorder(null);
 			}
-			botonTorre = (Boton)e.getSource();
+			botonTorre = (Boton) e.getSource();
 			botonTorre.setBorder(BorderFactory.createLineBorder(Color.RED));
 		}
 	}
 
-	private class crearTorre extends MouseAdapter{
+	private class crearTorre extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
-			if(botonTorre != null) {
-				System.out.println("X = " +e.getX()/64 + " Y ="+e.getY()/64);
-				if(e.getX()>=196 && logica.getMapa().getCelda(e.getX()/64, e.getY()/64).getEntidad()==null && e.getButton()==MouseEvent.BUTTON1)
-					botonTorre.crearTorre(logica.getMapa(),logica.getMapa().getCelda(e.getX()/64, e.getY()/64));
-					System.out.println("X = " +e.getX()/64+ " Y ="+e.getY()/64);
+			if (botonTorre != null) {
+				System.out.println("X = " + e.getX() / 64 + " Y =" + e.getY() / 64);
+				if (e.getX() >= 196 && logica.getMapa().getCelda(e.getX() / 64, e.getY() / 64).getEntidad() == null
+						&& e.getButton() == MouseEvent.BUTTON1) {
+					botonTorre.crearTorre(logica.getMapa(), logica.getMapa().getCelda(e.getX() / 64, e.getY() / 64));
+					System.out.println("X = " + e.getX() / 64 + " Y =" + e.getY() / 64);
+				}
+				botonTorre.setBorder(null);
+				botonTorre = null;
 			}
-			botonTorre.setBorder(null);
-			botonTorre = null;
+			
 		}
 	}
 }
