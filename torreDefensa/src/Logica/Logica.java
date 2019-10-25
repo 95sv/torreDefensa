@@ -28,14 +28,14 @@ public class Logica {
 
 	protected HiloDisparo hiloDisparo;
 	protected HiloEnemigo hiloEnemigo;
-	
+
 	protected boolean perder = false;
 
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
 		mapa = new Mapa(this);
 		misEntidades = new ConcurrentLinkedDeque<Entidad>();
-		misEnemigos= new ConcurrentLinkedDeque<Enemigo>();
+		misEnemigos = new ConcurrentLinkedDeque<Enemigo>();
 		misDisparos = new ConcurrentLinkedDeque<Disparo>();
 
 		cargarOleada();
@@ -62,20 +62,20 @@ public class Logica {
 	public int cantidadEntidades() {
 		return misEntidades.size();
 	}
-	
+
 	public boolean perder() {
 		perder = true;
 		return terminar();
 	}
-	
+
 	public boolean terminar() {
-		if(perder == true) {
-			for(Enemigo e : misEnemigos) {
+		if (perder == true) {
+			for (Enemigo e : misEnemigos) {
 				eliminarEnemigo(e);
 				System.out.println("Enemigo eliminado : " + e.toString());
 			}
 		}
-		System.out.println("Enemigos total : "+ misEnemigos.size());
+		System.out.println("Enemigos total : " + misEnemigos.size());
 		return perder;
 	}
 
@@ -92,7 +92,7 @@ public class Logica {
 		agregarDisparo(j);
 
 	}
-	
+
 	public void agregarJugador(Torre torre) {
 		Celda celda = mapa.getCelda(torre.getX(), torre.getY());
 		misEntidades.add(torre);
@@ -102,14 +102,7 @@ public class Logica {
 		agregarDisparo(torre);
 	}
 
-	public void agregarEnemigo() {//le paso por parametro el enemigo
-		Random rnd = new Random();
-		int random = rnd.nextInt(5);
-
-		Celda celda = mapa.getCelda(0, random);
-		
-		Enemigo e= new HomeroBasico(mapa, celda);
-		//Enemigo e = new Bart(mapa, celda);//esto no va
+	public void agregarEnemigo(Enemigo e, Celda celda) {
 		celda.agregarEntidad(e);
 		misEnemigos.add(e);
 		e.setCelda(celda);
@@ -123,7 +116,7 @@ public class Logica {
 		celda.eliminarEntidad();
 		misEntidades.remove(e);
 	}
-	
+
 	public void eliminarEnemigo(Enemigo e) {
 		Celda celda = e.getCelda();
 		grafica.eliminarEntidad(e);
@@ -151,7 +144,7 @@ public class Logica {
 	}
 
 	private void agregarDisparo(Torre miTorre) {
-		Celda celda = mapa.getCelda(miTorre.getX()-1, miTorre.getY());
+		Celda celda = mapa.getCelda(miTorre.getX() - 1, miTorre.getY());
 		Disparo e = new DisparoAliado(mapa, celda, miTorre, 1, 1);
 		celda.agregarEntidad(e);
 		misDisparos.add(e);

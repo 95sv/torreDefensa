@@ -12,7 +12,7 @@ public class HomeroBasico extends Enemigo {
 	public HomeroBasico(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/homeroComun.png")));
+		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/homeroBasico2.png")));
 		miVisitor = new VisitorEnemigo(this);
 		vida = 100;
 	}

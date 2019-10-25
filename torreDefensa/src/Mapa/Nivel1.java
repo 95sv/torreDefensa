@@ -2,6 +2,9 @@ package Mapa;
 
 import java.util.Random;
 
+import Entidad.Bart;
+import Entidad.Enemigo;
+import Entidad.HomeroBasico;
 import Objeto.Agua;
 import Objeto.Roca;
 
@@ -11,11 +14,12 @@ public class Nivel1 extends Nivel {
 		super(mapa);
 		cargarNivel();
 	}
-	
+
 	public void run() {
 		int cantEnemigos = 7;
-		while(cantEnemigos > 0) {
-			mapa.getLogica().agregarEnemigo();
+		while (cantEnemigos > 0) {
+			// mapa.getLogica().agregarEnemigo();
+			cargarOleada();
 			cantEnemigos--;
 			try {
 				Thread.sleep(1000);
@@ -26,13 +30,21 @@ public class Nivel1 extends Nivel {
 	}
 
 	public void cargarOleada() {
-		
-		/*random 0..10
-		 if 0..4 creo entidad entidad bart
-		 mapa.getlogica().agregarEnemigos(bart)
-		
-		*/
+		Random random = new Random();
+		int numeroRandom = random.nextInt(10);
+		int celdaRandom = random.nextInt(5);
+		Celda celda = mapa.getCelda(0, celdaRandom);
+		if (numeroRandom < 8) {
+			Enemigo e = new Bart(mapa, celda);
+			mapa.getLogica().agregarEnemigo(e, celda);
+
+		}
+		if (numeroRandom >= 8) {
+			Enemigo e = new HomeroBasico(mapa, celda);
+			mapa.getLogica().agregarEnemigo(e, celda);
+		}
 	}
+
 	public void cargarNivel() {
 		Random numeroRandom = new Random();
 		int aguas = 0;
@@ -45,7 +57,7 @@ public class Nivel1 extends Nivel {
 			j = numeroRandom.nextInt(5);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				rocas++;
-				Roca roca = new Roca(mapa,mapa.getCelda(i, j));
+				Roca roca = new Roca(mapa, mapa.getCelda(i, j));
 				mapa.getCelda(i, j).agregarEntidad(roca);
 				roca.setCelda(mapa.getCelda(i, j));
 				mapa.getLogica().getGrafica().graficarEntidad(roca);
@@ -58,7 +70,7 @@ public class Nivel1 extends Nivel {
 			j = numeroRandom.nextInt(5);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				aguas++;
-				Agua agua = new Agua(mapa,mapa.getCelda(i, j));
+				Agua agua = new Agua(mapa, mapa.getCelda(i, j));
 				mapa.getCelda(i, j).agregarEntidad(agua);
 				agua.setCelda(mapa.getCelda(i, j));
 				mapa.getLogica().getGrafica().graficarEntidad(agua);

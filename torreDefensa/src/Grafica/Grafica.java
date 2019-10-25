@@ -77,8 +77,8 @@ public class Grafica extends JFrame {
 
 	class BackgroundPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
-		private Image imagen = new ImageIcon("./src/Recursos/Background/battleback1.png").getImage();
-		
+	    private Image imagen = new ImageIcon("./src/Recursos/Background/battleback1.png").getImage();
+		//private Image imagen = new ImageIcon("./src/RecursosLosSimpson/springfieldFondo.png").getImage();
 		public void paint(Graphics g) {
 			g.drawImage(imagen, 0, 0, 650, 390, this);
 			setOpaque(false);
