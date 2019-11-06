@@ -2,9 +2,9 @@ package Mapa;
 
 import java.util.Random;
 
-import Entidad.Bart;
+import Entidad.Verde;
 import Entidad.Enemigo;
-import Entidad.HomeroBasico;
+import Entidad.Tierra;
 import Objeto.Agua;
 import Objeto.Roca;
 
@@ -35,12 +35,12 @@ public class Nivel1 extends Nivel {
 		int celdaRandom = random.nextInt(5);
 		Celda celda = mapa.getCelda(0, celdaRandom);
 		if (numeroRandom < 8) {
-			Enemigo e = new Bart(mapa, celda);
+			Enemigo e = new Verde(mapa, celda);
 			mapa.getLogica().agregarEnemigo(e, celda);
 
 		}
 		if (numeroRandom >= 8) {
-			Enemigo e = new HomeroBasico(mapa, celda);
+			Enemigo e = new Tierra(mapa, celda);
 			mapa.getLogica().agregarEnemigo(e, celda);
 		}
 	}

@@ -1,12 +1,12 @@
 package Fabrica;
 
-import Entidad.Bart;
+import Entidad.Verde;
 import Mapa.Celda;
 import Mapa.Mapa;
 
 public class FabricaEnemigo extends FabricaEntidad{
 	
-	public Bart crearBart(Celda miCelda,Mapa miMapa) {
-		return new Bart(miMapa,miCelda);
+	public Verde crearVerde(Celda miCelda,Mapa miMapa) {
+		return new Verde(miMapa,miCelda);
 	}
 }
