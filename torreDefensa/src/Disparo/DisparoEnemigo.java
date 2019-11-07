@@ -10,6 +10,7 @@ public abstract class DisparoEnemigo extends Disparo  {
 	
 	public void morir() {
 		miMapa.getLogica().eliminarEntidad(this);
+	//comentando
 	}
 	
 }
