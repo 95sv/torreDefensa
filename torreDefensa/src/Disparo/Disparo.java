@@ -16,7 +16,7 @@ public abstract class Disparo extends Entidad {
 		this.velocidad = velocidad;
 	}
 
-	public abstract int getDano();
+	public abstract int getDaño();
 
 	public abstract boolean mover();
 	

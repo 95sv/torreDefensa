@@ -1,5 +1,6 @@
 package Hilos;
 
+import Entidad.Enemigo;
 import Logica.Logica;
 
 public class HiloEnemigo extends Thread {
@@ -23,7 +24,16 @@ public class HiloEnemigo extends Thread {
 				e.printStackTrace();
 			}
 			logica.moverEnemigos();
+		    }
+		if(logica.terminar()) {
+			for(Enemigo e:  logica.getEnemigos()) {
+				e.morir();
+			}
+			
 		}
+	
 	}
 
+	
+	
 }

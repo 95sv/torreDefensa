@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import Disparo.Disparo;
-import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Entidad.Enemigo;
 import Entidad.Entidad;
 import Entidad.Torre;
@@ -92,13 +92,6 @@ public class Logica {
 	}
 
 	public boolean terminar() {
-		if (perder == true) {
-			for (Enemigo e : misEnemigos) {
-				eliminarEnemigo(e);
-				System.out.println("Enemigo eliminado : " + e.toString());
-			}
-		}
-		System.out.println("Enemigos total : " + misEnemigos.size());
 		return perder;
 	}
 
@@ -168,7 +161,7 @@ public class Logica {
 
 	private void agregarDisparo(Torre miTorre) {
 		Celda celda = mapa.getCelda(miTorre.getX() - 1, miTorre.getY());
-		Disparo e = new DisparoAliado(mapa, celda, miTorre, 1, 1);
+		Disparo e = new DisparoBasico(mapa, celda, miTorre, 1, 1);
 		celda.agregarEntidad(e);
 		misDisparos.add(e);
 		e.setCelda(celda);
@@ -206,6 +199,10 @@ public class Logica {
 		
 	}
 
+	public Collection<Enemigo> getEnemigos() {
+		return misEnemigos;
+	}
+	
 	public void eliminarPowerUp(PowerUp p) {
 		grafica.eliminarEntidad(p);
 	}

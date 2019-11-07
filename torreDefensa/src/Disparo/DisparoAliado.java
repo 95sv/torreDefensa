@@ -1,24 +1,17 @@
 package Disparo;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+
 
 import Entidad.Torre;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
-import Visitor.VisitorDisparoAliado;
 
-public class DisparoAliado extends Disparo {
+public abstract class DisparoAliado extends Disparo {
 	protected Torre miTorre;
 
 	public DisparoAliado(Mapa miMapa, Celda miCelda, Torre miTorre, int dano, int velocidad) {
 		super(miMapa, miCelda, dano, velocidad);
-		this.miTorre = miTorre;
-		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosGif/DisparoTorreArena.png")));
-		miVisitor = new VisitorDisparoAliado(this);
-		miMapa.getLogica().crearHiloDisparo();
 	}
 
 	public boolean mover() {
@@ -51,7 +44,7 @@ public class DisparoAliado extends Disparo {
 			celdaReinicio.agregarEntidad(this);
 			return true;
 		}
-	}
+	}	
 
 	public boolean aceptar(Visitor visitor) {
 		return visitor.visit(this);
@@ -66,8 +59,6 @@ public class DisparoAliado extends Disparo {
 		miMapa.getLogica().eliminarDisparo(this);
 	}
 
-	public int getDano() {
-		return 50;
-	}
+	public abstract int getDaño();
 
 }
