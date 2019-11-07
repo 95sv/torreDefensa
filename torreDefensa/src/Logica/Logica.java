@@ -8,7 +8,7 @@ import Disparo.DisparoAliado;
 import Entidad.Enemigo;
 import Entidad.Entidad;
 import Entidad.Torre;
-import Entidad.BarMoe;
+import Entidad.TorreArena;
 import Grafica.Grafica;
 import Hilos.HiloDisparo;
 import Hilos.HiloEnemigo;
@@ -95,7 +95,7 @@ public class Logica {
 		Random rnd = new Random();
 		int random = rnd.nextInt(5);
 		Celda celda = mapa.getCelda(9, random);
-		Torre j = new BarMoe(mapa, celda);
+		Torre j = new TorreArena(mapa, celda);
 		misEntidades.add(j);
 		celda.agregarEntidad(j);
 		j.setCelda(celda);

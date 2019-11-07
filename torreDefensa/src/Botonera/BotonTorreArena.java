@@ -4,19 +4,19 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 
-import Entidad.BarMoe;
+import Entidad.TorreArena;
 import Mapa.Celda;
 import Mapa.Mapa;
 
-public class BotonBarMoe extends Boton{
-	public BotonBarMoe(ActionListener accion) {
+public class BotonTorreArena extends Boton{
+	public BotonTorreArena(ActionListener accion) {
 		super(accion);
-		setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/MoeBar64.png")));
+		setIcon(new ImageIcon(getClass().getResource("/RecursosGif/TorreArena.png")));
 	}
 
 	@Override
 	public void crearTorre(Mapa mapa,Celda celda) {
-		BarMoe bar = new BarMoe(mapa,celda);
+		TorreArena bar = new TorreArena(mapa,celda);
 		mapa.getLogica().agregarJugador(bar);
 	}
 }

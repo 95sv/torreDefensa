@@ -1,19 +1,19 @@
 package Fabrica;
 
-import Entidad.BarMoe;
-import Entidad.CasaSimpson;
+import Entidad.TorreArena;
+import Entidad.TorreBasica;
 import Entidad.Torre;
 import Mapa.Celda;
 import Mapa.Mapa;
 
 public class FabricaTorre extends FabricaEntidad{
 	
-	public Torre crearBarMoe(Mapa miMapa,Celda miCelda) {
-		return new BarMoe(miMapa,miCelda);
+	public Torre crearTorreArena(Mapa miMapa,Celda miCelda) {
+		return new TorreArena(miMapa,miCelda);
 	}
 	
-	public Torre crearCasaSimpson(Mapa miMapa, Celda miCelda) {
-		return new CasaSimpson(miMapa,miCelda);
+	public Torre crearTorreBasica(Mapa miMapa, Celda miCelda) {
+		return new TorreBasica(miMapa,miCelda);
 	}
 	
 }

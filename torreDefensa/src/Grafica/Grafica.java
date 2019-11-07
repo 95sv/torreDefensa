@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Botonera.Boton;
-import Botonera.BotonBarMoe;
+import Botonera.BotonTorreArena;
 import Entidad.Entidad;
 import Logica.Logica;
 
@@ -82,13 +82,14 @@ public class Grafica extends JFrame {
 		panelCompras.setBounds(640, 0, 200, 384);
 
 		panelFondo.addMouseListener(new crearTorre());
-		panelCompras.add(new BotonBarMoe(new oyenteJugador()));
+		panelCompras.add(new BotonTorreArena(new oyenteJugador()));
 
 	}
 
 	class BackgroundPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
-	    private Image imagen = new ImageIcon("./src/Recursos/Background/battleback1.png").getImage();
+	    //private Image imagen = new ImageIcon("./src/Recursos/Background/battleback1.png").getImage();
+	    private Image imagen = new ImageIcon("./src/RecursosGif/fondo2.png").getImage();
 		public void paint(Graphics g) {
 			g.drawImage(imagen, 0, 0, 640, 390, this);
 			setOpaque(false);

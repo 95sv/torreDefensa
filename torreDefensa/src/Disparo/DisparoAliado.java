@@ -16,7 +16,7 @@ public class DisparoAliado extends Disparo {
 		super(miMapa, miCelda, daño, velocidad);
 		this.miTorre = miTorre;
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosLosSimpson/Beer32.png")));
+		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosGif/DisparoTorreArena.png")));
 		miVisitor = new VisitorDisparoAliado(this);
 		miMapa.getLogica().crearHiloDisparo();
 	}
