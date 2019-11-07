@@ -13,7 +13,7 @@ public class HiloDisparo extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(500);
+				Thread.sleep(800);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

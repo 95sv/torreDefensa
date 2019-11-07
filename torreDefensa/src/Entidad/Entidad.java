@@ -14,6 +14,8 @@ public abstract class Entidad {
 	protected Visitor miVisitor;
 	protected int x;
 	protected int y;
+	protected int precio;
+	protected int golpe;
 
 	public Entidad(Mapa mapa, Celda celda) {
 		this.x = celda.getX();
@@ -56,7 +58,15 @@ public abstract class Entidad {
 	public Visitor getVisitor() {
 		return miVisitor;
 	}
-
+	
+	public int getPrecio() {
+		return precio;
+	}
+	
+	public int getGolpe() {
+		return golpe;
+	}
+	
 	public abstract boolean mover();
 
 	public abstract void morir();

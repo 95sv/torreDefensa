@@ -25,6 +25,9 @@ public class Logica {
 
 	protected HiloDisparo hiloDisparo;
 	protected HiloEnemigo hiloEnemigo;
+	
+	private int puntaje;
+	private int moneda;
 
 	protected boolean perder = false;
 
@@ -34,7 +37,10 @@ public class Logica {
 		misEntidades = new ConcurrentLinkedDeque<Entidad>();
 		misEnemigos = new ConcurrentLinkedDeque<Enemigo>();
 		misDisparos = new ConcurrentLinkedDeque<Disparo>();
-
+		
+		puntaje = 0;
+		moneda = 1000;
+		
 		cargarOleada();
 	}
 
@@ -47,7 +53,15 @@ public class Logica {
 		hiloEnemigo = new HiloEnemigo(this);
 		hiloEnemigo.start();
 	}
-
+	
+	public int getPuntaje(){
+		return puntaje;
+	}
+	
+	public int getMoneda(){
+		return moneda;
+	}
+	
 	public Grafica getGrafica() {
 		return grafica;
 	}
