@@ -83,6 +83,7 @@ public class Logica {
 
 	public void agregarPuntaje(int puntaje) {
 		this.puntaje += puntaje;
+		grafica.actualizarPuntaje();
 	}
 
 	public void agregarMoneda(int moneda) {
