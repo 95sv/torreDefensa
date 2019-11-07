@@ -8,5 +8,5 @@ public abstract class MagiaTemporal extends PowerUp{
 	public MagiaTemporal(Mapa mapa, Celda celda) {
 		super(mapa, celda);
 	}
-
+	
 }

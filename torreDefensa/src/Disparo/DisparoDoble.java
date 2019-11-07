@@ -9,14 +9,14 @@ public class DisparoDoble extends Disparo {
 
 	protected Torre miTorre;
 	
-	public DisparoDoble(Mapa miMapa, Celda miCelda, Torre miTorre,int daño, int velocidad) {
-		super(miMapa, miCelda, daño, velocidad);
+	public DisparoDoble(Mapa miMapa, Celda miCelda, Torre miTorre,int dano, int velocidad) {
+		super(miMapa, miCelda, dano, velocidad);
 		this.miTorre = miTorre;
 		
 	}
 
 	@Override
-	public int getDaño() {
+	public int getDano() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

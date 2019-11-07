@@ -27,8 +27,11 @@ public abstract class Enemigo extends Entidad {
 	public void morir() {
 		Random rnd = new Random();
 		int random = rnd.nextInt(100);
+		/*
+		 *  Si muere un enemigo, hay una probabilidad de 0.20 de que aparezca un PowerUP.
+		 */
 		logica.eliminarEnemigo(this);
-		logica.agregarPowerUp(miCelda);
+		logica.seleccionarPowerUp(miCelda);
 	}
 	
 
@@ -36,8 +39,8 @@ public abstract class Enemigo extends Entidad {
 		return visitor.visit(this);
 	}
 	
-	public void recibirDaño(int daño) {
-		vida= vida-daño;
+	public void recibirDano(int dano) {
+		vida= vida-dano;
 		if(vida<=0) {
 			morir();	
 		}

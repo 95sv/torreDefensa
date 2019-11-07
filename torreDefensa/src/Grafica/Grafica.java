@@ -126,6 +126,8 @@ public class Grafica extends JFrame {
 	
 	public void actualizarPuntaje() {
 		lblPuntaje.setText("Puntaje : " + logica.getPuntaje());
+	}
+	public void actualizarMoneda() {
 		lblMoneda.setText("Monedas : " + logica.getMoneda());
 	}
 

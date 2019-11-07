@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import Mapa.Celda;
 import Mapa.Mapa;
 
+@SuppressWarnings("serial")
 public abstract class Boton extends JButton{
 	
 	public Boton(ActionListener accion) {

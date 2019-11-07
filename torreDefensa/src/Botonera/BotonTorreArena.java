@@ -8,6 +8,7 @@ import Entidad.TorreArena;
 import Mapa.Celda;
 import Mapa.Mapa;
 
+@SuppressWarnings("serial")
 public class BotonTorreArena extends Boton{
 	public BotonTorreArena(ActionListener accion) {
 		super(accion);

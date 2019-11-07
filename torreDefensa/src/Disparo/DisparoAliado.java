@@ -11,9 +11,9 @@ import Visitor.VisitorDisparoAliado;
 
 public class DisparoAliado extends Disparo {
 	protected Torre miTorre;
-	
-	public DisparoAliado(Mapa miMapa, Celda miCelda, Torre miTorre,int daño, int velocidad) {
-		super(miMapa, miCelda, daño, velocidad);
+
+	public DisparoAliado(Mapa miMapa, Celda miCelda, Torre miTorre,int dano, int velocidad) {
+		super(miMapa, miCelda, dano, velocidad);
 		this.miTorre = miTorre;
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosGif/DisparoTorreArena.png")));
@@ -31,7 +31,7 @@ public class DisparoAliado extends Disparo {
 			Celda nuevaCelda = miMapa.getCelda(x, y);
 			if (nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
 				miCelda.eliminarEntidad();
-				nuevaCelda=miMapa.getCelda(miTorre.getX()-1, miTorre.getY());
+				nuevaCelda = miMapa.getCelda(miTorre.getX() - 1, miTorre.getY());
 				setCelda(nuevaCelda);
 				nuevaCelda.agregarEntidad(this);
 				return true;
@@ -41,12 +41,11 @@ public class DisparoAliado extends Disparo {
 				nuevaCelda.agregarEntidad(this);
 				return true;
 			}
-		}
-		else {// si llega al final del mapa se reinicia el disparo
-			   miCelda.eliminarEntidad();
-			   Celda celdaReinicio = miMapa.getCelda(miTorre.getX()-1, miTorre.getY());
-			   setCelda(celdaReinicio);
-			   celdaReinicio.agregarEntidad(this);
+		} else {// si llega al final del mapa se reinicia el disparo
+			miCelda.eliminarEntidad();
+			Celda celdaReinicio = miMapa.getCelda(miTorre.getX() - 1, miTorre.getY());
+			setCelda(celdaReinicio);
+			celdaReinicio.agregarEntidad(this);
 			return true;
 		}
 	}
@@ -55,7 +54,7 @@ public class DisparoAliado extends Disparo {
 		return visitor.visit(this);
 
 	}
-	
+
 	public Torre getTorre() {
 		return miTorre;
 	}
@@ -64,8 +63,8 @@ public class DisparoAliado extends Disparo {
 		miMapa.getLogica().eliminarDisparo(this);
 	}
 
-	public int getDaño() {
+	public int getDano() {
 		return 50;
 	}
-	
+
 }

@@ -27,7 +27,7 @@ public class Logica {
 
 	protected HiloDisparo hiloDisparo;
 	protected HiloEnemigo hiloEnemigo;
-	
+
 	private int puntaje;
 	private int moneda;
 
@@ -39,10 +39,10 @@ public class Logica {
 		misEntidades = new ConcurrentLinkedDeque<Entidad>();
 		misEnemigos = new ConcurrentLinkedDeque<Enemigo>();
 		misDisparos = new ConcurrentLinkedDeque<Disparo>();
-		
+
 		puntaje = 0;
 		moneda = 1000;
-		
+
 		cargarOleada();
 	}
 
@@ -55,15 +55,15 @@ public class Logica {
 		hiloEnemigo = new HiloEnemigo(this);
 		hiloEnemigo.start();
 	}
-	
-	public int getPuntaje(){
+
+	public int getPuntaje() {
 		return puntaje;
 	}
-	
-	public int getMoneda(){
+
+	public int getMoneda() {
 		return moneda;
 	}
-	
+
 	public Grafica getGrafica() {
 		return grafica;
 	}
@@ -80,13 +80,14 @@ public class Logica {
 		perder = true;
 		return terminar();
 	}
-	
+
 	public void agregarPuntaje(int puntaje) {
-		this.puntaje =+ puntaje;
+		this.puntaje += puntaje;
 	}
-	
+
 	public void agregarMoneda(int moneda) {
-		this.moneda =+ moneda;
+		this.moneda += moneda;
+		grafica.actualizarMoneda();
 	}
 
 	public boolean terminar() {
@@ -189,11 +190,22 @@ public class Logica {
 	public Entidad getEntidad(int x, int y) {
 		return mapa.getEntidad(x, y);
 	}
-	
-	public void agregarPowerUp(Celda celda) {
+
+	public void seleccionarPowerUp(Celda celda) {
+		/*
+		 * Elegir aleatoriamente un powerUp.
+		 */
+
 		PowerUp powerUp;
-		powerUp = new AumentoMoneda(mapa,celda);
+		powerUp = new AumentoMoneda(mapa, celda);
 		grafica.graficarEntidad(powerUp);
 	}
 
+	public void agregarPowerUp(Celda celda) {
+		
+	}
+
+	public void eliminarPowerUp(PowerUp p) {
+		grafica.eliminarEntidad(p);
+	}
 }

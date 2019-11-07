@@ -5,7 +5,8 @@ import Mapa.Celda;
 import Mapa.Mapa;
 
 public abstract class PowerUp extends Entidad{
-
+	protected PowerUp miPowerUp;
+	
 	public PowerUp(Mapa mapa, Celda celda) {
 		super(mapa, celda);
 	}

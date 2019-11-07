@@ -16,7 +16,7 @@ public class VisitorDisparoAliado extends Visitor{
 	}
 	@Override
 	public boolean visit(Enemigo e) {
-		e.recibirDaño(((Disparo) miEntidad).getDaño());
+		e.recibirDano(((Disparo) miEntidad).getDano());
 		return true;
 	}
 
@@ -48,6 +48,5 @@ public class VisitorDisparoAliado extends Visitor{
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
 
 }

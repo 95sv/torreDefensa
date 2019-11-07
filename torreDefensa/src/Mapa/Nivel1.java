@@ -51,7 +51,7 @@ public class Nivel1 extends Nivel {
 		int rocas = 0;
 		int i, j;
 
-		while (rocas < 1) {
+		while (rocas < 3) {
 			// Genero rocas en columnas distintas al princio y final del mapa.
 			i = numeroRandom.nextInt(5) + 2;
 			j = numeroRandom.nextInt(5);
@@ -64,7 +64,7 @@ public class Nivel1 extends Nivel {
 			}
 		}
 
-		while (aguas < 1) {
+		while (aguas < 3) {
 			// Genero aguas en columnas distintas al princio y final del mapa.
 			i = numeroRandom.nextInt(5) + 2; // Entre 2 y 6
 			j = numeroRandom.nextInt(5);

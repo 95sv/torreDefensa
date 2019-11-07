@@ -4,8 +4,8 @@ import Mapa.Mapa;
 
 public abstract class DisparoEnemigo extends Disparo  {
 
-	public DisparoEnemigo(Mapa miMapa,Celda miCelda, int daño, int velocidad) {
-		super(miMapa,miCelda, daño, velocidad);
+	public DisparoEnemigo(Mapa miMapa,Celda miCelda, int dano, int velocidad) {
+		super(miMapa,miCelda, dano, velocidad);
 	}
 	
 	public void morir() {
