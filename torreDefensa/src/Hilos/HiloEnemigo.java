@@ -4,6 +4,8 @@ import Logica.Logica;
 
 public class HiloEnemigo extends Thread {
 	protected Logica logica;
+	protected long timer;
+	protected float estimatedTime;
 	protected boolean estado = false;
 	
 	public HiloEnemigo(Logica logica) {

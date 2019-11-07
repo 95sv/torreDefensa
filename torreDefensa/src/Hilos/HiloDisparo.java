@@ -3,11 +3,11 @@ package Hilos;
 import Logica.Logica;
 
 public class HiloDisparo extends Thread {
-	protected Logica logica;
+	protected Logica miLogica;
 
-	public HiloDisparo(Logica logica) {
+	public HiloDisparo(Logica miLogica) {
 		super();
-		this.logica = logica;
+		this.miLogica = miLogica;
 	}
 
 	public void run() {
@@ -17,7 +17,7 @@ public class HiloDisparo extends Thread {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			logica.moverDisparos();
+			miLogica.moverDisparos();
 		}
 	}
 

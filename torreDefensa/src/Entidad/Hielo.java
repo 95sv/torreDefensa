@@ -22,7 +22,6 @@ public class Hielo extends  Enemigo {
 		int y = miCelda.getY();
 
 		if (x >= 9) {
-			System.out.println("Entre ? ? ");
 			logica.perder();
 		} else {
 			if ((x < 9 && x >= 0)) {

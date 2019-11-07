@@ -14,6 +14,8 @@ import Hilos.HiloDisparo;
 import Hilos.HiloEnemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
+import PowerUp.AumentoMoneda;
+import PowerUp.PowerUp;
 
 public class Logica {
 
@@ -77,6 +79,14 @@ public class Logica {
 	public boolean perder() {
 		perder = true;
 		return terminar();
+	}
+	
+	public void agregarPuntaje(int puntaje) {
+		this.puntaje =+ puntaje;
+	}
+	
+	public void agregarMoneda(int moneda) {
+		this.moneda =+ moneda;
 	}
 
 	public boolean terminar() {
@@ -178,6 +188,12 @@ public class Logica {
 
 	public Entidad getEntidad(int x, int y) {
 		return mapa.getEntidad(x, y);
+	}
+	
+	public void agregarPowerUp(Celda celda) {
+		PowerUp powerUp;
+		powerUp = new AumentoMoneda(mapa,celda);
+		grafica.graficarEntidad(powerUp);
 	}
 
 }

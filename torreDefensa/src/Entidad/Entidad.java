@@ -20,6 +20,7 @@ public abstract class Entidad {
 	public Entidad(Mapa mapa, Celda celda) {
 		this.x = celda.getX();
 		this.y = celda.getY();
+		miCelda = celda;
 		miMapa = mapa;
 	}
 

@@ -1,6 +1,8 @@
 package Entidad;
 
 
+import java.util.Random;
+
 import Disparo.DisparoEnemigo;
 import Logica.Logica;
 import Mapa.Celda;
@@ -23,7 +25,10 @@ public abstract class Enemigo extends Entidad {
 	public abstract boolean mover();
 
 	public void morir() {
+		Random rnd = new Random();
+		int random = rnd.nextInt(100);
 		logica.eliminarEnemigo(this);
+		logica.agregarPowerUp(miCelda);
 	}
 	
 
