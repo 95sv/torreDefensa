@@ -8,14 +8,12 @@ public class HiloEnemigo extends Thread {
 	protected long timer;
 	protected float estimatedTime;
 	protected boolean estado = false;
-	
+
 	public HiloEnemigo(Logica logica) {
 		super();
 		this.logica = logica;
 	}
-	
-	
-	
+
 	public void run() {
 		while (!logica.terminar()) {
 			try {
@@ -24,16 +22,14 @@ public class HiloEnemigo extends Thread {
 				e.printStackTrace();
 			}
 			logica.moverEnemigos();
-		    }
-		if(logica.terminar()) {
-			for(Enemigo e:  logica.getEnemigos()) {
+		}
+		if (logica.terminar()) {
+			for (Enemigo e : logica.getEnemigos()) {
 				e.morir();
 			}
-			
+
 		}
-	
+
 	}
 
-	
-	
 }

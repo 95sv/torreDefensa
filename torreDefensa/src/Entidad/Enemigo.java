@@ -30,8 +30,11 @@ public abstract class Enemigo extends Entidad {
 		/*
 		 *  Si muere un enemigo, hay una probabilidad de 0.20 de que aparezca un PowerUP.
 		 */
+		if(random<20) {
+			logica.seleccionarPowerUp(miCelda);
+		}
 		logica.eliminarEnemigo(this);
-		logica.seleccionarPowerUp(miCelda);
+		
 	}
 	
 	public int getPuntos() {

@@ -15,13 +15,15 @@ import Hilos.HiloEnemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
 import PowerUp.AumentoMoneda;
+import PowerUp.AumentoVida;
+import PowerUp.DobleDano;
 import PowerUp.PowerUp;
 
 public class Logica {
 
 	protected Grafica grafica;
 	protected Mapa mapa;
-	protected Collection<Entidad> misEntidades;
+	protected Collection<Torre> misTorres;
 	protected Collection<Enemigo> misEnemigos;
 	protected Collection<Disparo> misDisparos;
 
@@ -36,7 +38,7 @@ public class Logica {
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
 		mapa = new Mapa(this);
-		misEntidades = new ConcurrentLinkedDeque<Entidad>();
+		misTorres = new ConcurrentLinkedDeque<Torre>();
 		misEnemigos = new ConcurrentLinkedDeque<Enemigo>();
 		misDisparos = new ConcurrentLinkedDeque<Disparo>();
 
@@ -72,10 +74,6 @@ public class Logica {
 		return mapa;
 	}
 
-	public int cantidadEntidades() {
-		return misEntidades.size();
-	}
-
 	public boolean perder() {
 		perder = true;
 		return terminar();
@@ -98,7 +96,7 @@ public class Logica {
 	public void agregarJugador(Torre torre) {
 		// Celda: getCelda( [0..9], [0..5]).
 		Celda celda = mapa.getCelda(torre.getX(), torre.getY());
-		misEntidades.add(torre);
+		misTorres.add(torre);
 		celda.agregarEntidad(torre);
 		torre.setCelda(celda);
 		grafica.graficarEntidad(torre);
@@ -118,7 +116,7 @@ public class Logica {
 		Celda celda = e.getCelda();
 		grafica.eliminarEntidad(e);
 		celda.eliminarEntidad();
-		misEntidades.remove(e);
+		misTorres.remove(e);
 	}
 
 	public void eliminarEnemigo(Enemigo e) {
@@ -180,19 +178,33 @@ public class Logica {
 		 */
 
 		PowerUp powerUp;
-		powerUp = new AumentoMoneda(mapa, celda);
-		grafica.graficarEntidad(powerUp);
-	}
-
-	public void agregarPowerUp(Celda celda) {
-		
+		Random rnd = new Random();
+		int azar = rnd.nextInt(100);
+		if (azar >= 0 && azar <= 20) {
+			powerUp = new AumentoMoneda(mapa, celda);
+		} else {
+			if (azar > 20 && azar <= 40) {
+				powerUp = new AumentoVida(mapa, celda);
+			} else {
+				powerUp = new DobleDano(mapa, celda);
+			}
+		}
+		if (powerUp != null) {
+			grafica.graficarEntidad(powerUp);
+		}
 	}
 
 	public Collection<Enemigo> getEnemigos() {
 		return misEnemigos;
 	}
-	
+
 	public void eliminarPowerUp(PowerUp p) {
 		grafica.eliminarEntidad(p);
+	}
+	
+	public void powerUpVida() {
+		for(Torre torre : misTorres) {
+			torre.setVida(100);
+		}
 	}
 }

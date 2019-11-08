@@ -22,6 +22,7 @@ public class AumentoVida extends MagiaTemporal {
 
 	@Override
 	protected void activarPowerUp() {
+		miMapa.getLogica().powerUpVida();
 	}
 
 	@Override
