@@ -12,9 +12,9 @@ import Visitor.Visitor;
 public abstract class Enemigo extends Entidad {
 	
 	protected DisparoEnemigo disparo;
-	protected int alcance;
 	protected Logica logica;
-	protected int vida=100;
+	protected int alcance;
+	protected int puntos;
 	
 	
 	public Enemigo(Mapa miMapa,Celda miCelda) {
@@ -34,6 +34,13 @@ public abstract class Enemigo extends Entidad {
 		logica.seleccionarPowerUp(miCelda);
 	}
 	
+	public int getPuntos() {
+		return puntos;
+	}
+	
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
+	}
 
 	public boolean aceptar(Visitor visitor) {
 		return visitor.visit(this);

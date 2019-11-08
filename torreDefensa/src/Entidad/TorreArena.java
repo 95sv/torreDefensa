@@ -12,6 +12,11 @@ public class TorreArena extends Torre{
 		super(miMapa,miCelda);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado2.png")));
+		super.setPrecio(150);
+	}
+	
+	public void crearDisparo() {
+		miMapa.getLogica().crearHiloDisparo();
 	}
 	
 	public void morir() {
@@ -24,6 +29,6 @@ public class TorreArena extends Torre{
 	public boolean aceptar(Visitor visitor) {
 		return visitor.visit(this);
 	}
-
+	
 	
 }

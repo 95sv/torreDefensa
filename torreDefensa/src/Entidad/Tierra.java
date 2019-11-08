@@ -15,6 +15,7 @@ public class Tierra extends Enemigo {
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante2.gif")));
 		miVisitor = new VisitorEnemigo(this);
 		vida = 100;
+		puntos = 150;
 	}
 	
 	

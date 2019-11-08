@@ -7,29 +7,35 @@ import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
 
-public class TorreBasica extends Torre {
+public class TorreRoca extends Torre{
 
-	public TorreBasica(Mapa miMapa,Celda miCelda) {
+	public TorreRoca(Mapa miMapa, Celda miCelda) {
 		super(miMapa,miCelda);
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado1.png")));
-		super.setPrecio(100);
+		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado3.png")));
+		super.setPrecio(200);
 	}
-
+	
 	public void crearDisparo() {
 		miMapa.getLogica().crearHiloDisparo();
 	}
 	
+	@Override
 	public boolean mover() {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
+	@Override
 	public void morir() {
+		// TODO Auto-generated method stub
+		
 	}
 
+	@Override
 	public boolean aceptar(Visitor visitor) {
-		return visitor.visit(this);
+		// TODO Auto-generated method stub
+		return false;
 	}
-	
-	
+
 }

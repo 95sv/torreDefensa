@@ -17,6 +17,7 @@ public class VisitorDisparoAliado extends Visitor{
 	@Override
 	public boolean visit(Enemigo e) {
 		e.recibirDano(((Disparo) miEntidad).getDaño());
+		
 		return true;
 	}
 

@@ -15,13 +15,13 @@ public class VisitorTorre extends Visitor{
 	@Override
 	public boolean visit(Enemigo e) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean visit(Torre t) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -35,7 +35,6 @@ public class VisitorTorre extends Visitor{
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	
 	@Override
 	public boolean visit(Agua a) {

@@ -20,7 +20,6 @@ public abstract class DisparoAliado extends Disparo {
 
 		if (x < 9 && x >= 1) {
 			x = x - 1;
-			System.out.println("MOVER A : " + x);
 			Celda nuevaCelda = miMapa.getCelda(x, y);
 			if (nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
 				miCelda.eliminarEntidad();

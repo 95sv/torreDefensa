@@ -3,6 +3,7 @@ package Grafica;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import Botonera.Boton;
 import Botonera.BotonTorreArena;
+import Botonera.BotonTorreBasica;
+import Botonera.BotonTorreControl;
+import Botonera.BotonTorreRoca;
 import Entidad.Entidad;
 import Logica.Logica;
 
@@ -24,13 +28,13 @@ public class Grafica extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	private JPanel panelFondo;
 	private Logica logica;
 	private Boton botonTorre;
 	private JLabel lblPuntaje;
 	private JLabel lblMoneda;
-	
+
 	public static void main(String[] args) {
 		Grafica grafica = new Grafica();
 		grafica.setVisible(true);
@@ -46,26 +50,25 @@ public class Grafica extends JFrame {
 
 		panelFondo = new BackgroundPanel();
 		panelFondo.setLayout(null);
-		panelFondo.setSize(640,384);
+		panelFondo.setSize(640, 384);
 		panelFondo.setBounds(0, 0, 640, 384);
 		setContentPane(panelFondo);
-		
+
 		logica = new Logica(this);
 		menuCompra();
 		menuPuntaje();
 	}
-	
+
 	public void menuPuntaje() {
 		JPanel panelPuntaje = new JPanel();
 		panelPuntaje.setLayout(new FlowLayout());
 		panelFondo.add(panelPuntaje);
 		panelPuntaje.setBackground(Color.DARK_GRAY);
-		// Panel puntaje ocupa todo el ancho.
-		panelPuntaje.setSize(850,50);
+		panelPuntaje.setSize(850, 50);
 		panelPuntaje.setBounds(0, 384, 850, 50);
-		
+
 		lblPuntaje = new JLabel("Puntaje = " + logica.getPuntaje());
-		lblMoneda = new JLabel("  Moneda = "+ logica.getMoneda());
+		lblMoneda = new JLabel("  Moneda = " + logica.getMoneda());
 		lblPuntaje.setForeground(Color.YELLOW);
 		lblMoneda.setForeground(Color.YELLOW);
 		panelPuntaje.add(lblMoneda);
@@ -75,20 +78,23 @@ public class Grafica extends JFrame {
 	public void menuCompra() {
 		// Creo panel de compras.
 		JPanel panelCompras = new JPanel();
-		panelCompras.setLayout(new FlowLayout());
+		panelCompras.setLayout(new GridLayout(5,1));
 		panelFondo.add(panelCompras);
 		panelCompras.setBackground(Color.BLACK);
-		// Panel compra ocupa todo el alto.
 		panelCompras.setBounds(640, 0, 200, 384);
 
 		panelFondo.addMouseListener(new crearTorre());
 		panelCompras.add(new BotonTorreArena(new oyenteJugador()));
+		panelCompras.add(new BotonTorreBasica(new oyenteJugador()));
+		panelCompras.add(new BotonTorreRoca(new oyenteJugador()));
+		panelCompras.add(new BotonTorreControl(new oyenteJugador()));
 
 	}
 
 	class BackgroundPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
-	    private Image imagen = new ImageIcon("./src/Recursos/Fondos/fondo1.png").getImage();
+		private Image imagen = new ImageIcon("./src/Recursos/Fondos/fondo1.png").getImage();
+
 		public void paint(Graphics g) {
 			g.drawImage(imagen, 0, 0, 640, 390, this);
 			setOpaque(false);
@@ -100,7 +106,7 @@ public class Grafica extends JFrame {
 	public void graficarEntidad(Entidad e) {
 		JLabel label = e.getImagen();
 		panelFondo.add(label);
-		label.setBounds((e.getCelda().getX() * 64),e.getCelda().getY() * 64 , 64, 64);
+		label.setBounds((e.getCelda().getX() * 64), e.getCelda().getY() * 64, 64, 64);
 		label.setVisible(true);
 		panelFondo.setComponentZOrder(label, 0);
 	}
@@ -122,10 +128,11 @@ public class Grafica extends JFrame {
 			botonTorre.setBorder(BorderFactory.createLineBorder(Color.RED));
 		}
 	}
-	
+
 	public void actualizarPuntaje() {
 		lblPuntaje.setText("Puntaje : " + logica.getPuntaje());
 	}
+
 	public void actualizarMoneda() {
 		lblMoneda.setText("Monedas : " + logica.getMoneda());
 	}
@@ -133,16 +140,18 @@ public class Grafica extends JFrame {
 	private class crearTorre extends MouseAdapter {
 		public void mouseClicked(MouseEvent e) {
 			if (botonTorre != null) {
-				if (e.getX() >= 196 && e.getX()<= 640) {
-						if(logica.getMapa().getCelda(e.getX() / 64, e.getY() / 64).getEntidad() == null) {
-					       botonTorre.crearTorre(logica.getMapa(), logica.getMapa().getCelda(e.getX() / 64, e.getY() / 64));      
-						}
-						 botonTorre.setBorder(null);
-						botonTorre = null;
-				}		
-				
+				if (e.getX() >= 196 && e.getX() <= 640) {
+					if (logica.getMapa().getCelda(e.getX() / 64, e.getY() / 64).getEntidad() == null) {
+						
+						botonTorre.crearTorre(logica.getMapa(),
+						logica.getMapa().getCelda(e.getX() / 64, e.getY() / 64));
+					}
+					botonTorre.setBorder(null);
+					botonTorre = null;
+				}
+
 			}
-			
+
 		}
 	}
 }

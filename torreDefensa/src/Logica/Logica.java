@@ -95,27 +95,16 @@ public class Logica {
 		return perder;
 	}
 
-	public void agregarJugador() {
-		// Celda: getCelda( [0..9], [0..5]).
-		Random rnd = new Random();
-		int random = rnd.nextInt(5);
-		Celda celda = mapa.getCelda(9, random);
-		Torre j = new TorreArena(mapa, celda);
-		misEntidades.add(j);
-		celda.agregarEntidad(j);
-		j.setCelda(celda);
-		grafica.graficarEntidad(j);
-		agregarDisparo(j);
-
-	}
-
 	public void agregarJugador(Torre torre) {
+		// Celda: getCelda( [0..9], [0..5]).
 		Celda celda = mapa.getCelda(torre.getX(), torre.getY());
 		misEntidades.add(torre);
 		celda.agregarEntidad(torre);
 		torre.setCelda(celda);
 		grafica.graficarEntidad(torre);
 		agregarDisparo(torre);
+		moneda -= torre.getPrecio();
+		grafica.actualizarMoneda();
 	}
 
 	public void agregarEnemigo(Enemigo e, Celda celda) {
@@ -123,7 +112,6 @@ public class Logica {
 		misEnemigos.add(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
-		System.out.println("Enemigo creado : " + e.toString());
 	}
 
 	public void eliminarEntidad(Entidad e) {
@@ -134,6 +122,8 @@ public class Logica {
 	}
 
 	public void eliminarEnemigo(Enemigo e) {
+		agregarPuntaje(e.getPuntos());
+		grafica.actualizarPuntaje();
 		Celda celda = e.getCelda();
 		grafica.eliminarEntidad(e);
 		celda.eliminarEntidad();
@@ -141,7 +131,6 @@ public class Logica {
 	}
 
 	public void eliminarDisparo(Disparo d) {
-		System.out.println("Eliminar Disparo " + misDisparos.size());
 		Celda celda = d.getCelda();
 		celda.eliminarEntidad();
 		misDisparos.remove(d);
