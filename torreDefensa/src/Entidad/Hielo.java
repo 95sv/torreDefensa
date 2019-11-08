@@ -12,7 +12,7 @@ public class Hielo extends  Enemigo {
 	public Hielo(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosGif/HieloCaminante.gif")));
+		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante1.gif")));
 		miVisitor = new VisitorEnemigo(this);
 		vida = 150;
 	}	

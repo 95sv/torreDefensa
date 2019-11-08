@@ -12,7 +12,7 @@ import Mapa.Mapa;
 public class BotonTorreArena extends Boton{
 	public BotonTorreArena(ActionListener accion) {
 		super(accion);
-		setIcon(new ImageIcon(getClass().getResource("/RecursosGif/TorreArena.png")));
+		setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado1.png")));
 	}
 
 	@Override

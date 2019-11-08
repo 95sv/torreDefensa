@@ -11,7 +11,7 @@ public class Verde extends Enemigo {
 	public Verde(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosGif/VerdeCaminante.gif")));
+		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante5.gif")));
 		miVisitor = new VisitorEnemigo(this);
 		vida = 50;
 	}

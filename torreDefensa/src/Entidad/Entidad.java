@@ -16,12 +16,14 @@ public abstract class Entidad {
 	protected int y;
 	protected int precio;
 	protected int golpe;
+	protected int vida;
 
 	public Entidad(Mapa mapa, Celda celda) {
 		this.x = celda.getX();
 		this.y = celda.getY();
 		miCelda = celda;
 		miMapa = mapa;
+		vida = 100;
 	}
 
 	public void setCelda(Celda c) {
@@ -66,6 +68,14 @@ public abstract class Entidad {
 	
 	public int getGolpe() {
 		return golpe;
+	}
+	
+	public int getVida() {
+		return vida;
+	}
+	
+	public void setVida(int vida) {
+		this.vida = vida;
 	}
 	
 	public abstract boolean mover();

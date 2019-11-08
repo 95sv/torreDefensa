@@ -8,8 +8,8 @@ import Mapa.Mapa;
 public abstract class Torre extends Entidad {
 
 	protected DisparoAliado disparo;
-	protected int alcance;
 	protected Logica logica;
+	protected int alcance;
 
 
 	public Torre(Mapa miMapa,Celda miCelda) {

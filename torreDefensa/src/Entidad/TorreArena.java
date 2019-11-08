@@ -11,16 +11,8 @@ public class TorreArena extends Torre{
 	public TorreArena(Mapa miMapa,Celda miCelda) {
 		super(miMapa,miCelda);
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosGif/TorreArena.png")));
-
+		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado2.png")));
 	}
-	
-	/*public void crearDisparo() {
-		System.out.println("CREO DISPARO EN : "+miCelda.getX());
-		//miMapa.getLogica().agregarDisparo(new DisparoAliado(miMapa,miCelda,1,1));
-		miMapa.getLogica().crearHiloDisparo();
-	}
-*/
 	
 	public void morir() {
 	}
@@ -30,7 +22,6 @@ public class TorreArena extends Torre{
 	}
 	
 	public boolean aceptar(Visitor visitor) {
-		// TODO Auto-generated method stub
 		return visitor.visit(this);
 	}
 

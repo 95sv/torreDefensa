@@ -88,8 +88,7 @@ public class Grafica extends JFrame {
 
 	class BackgroundPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
-	    //private Image imagen = new ImageIcon("./src/Recursos/Background/battleback1.png").getImage();
-	    private Image imagen = new ImageIcon("./src/RecursosGif/fondo2.png").getImage();
+	    private Image imagen = new ImageIcon("./src/Recursos/Fondos/fondo1.png").getImage();
 		public void paint(Graphics g) {
 			g.drawImage(imagen, 0, 0, 640, 390, this);
 			setOpaque(false);

@@ -15,7 +15,7 @@ public class DisparoBasico extends DisparoAliado {
 		super(miMapa, miCelda, miTorre, dano, velocidad);
 		this.miTorre = miTorre;
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosGif/DisparoTorreArena.png")));
+		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/d_1.png")));
 		miVisitor = new VisitorDisparoAliado(this);
 		miMapa.getLogica().crearHiloDisparo();
 	

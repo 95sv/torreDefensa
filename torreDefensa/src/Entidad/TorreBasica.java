@@ -12,12 +12,10 @@ public class TorreBasica extends Torre {
 	public TorreBasica(Mapa miMapa,Celda miCelda) {
 		super(miMapa,miCelda);
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/RecursosGif/TorreBasica.png")));
+		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado1.png")));
 	}
 
 	public void crearDisparo() {
-		System.out.println("CREO DISPARO EN : "+miCelda.getX());
-		//miMapa.getLogica().agregarDisparo(new DisparoAliado(miMapa,miCelda,1,1));
 		miMapa.getLogica().crearHiloDisparo();
 	}
 	
@@ -29,7 +27,6 @@ public class TorreBasica extends Torre {
 	}
 
 	public boolean aceptar(Visitor visitor) {
-		// TODO Auto-generated method stub
 		return visitor.visit(this);
 	}
 	
