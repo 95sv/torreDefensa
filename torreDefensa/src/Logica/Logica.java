@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import Disparo.Disparo;
 import Disparo.DisparoBasico;
+import Disparo.DisparoTierra;
 import Entidad.Enemigo;
 import Entidad.Entidad;
 import Entidad.Torre;
@@ -57,7 +58,7 @@ public class Logica {
 		hiloEnemigo = new HiloEnemigo(this);
 		hiloEnemigo.start();
 	}
-
+	
 	public int getPuntaje() {
 		return puntaje;
 	}
@@ -112,6 +113,14 @@ public class Logica {
 		grafica.graficarEntidad(e);
 	}
 
+	public void agregarEnemigoTierra(Enemigo e, Celda celda) {
+		celda.agregarEntidad(e);
+		misEnemigos.add(e);
+		e.setCelda(celda);
+		grafica.graficarEntidad(e);
+	    //agregarDisparoEnemigo(e);
+	}
+	
 	public void eliminarEntidad(Entidad e) {
 		Celda celda = e.getCelda();
 		grafica.eliminarEntidad(e);
@@ -119,6 +128,7 @@ public class Logica {
 		misTorres.remove(e);
 	}
 
+	
 	public void eliminarEnemigo(Enemigo e) {
 		agregarPuntaje(e.getPuntos());
 		grafica.actualizarPuntaje();
@@ -154,7 +164,20 @@ public class Logica {
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
 	}
-
+	
+	public void agregarDisparoEnemigo(Enemigo miEnemigo) {
+		 // if(miEnemigo.estoyParado()) {	
+		  //System.out.println("ENTRO A DISPARO");
+		  Celda celda = mapa.getCelda(miEnemigo.getX()+1,miEnemigo.getY());
+		  Disparo e = new DisparoTierra(mapa, celda, miEnemigo,1,1);
+		  celda.agregarEntidad(e);
+		  misDisparos.add(e);
+		  e.setCelda(celda);
+		  grafica.graficarEntidad(e);
+	  // }
+	}
+	
+	
 	public void crearHiloDisparo() {
 		hiloDisparo = new HiloDisparo(this);
 		hiloDisparo.start();
@@ -198,6 +221,10 @@ public class Logica {
 		return misEnemigos;
 	}
 
+	public Collection<Torre> getMisTorres(){
+		return misTorres;
+	}
+	
 	public void eliminarPowerUp(PowerUp p) {
 		grafica.eliminarEntidad(p);
 	}

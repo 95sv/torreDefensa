@@ -57,5 +57,10 @@ public abstract class Enemigo extends Entidad {
 		
 	}
 	
+	
+    public abstract boolean estoyParado();
+	
+	public abstract void dispare(boolean b);
+	
 
 }

@@ -20,7 +20,7 @@ public abstract class Disparo extends Entidad {
 
 	public abstract boolean mover();
 	
-	public abstract Torre getTorre();
+	//public abstract Torre getTorre();
 
 	
 }

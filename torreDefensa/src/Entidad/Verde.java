@@ -41,4 +41,11 @@ public class Verde extends Enemigo {
 		return false;
 	}
 
+	
+	public boolean estoyParado() {	
+		return false;
+	}
+	
+	public void dispare(boolean b) {}
+	
 }

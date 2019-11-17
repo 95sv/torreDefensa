@@ -34,14 +34,14 @@ public class Nivel1 extends Nivel {
 		int numeroRandom = random.nextInt(10);
 		int celdaRandom = random.nextInt(5);
 		Celda celda = mapa.getCelda(0, celdaRandom);
-		if (numeroRandom < 8) {
+		/*if (numeroRandom < 8) {
 			Enemigo e = new Verde(mapa, celda);
 			mapa.getLogica().agregarEnemigo(e, celda);
 
-		}
-		if (numeroRandom >= 8) {
+		}*/
+		if(numeroRandom >= 3) {
 			Enemigo e = new Tierra(mapa, celda);
-			mapa.getLogica().agregarEnemigo(e, celda);
+			mapa.getLogica().agregarEnemigoTierra(e, celda);
 		}
 	}
 
@@ -51,7 +51,7 @@ public class Nivel1 extends Nivel {
 		int rocas = 0;
 		int i, j;
 
-		while (rocas < 3) {
+		while (rocas < 1) {
 			// Genero rocas en columnas distintas al princio y final del mapa.
 			i = numeroRandom.nextInt(5) + 2;
 			j = numeroRandom.nextInt(5);
@@ -64,7 +64,7 @@ public class Nivel1 extends Nivel {
 			}
 		}
 
-		while (aguas < 3) {
+		while (aguas < 1) {
 			// Genero aguas en columnas distintas al princio y final del mapa.
 			i = numeroRandom.nextInt(5) + 2; // Entre 2 y 6
 			j = numeroRandom.nextInt(5);
