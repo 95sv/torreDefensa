@@ -18,6 +18,7 @@ public class Tierra extends Enemigo {
 		miVisitor = new VisitorEnemigo(this);
 		vida = 100;
 		dispare = false;
+		puntos=100;
 	}
 
 	public boolean mover() {
@@ -95,4 +96,9 @@ public class Tierra extends Enemigo {
 		return false;
 	}
 
+	public int getPuntos() {
+		return puntos;
+	}
+	
+	
 }

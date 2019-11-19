@@ -48,4 +48,9 @@ public class Verde extends Enemigo {
 	
 	public void dispare(boolean b) {}
 	
+	public int getPuntos() {
+		return puntos;
+	}
+	
+	
 }

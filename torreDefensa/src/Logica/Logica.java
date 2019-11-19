@@ -80,8 +80,8 @@ public class Logica {
 		return terminar();
 	}
 
-	public void agregarPuntaje(int puntaje) {
-		this.puntaje += puntaje;
+	public void agregarPuntaje(int pun) {
+		puntaje= puntaje+pun;
 		grafica.actualizarPuntaje();
 	}
 
@@ -136,6 +136,7 @@ public class Logica {
 		grafica.eliminarEntidad(e);
 		celda.eliminarEntidad();
 		misEnemigos.remove(e);
+		System.out.println("AGREGUE PUNTAJE");
 	}
 
 	public void eliminarDisparo(Disparo d) {

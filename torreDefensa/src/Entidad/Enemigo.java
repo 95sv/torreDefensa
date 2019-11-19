@@ -37,9 +37,7 @@ public abstract class Enemigo extends Entidad {
 		
 	}
 	
-	public int getPuntos() {
-		return puntos;
-	}
+
 	
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
@@ -57,6 +55,7 @@ public abstract class Enemigo extends Entidad {
 		
 	}
 	
+	public abstract int getPuntos();
 	
     public abstract boolean estoyParado();
 	
