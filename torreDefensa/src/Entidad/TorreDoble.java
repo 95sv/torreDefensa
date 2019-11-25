@@ -1,10 +1,11 @@
 package Entidad;
 
+import Disparo.DisparoAliado;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
 
-public class TorreDoble extends Torre{
+public class TorreDoble extends Torre {
 
 	public TorreDoble(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
@@ -12,21 +13,19 @@ public class TorreDoble extends Torre{
 	}
 
 	@Override
-	public boolean mover() {
-		// TODO Auto-generated method stub
-		return false;
+	public void mover() {}
+
+	@Override
+	public void morir() {}
+
+	@Override
+	public void aceptar(Visitor visitor) {
 	}
 
 	@Override
-	public void morir() {
+	public DisparoAliado crearDisparo() {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean aceptar(Visitor visitor) {
-		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 }

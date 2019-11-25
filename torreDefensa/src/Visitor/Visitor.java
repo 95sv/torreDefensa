@@ -11,17 +11,16 @@ import Objeto.Roca;
 public abstract class Visitor {
 	protected Entidad miEntidad;
 
-	public abstract boolean visit(Enemigo e);
+	public abstract void visit(Enemigo e);
 
-	public abstract boolean visit(Torre t);
+	public abstract void visit(Torre t);
 
-	public abstract boolean visit(DisparoAliado d);
+	public abstract void visit(DisparoAliado d);
 
-	public abstract boolean visit(DisparoEnemigo e);
+	public abstract void visit(DisparoEnemigo e);
 
-	public abstract boolean visit(Agua a);
+	public abstract void visit(Agua a);
 	
-	public abstract boolean visit(Roca r);
+	public abstract void visit(Roca r);
 	
 }
-//

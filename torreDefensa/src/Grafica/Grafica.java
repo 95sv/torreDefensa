@@ -84,8 +84,8 @@ public class Grafica extends JFrame {
 		panelCompras.setBounds(640, 0, 200, 384);
 
 		panelFondo.addMouseListener(new crearTorre());
-		panelCompras.add(new BotonTorreArena(new oyenteJugador()));
 		panelCompras.add(new BotonTorreBasica(new oyenteJugador()));
+		panelCompras.add(new BotonTorreArena(new oyenteJugador()));
 		panelCompras.add(new BotonTorreRoca(new oyenteJugador()));
 		panelCompras.add(new BotonTorreControl(new oyenteJugador()));
 

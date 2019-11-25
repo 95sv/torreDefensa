@@ -17,40 +17,35 @@ public class Verde extends Enemigo {
 		puntos = 100;
 	}
 
-	public boolean mover() {
+	public void mover() {
 		int x = miCelda.getX();
 		int y = miCelda.getY();
 
 		if (x >= 9) {
-			System.out.println("Entre ? ? ");
 			logica.perder();
 		} else {
 			if ((x < 9 && x >= 0)) {
 				x = x + 1;
 				Celda nuevaCelda = miMapa.getCelda(x, y);
-				if (nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
-					return false;
+				if (nuevaCelda.getEntidad() != null) {
+
 				} else {
 					miCelda.eliminarEntidad();
 					setCelda(nuevaCelda);
 					nuevaCelda.agregarEntidad(this);
-					return true;
 				}
 			}
 		}
-		return false;
 	}
 
-	
-	public boolean estoyParado() {	
-		return false;
-	}
-	
-	public void dispare(boolean b) {}
-	
 	public int getPuntos() {
 		return puntos;
 	}
-	
-	
+
+	@Override
+	public void disparar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

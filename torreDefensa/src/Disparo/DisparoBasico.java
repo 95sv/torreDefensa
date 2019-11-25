@@ -11,20 +11,20 @@ import Visitor.VisitorDisparoAliado;
 
 public class DisparoBasico extends DisparoAliado {
 
-	public DisparoBasico(Mapa miMapa, Celda miCelda, Torre miTorre, int dano, int velocidad) {
-		super(miMapa, miCelda, miTorre, dano, velocidad);
-		this.miTorre = miTorre;
+	public DisparoBasico(Mapa miMapa, Celda miCelda,int golpe,int velocidad) {
+		super(miMapa, miCelda, golpe, velocidad);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/d_1.png")));
-		miVisitor = new VisitorDisparoAliado(this);
-		miMapa.getLogica().crearHiloDisparo();
+		imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL,PIXEL,PIXEL);
+		miVisitor = new VisitorDisparoAliado(this);	
+	}
 	
+	public void mover() {
+		super.mover();
 	}
 
-	public int getDaño() {
+	public int getGolpe() {
 		return 50;
 	}
-	
-	
-	
+
 }

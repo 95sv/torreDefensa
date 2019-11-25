@@ -18,9 +18,7 @@ public class Fantasma extends Enemigo {
 		puntos = 50;
 	}
 
-		
-	
-	public boolean mover() {
+	public void mover() {
 		int x = miCelda.getX();
 		int y = miCelda.getY();
 
@@ -30,31 +28,26 @@ public class Fantasma extends Enemigo {
 			if ((x < 9 && x >= 0)) {
 				x = x + 1;
 				Celda nuevaCelda = miMapa.getCelda(x, y);
-				if (nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
-					return false;
+				if (nuevaCelda.getEntidad() != null ) {
 				} else {
 					miCelda.eliminarEntidad();
 					setCelda(nuevaCelda);
 					nuevaCelda.agregarEntidad(this);
-					return true;
+
 				}
 			}
 		}
-		return false;
+
 	}
 
 	public int getPuntos() {
 		return puntos;
 	}
 
-	public boolean estoyParado() {
-		return false;
+	@Override
+	public void disparar() {
+		// TODO Auto-generated method stub
+		
 	}
 
-
-	public void dispare(boolean b) {	}
-
-	
-
-	
 }

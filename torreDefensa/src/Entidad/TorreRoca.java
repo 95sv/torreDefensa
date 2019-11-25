@@ -3,39 +3,34 @@ package Entidad;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Disparo.DisparoAliado;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
 
-public class TorreRoca extends Torre{
+public class TorreRoca extends Torre {
 
 	public TorreRoca(Mapa miMapa, Celda miCelda) {
-		super(miMapa,miCelda);
+		super(miMapa, miCelda);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado3.png")));
 		super.setPrecio(200);
 	}
-	
-	public void crearDisparo() {
-		miMapa.getLogica().crearHiloDisparo();
-	}
-	
+
 	@Override
-	public boolean mover() {
-		// TODO Auto-generated method stub
-		return false;
+	public void mover() {}
+
+	@Override
+	public void morir() {}
+
+	@Override
+	public void aceptar(Visitor visitor) {
 	}
 
 	@Override
-	public void morir() {
+	public DisparoAliado crearDisparo() {
 		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean aceptar(Visitor visitor) {
-		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 }

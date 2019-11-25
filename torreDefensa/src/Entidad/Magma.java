@@ -18,7 +18,7 @@ public class Magma extends Enemigo {
 		puntos = 200;
 	}
 
-	public boolean mover() {
+	public void mover() {
 		int x = miCelda.getX();
 		int y = miCelda.getY();
 
@@ -28,17 +28,15 @@ public class Magma extends Enemigo {
 			if ((x < 9 && x >= 0)) {
 				x = x + 1;
 				Celda nuevaCelda = miMapa.getCelda(x, y);
-				if (nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
-					return false;
+				if (nuevaCelda.getEntidad() != null ) {
+
 				} else {
 					miCelda.eliminarEntidad();
 					setCelda(nuevaCelda);
 					nuevaCelda.agregarEntidad(this);
-					return true;
 				}
 			}
 		}
-		return false;
 	}
 
 	@Override
@@ -47,15 +45,9 @@ public class Magma extends Enemigo {
 	}
 
 	@Override
-	public boolean estoyParado() {
+	public void disparar() {
 		// TODO Auto-generated method stub
-		return false;
+		
 	}
 
-	@Override
-	public void dispare(boolean b) { }
-
-	
-	
-	
 }

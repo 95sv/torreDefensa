@@ -1,63 +1,45 @@
 package Disparo;
 
-
-
-import Entidad.Torre;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
 
 public abstract class DisparoAliado extends Disparo {
-	protected Torre miTorre;
 
-	public DisparoAliado(Mapa miMapa, Celda miCelda, Torre miTorre, int dano, int velocidad) {
-		super(miMapa, miCelda, dano, velocidad);
+	public DisparoAliado(Mapa miMapa, Celda miCelda,int golpe, int velocidad) {
+		super(miMapa, miCelda, golpe, velocidad);
+		System.out.println("Disparo");
 	}
 
-	public boolean mover() {
+	public void mover() {
 		int x = miCelda.getX();
 		int y = miCelda.getY();
 
-		if (x < 9 && x >= 1) {
-			x = x - 1;
-			Celda nuevaCelda = miMapa.getCelda(x, y);
-			if (nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
-				miCelda.eliminarEntidad();
-				nuevaCelda = miMapa.getCelda(miTorre.getX() - 1, miTorre.getY());
-				setCelda(nuevaCelda);
-				nuevaCelda.agregarEntidad(this);
-				return true;
-			} else {
-				miCelda.eliminarEntidad();
-				setCelda(nuevaCelda);
-				nuevaCelda.agregarEntidad(this);
-				return true;
+		if(x == 0) {
+			morir();
+		}
+		else {
+			if(miMapa.getCelda(x - 1, y).getEntidad() == null) {
+				miMapa.getCelda(x, y).eliminarEntidad();
+				x = x - 1;
+				miMapa.getCelda(x, y).agregarEntidad(this);
+				miCelda = miMapa.getCelda(x, y);
+				imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL,PIXEL,PIXEL);
 			}
-		} else {
-			/*
-			 * Si el disparo llega al final del mapa, se reinicia a la posicion inicial.
-			 */
-			miCelda.eliminarEntidad();
-			Celda celdaReinicio = miMapa.getCelda(miTorre.getX() - 1, miTorre.getY());
-			setCelda(celdaReinicio);
-			celdaReinicio.agregarEntidad(this);
-			return true;
+			else {
+				miMapa.getCelda(x - 1, y).getEntidad().aceptar(miVisitor);
+				miMapa.getCelda(x, y).eliminarEntidad();
+				morir();				
+			}
 		}
 	}	
 
-	public boolean aceptar(Visitor visitor) {
-		return visitor.visit(this);
-
-	}
-
-	public Torre getTorre() {
-		return miTorre;
+	public void aceptar(Visitor visitor) {
+		visitor.visit(this);
 	}
 
 	public void morir() {
-		miMapa.getLogica().eliminarDisparo(this);
+		miMapa.getLogica().eliminarEntidad(this);
 	}
-
-	public abstract int getDaño();
 
 }

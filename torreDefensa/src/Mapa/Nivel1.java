@@ -4,6 +4,8 @@ import java.util.Random;
 
 import Entidad.Verde;
 import Entidad.Enemigo;
+import Entidad.Entidad;
+import Entidad.Magma;
 import Entidad.Tierra;
 import Objeto.Agua;
 import Objeto.Roca;
@@ -18,7 +20,6 @@ public class Nivel1 extends Nivel {
 	public void run() {
 		int cantEnemigos = 7;
 		while (cantEnemigos > 0) {
-			// mapa.getLogica().agregarEnemigo();
 			cargarOleada();
 			cantEnemigos--;
 			try {
@@ -31,18 +32,24 @@ public class Nivel1 extends Nivel {
 
 	public void cargarOleada() {
 		Random random = new Random();
-		int numeroRandom = random.nextInt(10);
+		int enemigoRandom = random.nextInt(100);
 		int celdaRandom = random.nextInt(5);
 		Celda celda = mapa.getCelda(0, celdaRandom);
-		/*if (numeroRandom < 8) {
-			Enemigo e = new Verde(mapa, celda);
-			mapa.getLogica().agregarEnemigo(e, celda);
-
-		}*/
-		if(numeroRandom >= 3) {
-			Enemigo e = new Tierra(mapa, celda);
-			mapa.getLogica().agregarEnemigoTierra(e, celda);
+		Entidad e = null;
+	
+		if(enemigoRandom < 20) {
+			e = new Verde(mapa,celda);
+			mapa.getLogica().agregarEntidad(e, celda);
 		}
+		else if(enemigoRandom < 40) {
+			e = new Tierra(mapa,celda);
+			mapa.getLogica().agregarEntidad(e, celda);
+		}
+		else if(enemigoRandom < 60) {
+			e = new Magma(mapa,celda);
+			mapa.getLogica().agregarEntidad(e, celda);
+		}
+
 	}
 
 	public void cargarNivel() {
@@ -50,30 +57,27 @@ public class Nivel1 extends Nivel {
 		int aguas = 0;
 		int rocas = 0;
 		int i, j;
+		Entidad e = null;
 
-		while (rocas < 1) {
+		while (rocas < 3) {
 			// Genero rocas en columnas distintas al princio y final del mapa.
 			i = numeroRandom.nextInt(5) + 2;
 			j = numeroRandom.nextInt(5);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				rocas++;
-				Roca roca = new Roca(mapa, mapa.getCelda(i, j));
-				mapa.getCelda(i, j).agregarEntidad(roca);
-				roca.setCelda(mapa.getCelda(i, j));
-				mapa.getLogica().getGrafica().graficarEntidad(roca);
+				e = new Roca(mapa,mapa.getCelda(i, j));
+				mapa.getLogica().agregarEntidad(e, mapa.getCelda(i, j));
 			}
 		}
 
-		while (aguas < 1) {
+		while (aguas < 3) {
 			// Genero aguas en columnas distintas al princio y final del mapa.
 			i = numeroRandom.nextInt(5) + 2; // Entre 2 y 6
 			j = numeroRandom.nextInt(5);
 			if (mapa.getCelda(i, j).getEntidad() == null) {
 				aguas++;
-				Agua agua = new Agua(mapa, mapa.getCelda(i, j));
-				mapa.getCelda(i, j).agregarEntidad(agua);
-				agua.setCelda(mapa.getCelda(i, j));
-				mapa.getLogica().getGrafica().graficarEntidad(agua);
+				e = new Agua(mapa,mapa.getCelda(i, j));
+				mapa.getLogica().agregarEntidad(e, mapa.getCelda(i, j));
 			}
 		}
 	}

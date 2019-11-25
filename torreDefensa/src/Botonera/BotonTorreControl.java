@@ -17,7 +17,8 @@ public class BotonTorreControl extends Boton{
 	public void crearTorre(Mapa mapa, Celda celda) {
 		TorreControl torre = new TorreControl(mapa,celda);
 		if(torre.getPrecio() <= mapa.getLogica().getMoneda()) {
-			mapa.getLogica().agregarJugador(torre);
+			mapa.getLogica().agregarEntidad(torre,celda);
+			mapa.getLogica().agregarMoneda(torre.getPrecio()*-1);
 		}
 		
 	}

@@ -12,16 +12,16 @@ public class DisparoDoble extends DisparoAliado {
 
 	protected Torre miTorre;
 	
-	public DisparoDoble(Mapa miMapa, Celda miCelda, Torre miTorre,int dano, int velocidad) {
-		super(miMapa, miCelda, miTorre, dano, velocidad);
-		this.miTorre = miTorre;
+	public DisparoDoble(Mapa miMapa, Celda miCelda,int golpe, int velocidad) {
+		super(miMapa, miCelda, golpe, velocidad);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/d_2.png")));
 	}
 
 	@Override
-	public int getDaño() {
+	public int getGolpe() {
 		return 100;
 	}
+
 	
 }

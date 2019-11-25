@@ -14,43 +14,23 @@ public class VisitorDisparoEnemigo extends Visitor {
 		this.miEntidad = miDisparo;
 	}
 	
-	
-	public boolean visit(Enemigo e) {
-		// TODO Auto-generated method stub
-		return false;
+	public void visit(Enemigo e) {}
+
+	@Override
+	public void visit(Torre t) {
+		t.morir();
 	}
 
 	@Override
-	public boolean visit(Torre t) {
-		System.out.println("ENTRE AL VISITOR DISPARO ENEMIGO, TORRE T");
-	
-		t.morir();   //ESTO ES PARA VER QUE EL ENEMIGO SE VUELVE A MOVER CUANDO SE ELIMINA LA TORRE QUE LO HIZO PARAR
-		//miEntidad.morir();
-		return true;
-	}
+	public void visit(DisparoAliado d) {}
 
 	@Override
-	public boolean visit(DisparoAliado d) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public void visit(DisparoEnemigo e) {}
 
 	@Override
-	public boolean visit(DisparoEnemigo e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public void visit(Agua a) {}
 
 	@Override
-	public boolean visit(Agua a) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean visit(Roca r) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public void visit(Roca r) {}
 
 }

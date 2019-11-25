@@ -22,12 +22,11 @@ public class AumentoVida extends MagiaTemporal {
 
 	@Override
 	protected void activarPowerUp() {
-		miMapa.getLogica().powerUpVida();
+	//	miMapa.getLogica().powerUpVida();
 	}
 
 	@Override
-	public boolean mover() {
-		return false;
+	public void mover() {
 	}
 
 	@Override
@@ -35,8 +34,7 @@ public class AumentoVida extends MagiaTemporal {
 	}
 
 	@Override
-	public boolean aceptar(Visitor visitor) {
-		return false;
+	public void aceptar(Visitor visitor) {
 	}
 
 	protected class puListener extends MouseAdapter {
@@ -48,7 +46,7 @@ public class AumentoVida extends MagiaTemporal {
 		public void mouseClicked(MouseEvent e) {
 			imagen = (JLabel) e.getSource();
 			miPowerUp.activarPowerUp();
-			miMapa.getLogica().eliminarPowerUp(miPowerUp);
+		//	miMapa.getLogica().eliminarPowerUp(miPowerUp);
 			new HiloPowerUp(miMapa.getLogica()).start();
 		}
 	}

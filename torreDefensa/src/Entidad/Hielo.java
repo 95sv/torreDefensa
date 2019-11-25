@@ -7,7 +7,7 @@ import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.VisitorEnemigo;
 
-public class Hielo extends  Enemigo {
+public class Hielo extends Enemigo {
 
 	public Hielo(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
@@ -15,10 +15,10 @@ public class Hielo extends  Enemigo {
 		imagen.setIcon(new ImageIcon(getClass().getResource("Recursos/Enemigos/a_caminante1.gif")));
 		miVisitor = new VisitorEnemigo(this);
 		vida = 150;
-		puntos=75;
-	}	
-	
-	public boolean mover() {
+		puntos = 75;
+	}
+
+	public void mover() {
 		int x = miCelda.getX();
 		int y = miCelda.getY();
 
@@ -28,29 +28,26 @@ public class Hielo extends  Enemigo {
 			if ((x < 9 && x >= 0)) {
 				x = x + 1;
 				Celda nuevaCelda = miMapa.getCelda(x, y);
-				if (nuevaCelda.getEntidad() != null && nuevaCelda.getEntidad().aceptar(miVisitor)) {
-					return false;
+				if (nuevaCelda.getEntidad() != null ) {
+					
 				} else {
 					miCelda.eliminarEntidad();
 					setCelda(nuevaCelda);
 					nuevaCelda.agregarEntidad(this);
-					return true;
+					
 				}
 			}
 		}
-		return false;
 	}
-	
-	
-	public boolean estoyParado() {	
-		return false;
-	}
-	
-	public void dispare(boolean b) {}
-	
-	
+
 	public int getPuntos() {
 		return puntos;
 	}
-	
+
+	@Override
+	public void disparar() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -7,20 +7,17 @@ import Mapa.Mapa;
 
 public abstract class Disparo extends Entidad {
 
-	protected int dano;
 	protected int velocidad;
 
-	public Disparo(Mapa miMapa, Celda miCelda, int dano, int velocidad) {
+	public Disparo(Mapa miMapa, Celda miCelda, int golpe, int velocidad) {
 		super(miMapa, miCelda);
-		this.dano = dano;
+		this.golpe = golpe;
 		this.velocidad = velocidad;
 	}
 
-	public abstract int getDaño();
+	public abstract int getGolpe();
 
-	public abstract boolean mover();
+	public abstract void mover();
 	
-	//public abstract Torre getTorre();
-
 	
 }

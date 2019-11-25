@@ -31,6 +31,10 @@ public class Mapa {
 		siguienteNivel.start();
 
 	}
+	
+	public Logica getLogica() {
+		return logica;
+	}
 
 	public void cargarNivel(Nivel nivel) {
 		this.siguienteNivel = new Nivel1(this);
@@ -51,15 +55,15 @@ public class Mapa {
 	public int getColumnas() {
 		return columnas;
 	}
-
+	
+	/*
+	 * 					Parametros de la celda : ( [0..9], [0..5]).
+	 */
+	
 	public Celda getCelda(int x, int y) {
 		if ((x < this.columnas) && (x >= 0) && (y < this.filas) && (y >= 0))
 			return this.mapa[x][y];
 		return null;
-	}
-
-	public Logica getLogica() {
-		return logica;
 	}
 
 	public Entidad getEntidad(int x, int y) {

@@ -17,7 +17,7 @@ public class Roca extends Objeto{
 		miVisitor = new VisitorRoca(this);
 	}
 	
-	public boolean aceptar(Visitor visitor) {
-		return visitor.visit(this);
+	public void aceptar(Visitor visitor) {
+		visitor.visit(this);
 	}
 }

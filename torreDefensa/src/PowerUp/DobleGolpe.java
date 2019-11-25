@@ -12,9 +12,9 @@ import Mapa.Mapa;
 import PowerUp.AumentoMoneda.puListener;
 import Visitor.Visitor;
 
-public class DobleDano extends ObjetoPrecioso {
+public class DobleGolpe extends ObjetoPrecioso {
 
-	public DobleDano(Mapa mapa, Celda celda) {
+	public DobleGolpe(Mapa mapa, Celda celda) {
 		super(mapa, celda);
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(this.getClass().getResource("/Recursos/Objetos/campo.gif")));
@@ -24,12 +24,10 @@ public class DobleDano extends ObjetoPrecioso {
 
 	@Override
 	protected void activarPowerUp() {
-
 	}
 
 	@Override
-	public boolean mover() {
-		return false;
+	public void mover() {
 	}
 
 	@Override
@@ -37,8 +35,7 @@ public class DobleDano extends ObjetoPrecioso {
 	}
 
 	@Override
-	public boolean aceptar(Visitor visitor) {
-		return false;
+	public void aceptar(Visitor visitor) {
 	}
 
 	protected class puListener extends MouseAdapter {
@@ -50,7 +47,7 @@ public class DobleDano extends ObjetoPrecioso {
 		public void mouseClicked(MouseEvent e) {
 			imagen = (JLabel) e.getSource();
 			miPowerUp.activarPowerUp();
-			miMapa.getLogica().eliminarPowerUp(miPowerUp);
+			//miMapa.getLogica().eliminarPowerUp(miPowerUp);
 			new HiloPowerUp(miMapa.getLogica()).start();
 		}
 	}

@@ -5,7 +5,7 @@ import Logica.Logica;
 import Mapa.Celda;
 import Mapa.Mapa;
 
-public abstract class Torre extends Entidad {
+public abstract class Torre extends Personaje {
 
 	protected DisparoAliado disparo;
 	protected Logica logica;
@@ -15,6 +15,8 @@ public abstract class Torre extends Entidad {
 
 	public Torre(Mapa miMapa,Celda miCelda) {
 		super(miMapa,miCelda);
+		logica = miMapa.getLogica();
+		disparar();
 	}
 	
 	public int getPrecio() {
@@ -25,5 +27,9 @@ public abstract class Torre extends Entidad {
 		this.precio = precio;
 	}
 
-
+	public abstract DisparoAliado crearDisparo();
+	
+	public void disparar() {
+		logica.agregarEntidad(crearDisparo(),miCelda);
+	}
 }

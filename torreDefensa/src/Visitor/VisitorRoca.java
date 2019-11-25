@@ -7,44 +7,27 @@ import Entidad.Torre;
 import Objeto.Agua;
 import Objeto.Roca;
 
-public class VisitorRoca extends Visitor{
+public class VisitorRoca extends Visitor {
 	public VisitorRoca(Roca roca) {
 		miEntidad = roca;
 	}
-	@Override
-	public boolean visit(Enemigo e) {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
 	@Override
-	public boolean visit(Torre t) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public void visit(Enemigo e) {}
 
 	@Override
-	public boolean visit(DisparoAliado d) {
-		// TODO Auto-generated method stub
-		d.morir();
-		return true;
-	}
+	public void visit(Torre t) {}
 
 	@Override
-	public boolean visit(DisparoEnemigo e) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	
+	public void visit(DisparoAliado d) {}
+
 	@Override
-	public boolean visit(Agua a) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public void visit(DisparoEnemigo e) {}
+
 	@Override
-	public boolean visit(Roca r) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public void visit(Agua a) {}
+
+	@Override
+	public void visit(Roca r) {}
 
 }

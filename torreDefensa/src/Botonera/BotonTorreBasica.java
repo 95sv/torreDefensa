@@ -20,7 +20,8 @@ public class BotonTorreBasica extends Boton{
 	public void crearTorre(Mapa mapa, Celda celda) {
 		TorreBasica torre = new TorreBasica(mapa,celda);
 		if(torre.getPrecio() <= mapa.getLogica().getMoneda()) {
-			mapa.getLogica().agregarJugador(torre);
+			mapa.getLogica().agregarEntidad(torre,celda);
+			mapa.getLogica().agregarMoneda(torre.getPrecio()*-1);
 		}
 	}
 

@@ -23,8 +23,8 @@ public class AumentoMoneda extends MagiaTemporal {
 	}
 
 	@Override
-	public boolean mover() {
-		return false;
+	public void mover() {
+
 	}
 
 	@Override
@@ -33,8 +33,7 @@ public class AumentoMoneda extends MagiaTemporal {
 	}
 
 	@Override
-	public boolean aceptar(Visitor visitor) {
-		return false;
+	public void aceptar(Visitor visitor) {
 	}
 
 	@Override
@@ -51,7 +50,7 @@ public class AumentoMoneda extends MagiaTemporal {
 		public void mouseClicked(MouseEvent e) {
 			imagen = (JLabel) e.getSource();
 			miPowerUp.activarPowerUp();
-			miMapa.getLogica().eliminarPowerUp(miPowerUp);
+		//	miMapa.getLogica().eliminarPowerUp(miPowerUp);
 			new HiloPowerUp(miMapa.getLogica()).start();
 		}
 	}

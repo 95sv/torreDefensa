@@ -17,7 +17,7 @@ public class Agua extends Objeto {
 		miVisitor = new VisitorAgua(this);
 	}
 	
-	public boolean aceptar(Visitor visitor) {
-		return visitor.visit(this);
+	public void aceptar(Visitor visitor) {
+		visitor.visit(this);
 	}
 }

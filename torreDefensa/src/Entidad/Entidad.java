@@ -8,6 +8,8 @@ import Visitor.Visitor;
 
 public abstract class Entidad {
 
+	
+	public static final int PIXEL = 64;
 	protected Celda miCelda;
 	protected JLabel imagen;
 	protected Mapa miMapa;
@@ -73,10 +75,10 @@ public abstract class Entidad {
 		this.vida = vida;
 	}
 	
-	public abstract boolean mover();
-
+	public abstract void mover();
+	
 	public abstract void morir();
 
-	public abstract boolean aceptar(Visitor visitor);
+	public abstract void aceptar(Visitor visitor);
 
 }
