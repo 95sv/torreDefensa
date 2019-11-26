@@ -33,6 +33,24 @@ public abstract class Enemigo extends Personaje {
 		logica.eliminarEntidad(this);
 
 	}
+	
+	public void mover() {
+		System.out.println("X "+ x);
+		if(x==9) {
+			logica.perder();
+		}
+		else if(miMapa.getCelda(x+1,y).getEntidad()==null) {
+			miMapa.getCelda(x, y).eliminarEntidad();
+			x = x + 1;
+			miMapa.getCelda(x, y).agregarEntidad(this);
+			miCelda = miMapa.getCelda(x, y);
+			imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL,PIXEL,PIXEL);
+		}
+		else {
+			miMapa.getCelda(x + 1, y).getEntidad().aceptar(miVisitor);
+			miMapa.getCelda(x, y).eliminarEntidad();
+		}
+	}
 
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;

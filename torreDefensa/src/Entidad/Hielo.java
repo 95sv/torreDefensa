@@ -19,25 +19,7 @@ public class Hielo extends Enemigo {
 	}
 
 	public void mover() {
-		int x = miCelda.getX();
-		int y = miCelda.getY();
-
-		if (x >= 9) {
-			logica.perder();
-		} else {
-			if ((x < 9 && x >= 0)) {
-				x = x + 1;
-				Celda nuevaCelda = miMapa.getCelda(x, y);
-				if (nuevaCelda.getEntidad() != null ) {
-					
-				} else {
-					miCelda.eliminarEntidad();
-					setCelda(nuevaCelda);
-					nuevaCelda.agregarEntidad(this);
-					
-				}
-			}
-		}
+		super.mover();
 	}
 
 	public int getPuntos() {

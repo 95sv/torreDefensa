@@ -25,8 +25,7 @@ public class Tierra extends Enemigo {
 
 	@Override
 	public void mover() {
-		// TODO Auto-generated method stub
-		
+		super.mover();
 	}
 
 	@Override

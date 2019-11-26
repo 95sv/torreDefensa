@@ -19,6 +19,7 @@ public class VisitorDisparoEnemigo extends Visitor {
 	@Override
 	public void visit(Torre t) {
 		t.morir();
+		miEntidad.morir();
 	}
 
 	@Override

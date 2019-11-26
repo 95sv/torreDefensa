@@ -12,8 +12,8 @@ public abstract class DisparoAliado extends Disparo {
 	}
 
 	public void mover() {
-		int x = miCelda.getX();
-		int y = miCelda.getY();
+		x = miCelda.getX();
+		y = miCelda.getY();
 
 		if(x == 0) {
 			morir();
