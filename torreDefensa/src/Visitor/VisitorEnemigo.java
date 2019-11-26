@@ -17,7 +17,8 @@ public class VisitorEnemigo extends Visitor {
 	public void visit(Enemigo e) {}
 
 	@Override
-	public void visit(Torre t) {}
+	public void visit(Torre t) {
+	}
 
 	@Override
 	public void visit(DisparoAliado d) {}

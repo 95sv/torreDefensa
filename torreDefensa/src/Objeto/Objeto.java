@@ -14,9 +14,12 @@ public class Objeto extends Entidad {
 	public void morir() {
 	}
 
-	public void mover() {}
+	public void mover() {
+	}
 
-	@Override
+	public void ejecutar() {
+	}
+
 	public void aceptar(Visitor visitor) {
 	}
 

@@ -22,11 +22,11 @@ public class HiloEntidades extends Thread {
 		perder = false;
 		while (!perder) {
 			try {
-				Thread.sleep(300);
+				Thread.sleep(500);
+				miLogica.ejecutarEntidades();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			miLogica.moverEntidades();
 		}
 	}
 }

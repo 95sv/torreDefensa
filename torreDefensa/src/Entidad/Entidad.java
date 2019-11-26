@@ -26,6 +26,15 @@ public abstract class Entidad {
 		miMapa = mapa;
 		vida = 100;
 	}
+	
+	public abstract void ejecutar();
+	
+	public abstract void mover();
+	
+	public abstract void morir();
+
+	public abstract void aceptar(Visitor visitor);
+
 
 	public void setCelda(Celda c) {
 		miCelda = c;
@@ -75,10 +84,4 @@ public abstract class Entidad {
 		this.vida = vida;
 	}
 	
-	public abstract void mover();
-	
-	public abstract void morir();
-
-	public abstract void aceptar(Visitor visitor);
-
 }

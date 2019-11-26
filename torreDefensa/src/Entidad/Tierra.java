@@ -6,7 +6,7 @@ import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.VisitorEnemigo;
 
-public class Tierra extends Enemigo {
+public class Tierra extends EnemigoCombate{
 
 	public Tierra(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
@@ -19,19 +19,11 @@ public class Tierra extends Enemigo {
 
 	@Override
 	public int getPuntos() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void mover() {
-		super.mover();
+		return puntos;
 	}
 
 	@Override
 	public void disparar() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

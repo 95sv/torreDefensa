@@ -7,7 +7,7 @@ import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.VisitorEnemigo;
 
-public class Hielo extends Enemigo {
+public class Hielo extends EnemigoCombate {
 
 	public Hielo(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
@@ -18,9 +18,6 @@ public class Hielo extends Enemigo {
 		puntos = 75;
 	}
 
-	public void mover() {
-		super.mover();
-	}
 
 	public int getPuntos() {
 		return puntos;
@@ -28,8 +25,6 @@ public class Hielo extends Enemigo {
 
 	@Override
 	public void disparar() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

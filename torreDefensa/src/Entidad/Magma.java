@@ -3,11 +3,12 @@ package Entidad;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Disparo.DisparoEnemigo;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.VisitorEnemigo;
 
-public class Magma extends Enemigo {
+public class Magma extends EnemigoLejano{
 
 	public Magma(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
@@ -18,9 +19,6 @@ public class Magma extends Enemigo {
 		puntos = 200;
 	}
 
-	public void mover() {
-		super.mover();
-	}
 
 	@Override
 	public int getPuntos() {
@@ -29,8 +27,12 @@ public class Magma extends Enemigo {
 
 	@Override
 	public void disparar() {
-		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public DisparoEnemigo crearDisparo() {
+		return null;
 	}
 
 }

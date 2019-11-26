@@ -20,38 +20,6 @@ public abstract class Enemigo extends Personaje {
 		this.logica = miMapa.getLogica();
 	}
 
-
-	public void morir() {
-		Random rnd = new Random();
-		int random = rnd.nextInt(100);
-		/*
-		 * Si muere un enemigo, hay una probabilidad de 0.20 de que aparezca un PowerUP.
-		 */
-		if (random < 20) {
-			logica.seleccionarPowerUp(miCelda);
-		}
-		logica.eliminarEntidad(this);
-
-	}
-	
-	public void mover() {
-		System.out.println("X "+ x);
-		if(x==9) {
-			logica.perder();
-		}
-		else if(miMapa.getCelda(x+1,y).getEntidad()==null) {
-			miMapa.getCelda(x, y).eliminarEntidad();
-			x = x + 1;
-			miMapa.getCelda(x, y).agregarEntidad(this);
-			miCelda = miMapa.getCelda(x, y);
-			imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL,PIXEL,PIXEL);
-		}
-		else {
-			miMapa.getCelda(x + 1, y).getEntidad().aceptar(miVisitor);
-			miMapa.getCelda(x, y).eliminarEntidad();
-		}
-	}
-
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
 	}
@@ -66,6 +34,38 @@ public abstract class Enemigo extends Personaje {
 			morir();
 		}
 
+	}
+	
+	public void ejecutar(){ 
+		mover();
+	}
+
+	public void morir() {
+		Random rnd = new Random();
+		int random = rnd.nextInt(100);
+		/*
+		 * Si muere un enemigo, hay una probabilidad de 0.20 de que aparezca un PowerUP.
+		 */
+		if (random < 20) {
+			logica.seleccionarPowerUp(miCelda);
+		}
+		logica.eliminarEntidad(this);
+
+	}
+
+	public void mover() {
+		if (x == 9) {
+			logica.perder();
+		} else if (miMapa.getCelda(x + 1, y).getEntidad() == null) {
+			miMapa.getCelda(x, y).eliminarEntidad();
+			x = x + 1;
+			miMapa.getCelda(x, y).agregarEntidad(this);
+			miCelda = miMapa.getCelda(x, y);
+			imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL, PIXEL, PIXEL);
+		} else {
+			miMapa.getCelda(x + 1, y).getEntidad().aceptar(miVisitor);
+			miMapa.getCelda(x, y).eliminarEntidad();
+		}
 	}
 
 	public abstract int getPuntos();

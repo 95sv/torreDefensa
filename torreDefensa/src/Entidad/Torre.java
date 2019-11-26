@@ -11,12 +11,12 @@ public abstract class Torre extends Personaje {
 	protected Logica logica;
 	protected int alcance;
 	protected int precio;
+	protected int tiempo = 10;
 
 
 	public Torre(Mapa miMapa,Celda miCelda) {
 		super(miMapa,miCelda);
 		logica = miMapa.getLogica();
-		disparar();
 	}
 	
 	public int getPrecio() {
@@ -26,7 +26,17 @@ public abstract class Torre extends Personaje {
 	public void setPrecio(int precio) {
 		this.precio = precio;
 	}
-
+	
+	public void ejecutar() {
+		if(tiempo == 10) {
+			disparar();
+		}
+		tiempo--;
+		if(tiempo == 0) {
+			tiempo = 10;
+		}
+	}
+	
 	public abstract DisparoAliado crearDisparo();
 	
 	public void disparar() {

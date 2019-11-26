@@ -67,9 +67,9 @@ public class Logica {
 		return perder;
 	}
 	
-	public void moverEntidades() {
+	public void ejecutarEntidades() {
 		for(Entidad e : misEntidades) {
-			e.mover();
+			e.ejecutar();
 		}
 	}
 	public void agregarEntidad(Entidad e,Celda celda) {

@@ -32,6 +32,8 @@ public class VisitorDisparoEnemigo extends Visitor {
 	public void visit(Agua a) {}
 
 	@Override
-	public void visit(Roca r) {}
+	public void visit(Roca r) {
+		miEntidad.morir();
+	}
 
 }
