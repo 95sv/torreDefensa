@@ -1,6 +1,7 @@
 package Entidad;
 
 import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
@@ -24,8 +25,7 @@ public class TorreDoble extends Torre {
 
 	@Override
 	public DisparoAliado crearDisparo() {
-		// TODO Auto-generated method stub
-		return null;
+		return new DisparoBasico(miMapa,miCelda,50,50);
 	}
 
 }

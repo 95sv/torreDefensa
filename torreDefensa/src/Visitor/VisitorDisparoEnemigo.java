@@ -29,7 +29,9 @@ public class VisitorDisparoEnemigo extends Visitor {
 	public void visit(DisparoEnemigo e) {}
 
 	@Override
-	public void visit(Agua a) {}
+	public void visit(Agua a) {
+		
+	}
 
 	@Override
 	public void visit(Roca r) {

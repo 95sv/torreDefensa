@@ -42,10 +42,14 @@ public class Nivel1 extends Nivel {
 			mapa.getLogica().agregarEntidad(e, celda);
 		}
 		else if(enemigoRandom < 40) {
+			//e = new Verde(mapa,celda);
+			//mapa.getLogica().agregarEntidad(e, celda);
 			e = new Tierra(mapa,celda);
 			mapa.getLogica().agregarEntidad(e, celda);
 		}
 		else if(enemigoRandom < 60) {
+			//e = new Verde(mapa,celda);
+			//mapa.getLogica().agregarEntidad(e, celda);
 			e = new Magma(mapa,celda);
 			mapa.getLogica().agregarEntidad(e, celda);
 		}

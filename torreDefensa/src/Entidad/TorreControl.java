@@ -4,6 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Disparo.DisparoAliado;
+import Disparo.DisparoBasico;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
@@ -28,8 +29,7 @@ public class TorreControl extends Torre {
 
 	@Override
 	public DisparoAliado crearDisparo() {
-		// TODO Auto-generated method stub
-		return null;
+		return new DisparoBasico(miMapa,miCelda,50,50);
 	}
 
 }
