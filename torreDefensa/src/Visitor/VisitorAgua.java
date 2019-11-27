@@ -20,7 +20,9 @@ public class VisitorAgua extends Visitor {
 	public void visit(Torre t) {}
 
 	@Override
-	public void visit(DisparoAliado d) {}
+	public void visit(DisparoAliado d) {
+		System.out.println("Entre Visitor Agua");
+	}
 
 	@Override
 	public void visit(DisparoEnemigo e) {}

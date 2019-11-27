@@ -30,7 +30,6 @@ public class VisitorDisparoEnemigo extends Visitor {
 
 	@Override
 	public void visit(Agua a) {
-		
 	}
 
 	@Override

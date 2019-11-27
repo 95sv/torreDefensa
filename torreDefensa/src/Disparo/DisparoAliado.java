@@ -27,8 +27,13 @@ public abstract class DisparoAliado extends Disparo {
 				imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL, PIXEL, PIXEL);
 			} else {
 				miMapa.getCelda(x - 1, y).getEntidad().aceptar(miVisitor);
-				miMapa.getCelda(x, y).eliminarEntidad();
-				morir();
+				//miMapa.getCelda(x, y).eliminarEntidad();
+				//morir();
+				//Esta repetido el codigo(ACOMODAR PARA QUE QUEDE "LINDO"). la eliminacion de una entidad se encarga el visitor.
+				x = x - 1;
+				miMapa.getCelda(x, y).agregarEntidad(this);
+				miCelda = miMapa.getCelda(x, y);
+				imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL, PIXEL, PIXEL);
 			}
 		}
 	}

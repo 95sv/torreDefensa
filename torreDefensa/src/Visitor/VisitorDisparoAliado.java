@@ -30,9 +30,14 @@ public class VisitorDisparoAliado extends Visitor {
 	public void visit(DisparoEnemigo e) {}
 
 	@Override
-	public void visit(Agua a) {}
+	public void visit(Agua a) {
+		System.out.println("Entre Visitor DisparoAliado");
+	}
 
 	@Override
-	public void visit(Roca r) {}
+	public void visit(Roca r) {
+		miEntidad.morir();
+	//aca se elimina el disparo una vez llegado a la torre
+	}
 
 }
