@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import Entidad.Torre;
 import Mapa.Celda;
 import Mapa.Mapa;
-import Visitor.Visitor;
 
 public class DisparoDoble extends DisparoAliado {
 
@@ -14,8 +13,6 @@ public class DisparoDoble extends DisparoAliado {
 	
 	public DisparoDoble(Mapa miMapa, Celda miCelda,int golpe, int velocidad) {
 		super(miMapa, miCelda, golpe, velocidad);
-		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/d_2.png")));
 	}
 
 	@Override

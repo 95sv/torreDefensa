@@ -13,7 +13,7 @@ public class BotonTorreArena extends Boton {
 
 	public BotonTorreArena(ActionListener accion) {
 		super(accion);
-		setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado1.png")));
+		setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado3.png")));
 	}
 
 	@Override

@@ -29,7 +29,7 @@ public class AumentoMoneda extends MagiaTemporal {
 
 	@Override
 	public void morir() {
-
+		miMapa.getLogica().eliminarEntidad(this);
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class AumentoMoneda extends MagiaTemporal {
 	}
 
 	@Override
-	protected void activarPowerUp() {
+	public void activarPowerUp() {
 		miMapa.getLogica().agregarMoneda(100);
 	}
 
@@ -50,8 +50,7 @@ public class AumentoMoneda extends MagiaTemporal {
 		public void mouseClicked(MouseEvent e) {
 			imagen = (JLabel) e.getSource();
 			miPowerUp.activarPowerUp();
-		//	miMapa.getLogica().eliminarPowerUp(miPowerUp);
-			new HiloPowerUp(miMapa.getLogica()).start();
+			morir();
 		}
 	}
 }

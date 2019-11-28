@@ -8,6 +8,7 @@ import Hilos.HiloPowerUp;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
+import Visitor.VisitorPUvida;
 
 public class AumentoVida extends MagiaTemporal {
 
@@ -17,12 +18,13 @@ public class AumentoVida extends MagiaTemporal {
 		imagen.setIcon(new ImageIcon(this.getClass().getResource("/Recursos/Objetos/vida.gif")));
 		puListener listener = new puListener(this);
 		imagen.addMouseListener(listener);
+		miVisitor = new VisitorPUvida(this);
 
 	}
 
 	@Override
-	protected void activarPowerUp() {
-	//	miMapa.getLogica().powerUpVida();
+	public void activarPowerUp() {
+		miMapa.getLogica().visitarEntidades(miVisitor);
 	}
 
 	@Override
@@ -31,6 +33,7 @@ public class AumentoVida extends MagiaTemporal {
 
 	@Override
 	public void morir() {
+		miMapa.getLogica().eliminarEntidad(this);
 	}
 
 	@Override
@@ -46,8 +49,7 @@ public class AumentoVida extends MagiaTemporal {
 		public void mouseClicked(MouseEvent e) {
 			imagen = (JLabel) e.getSource();
 			miPowerUp.activarPowerUp();
-		//	miMapa.getLogica().eliminarPowerUp(miPowerUp);
-			new HiloPowerUp(miMapa.getLogica()).start();
+			morir();
 		}
 	}
 

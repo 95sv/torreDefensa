@@ -6,34 +6,44 @@ import Entidad.Enemigo;
 import Entidad.Torre;
 import Objeto.Agua;
 import Objeto.Roca;
+import PowerUp.PowerUp;
 
 public class VisitorDisparoEnemigo extends Visitor {
-	
+	protected DisparoEnemigo miDisparo;
 
 	public VisitorDisparoEnemigo(DisparoEnemigo miDisparo) {
-		this.miEntidad = miDisparo;
+		this.miDisparo = miDisparo;
 	}
-	
-	public void visit(Enemigo e) {}
+
+	public void visit(Enemigo e) {
+	}
 
 	@Override
 	public void visit(Torre t) {
-		t.morir();
-		miEntidad.morir();
+		t.recibirGolpe(miDisparo.getGolpe());
+		miDisparo.morir();
 	}
 
 	@Override
-	public void visit(DisparoAliado d) {}
+	public void visit(DisparoAliado d) {
+	}
 
 	@Override
-	public void visit(DisparoEnemigo e) {}
+	public void visit(DisparoEnemigo e) {
+	}
 
 	@Override
-	public void visit(Agua a) {}
+	public void visit(Agua a) {
+	}
 
 	@Override
 	public void visit(Roca r) {
-		miEntidad.morir();
+		r.recibirGolpe(miDisparo.getGolpe());
+		miDisparo.morir();
+	}
+
+	@Override
+	public void visit(PowerUp p) {	
 	}
 
 }

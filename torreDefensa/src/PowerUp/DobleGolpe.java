@@ -2,10 +2,8 @@ package PowerUp;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import Hilos.HiloPowerUp;
 import Mapa.Celda;
 import Mapa.Mapa;
@@ -23,7 +21,7 @@ public class DobleGolpe extends ObjetoPrecioso {
 	}
 
 	@Override
-	protected void activarPowerUp() {
+	public void activarPowerUp() {
 	}
 
 	@Override
@@ -32,6 +30,7 @@ public class DobleGolpe extends ObjetoPrecioso {
 
 	@Override
 	public void morir() {
+		miMapa.getLogica().eliminarEntidad(this);
 	}
 
 	@Override
@@ -47,8 +46,7 @@ public class DobleGolpe extends ObjetoPrecioso {
 		public void mouseClicked(MouseEvent e) {
 			imagen = (JLabel) e.getSource();
 			miPowerUp.activarPowerUp();
-			//miMapa.getLogica().eliminarPowerUp(miPowerUp);
-			new HiloPowerUp(miMapa.getLogica()).start();
+			morir();
 		}
 	}
 

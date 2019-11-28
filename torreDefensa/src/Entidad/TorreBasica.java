@@ -16,20 +16,12 @@ public class TorreBasica extends Torre {
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado1.png")));
 		super.setPrecio(100);
-		
+		golpe = 100;
 	}
-
-	public void morir() {}
-
-	public void aceptar(Visitor visitor) {
-		visitor.visit(this);
-	}
-	@Override
-	public void mover() {}
 
 	@Override
 	public DisparoAliado crearDisparo() {
-		return new DisparoBasico(miMapa,miCelda,50,50);
+		return new DisparoBasico(miMapa, miCelda, 50, 50);
 	}
 
 }

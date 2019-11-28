@@ -12,6 +12,7 @@ import PowerUp.AumentoMoneda;
 import PowerUp.AumentoVida;
 import PowerUp.DobleGolpe;
 import PowerUp.PowerUp;
+import Visitor.Visitor;
 
 public class Logica {
 
@@ -47,10 +48,16 @@ public class Logica {
 		hiloEntidades.start();
 	}
 	
-	
+
 	public boolean perder() {
 		perder = true;
-		return terminar();
+		hiloEntidades.perder();
+		for(Entidad e : misEntidades) {
+			e.morir();
+		}
+		hiloEntidades.stop();
+		mapa.getNivel().stop();
+		return perder;
 	}
 
 	public void agregarPuntaje(int puntaje) {
@@ -72,6 +79,14 @@ public class Logica {
 			e.ejecutar();
 		}
 	}
+	
+	public void visitarEntidades(Visitor v) {
+		for (Entidad e : misEntidades) {
+			e.aceptar(v);
+		}
+		
+	}
+	
 	public void agregarEntidad(Entidad e,Celda celda) {
 		misEntidades.add(e);
 		celda.agregarEntidad(e);
@@ -129,21 +144,9 @@ public class Logica {
 	public Mapa getMapa() {
 		return mapa;
 	}
-
-/*
-*	Hay que volver a acomodar los power ups, ahora que solamente tenemos una lista de entidades.
-*	Para eso, tenemos que tener un metodo en Personaje o Entidad, que solo sera implementado por los personajes 
-*	que reciban efecto de un power up.
-*
-*
+	
 	public void eliminarPowerUp(PowerUp p) {
 		grafica.eliminarEntidad(p);
 	}
-	
-	public void powerUpVida() {
-		for(Entidad e : misEntidades) {
-			e.activarPowerUp();s
-		}
-	}
-*/
+
 }

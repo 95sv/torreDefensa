@@ -10,7 +10,7 @@ public class BotonTorreRoca extends Boton{
 
 	public BotonTorreRoca(ActionListener accion) {
 		super(accion);
-		setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado3.png")));
+		setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado2.png")));
 	}
 
 	@Override

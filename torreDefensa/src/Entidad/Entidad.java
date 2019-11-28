@@ -27,14 +27,23 @@ public abstract class Entidad {
 		vida = 100;
 	}
 	
+	public void recibirGolpe(int golpe) {
+		vida = vida - golpe;
+		if(vida<=0) {
+			morir();
+		}
+	}
+	
+	public void morir() {
+		miMapa.getLogica().eliminarEntidad(this);
+	}
+
+	public abstract void aceptar(Visitor visitor);
+
 	public abstract void ejecutar();
 	
 	public abstract void mover();
 	
-	public abstract void morir();
-
-	public abstract void aceptar(Visitor visitor);
-
 
 	public void setCelda(Celda c) {
 		miCelda = c;

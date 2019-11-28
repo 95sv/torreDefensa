@@ -3,8 +3,6 @@ package Botonera;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-
-import Entidad.TorreArena;
 import Entidad.TorreBasica;
 import Mapa.Celda;
 import Mapa.Mapa;
@@ -13,7 +11,7 @@ public class BotonTorreBasica extends Boton{
 
 	public BotonTorreBasica(ActionListener accion) {
 		super(accion);
-		setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado2.png")));
+		setIcon(new ImageIcon(getClass().getResource("/Recursos/Aliados/aliado1.png")));
 	}
 
 	@Override
