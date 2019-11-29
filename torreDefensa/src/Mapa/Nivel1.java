@@ -53,17 +53,16 @@ public class Nivel1 extends Nivel {
 		Celda celda = mapa.getCelda(0, celdaRandom);
 		Entidad e = null;
 
-		if (enemigoRandom < 100) {
-			e = new Magma(mapa, celda);
+		if (enemigoRandom < 40) {
+			e = new Verde(mapa, celda);
 			mapa.getLogica().agregarEntidad(e, celda);
 		} else if (enemigoRandom < 60) {
 			e = new Tierra(mapa, celda);
 			mapa.getLogica().agregarEntidad(e, celda);
 		} else if (enemigoRandom < 100) {
 			e = new Magma(mapa, celda);
-			mapa.getLogica().agregarEntidad(e, celda);
+      mapa.getLogica().agregarEntidad(e, celda);
 		}
-
 	}
 
 	public void cargarNivel() {

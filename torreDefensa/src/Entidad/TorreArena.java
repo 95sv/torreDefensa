@@ -38,7 +38,6 @@ public class TorreArena extends Torre {
 			miTorre.getLogica().agregarMoneda(miTorre.getPrecio());
 			miTorre.morir();
 		}
-		
 	}
 
 }

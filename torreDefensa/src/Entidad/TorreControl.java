@@ -39,7 +39,6 @@ public class TorreControl extends Torre {
 			miTorre.getLogica().agregarMoneda(miTorre.getPrecio());
 			miTorre.morir();
 		}
-		
 	}
 
 }
