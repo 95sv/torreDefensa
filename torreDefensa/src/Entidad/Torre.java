@@ -15,12 +15,14 @@ public abstract class Torre extends Personaje {
 	protected int precio;
 	protected int tiempo = 6;
 
-
-
 	public Torre(Mapa miMapa,Celda miCelda) {
 		super(miMapa,miCelda);
 		logica = miMapa.getLogica();
 		miVisitor = new VisitorTorre(this);
+	}
+	
+	public Logica getLogica() {
+		return logica;
 	}
 	
 	public int getPrecio() {

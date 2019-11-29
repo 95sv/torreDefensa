@@ -51,17 +51,6 @@ public abstract class Enemigo extends Personaje {
 
 	}
 	
-	/*
-	 * 	Movimiento enemigo: 
-	 * 		si posicion X es menor al final del mapa
-	 * 			si en posicion X +1 no hay entidad
-	 * 				pos x = pos x + 1 
-	 * 			sino 
-	 * 
-	 */
-
-	
-
 	public int getPuntos() {
 		return puntos;
 	}

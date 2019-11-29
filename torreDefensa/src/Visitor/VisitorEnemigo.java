@@ -22,6 +22,7 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void visit(Torre t) {
+		e.seguirMoviendo(false);
 		e.disparar(t);
 	}
 
@@ -37,13 +38,13 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void visit(Agua a) {
+		e.seguirMoviendo(true);
 	}
 
 	@Override
 	public void visit(Roca r) {
-		e.disparar(r);
 		e.seguirMoviendo(false);
-		
+		e.disparar(r);
 	}
 
 	@Override
