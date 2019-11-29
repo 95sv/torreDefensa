@@ -1,13 +1,21 @@
 package Disparo;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
+import Visitor.VisitorDisparoEnemigo;
 
 public abstract class DisparoEnemigo extends Disparo {
-	protected int tiempo = 10;
+
 	public DisparoEnemigo(Mapa miMapa, Celda miCelda, int golpe, int velocidad) {
 		super(miMapa, miCelda, golpe, velocidad);
+		imagen = new JLabel();
+		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/d_caminante2.png")));
+		imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL,PIXEL,PIXEL);
+		miVisitor = new VisitorDisparoEnemigo(this);
 	}
 
 	public void morir() {

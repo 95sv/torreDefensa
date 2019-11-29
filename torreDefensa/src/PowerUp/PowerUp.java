@@ -14,5 +14,5 @@ public abstract class PowerUp extends Entidad {
 	public void ejecutar() {
 	}
 
-	protected abstract void activarPowerUp();
+	public abstract void activarPowerUp();
 }

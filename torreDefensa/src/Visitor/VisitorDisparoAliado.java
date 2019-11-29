@@ -8,16 +8,17 @@ import Entidad.Enemigo;
 import Entidad.Torre;
 import Objeto.Agua;
 import Objeto.Roca;
+import PowerUp.PowerUp;
 
 public class VisitorDisparoAliado extends Visitor {
-
+	protected DisparoAliado miDisparo;
 	public VisitorDisparoAliado(DisparoAliado miDisparo) {
-		this.miEntidad = miDisparo;
+		this.miDisparo = miDisparo;
 	}
 
 	@Override
 	public void visit(Enemigo e) {
-		e.recibirDano(((Disparo) miEntidad).getGolpe());
+		e.recibirGolpe(miDisparo.getGolpe());
 	}
 
 	@Override
@@ -36,8 +37,14 @@ public class VisitorDisparoAliado extends Visitor {
 
 	@Override
 	public void visit(Roca r) {
+		r.recibirGolpe(miDisparo.getGolpe());
+		miDisparo.morir();
+		miDisparo.setSeguirMoviendo(false);
+	}
+
+	@Override
+	public void visit(PowerUp p) {
 		miEntidad.morir();
-	//aca se elimina el disparo una vez llegado a la torre
 	}
 
 }

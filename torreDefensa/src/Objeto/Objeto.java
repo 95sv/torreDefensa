@@ -11,9 +11,6 @@ public class Objeto extends Entidad {
 		super(miMapa, miCelda);
 	}
 
-	public void morir() {
-	}
-
 	public void mover() {
 	}
 

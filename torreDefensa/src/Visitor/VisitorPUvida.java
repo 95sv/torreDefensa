@@ -6,33 +6,36 @@ import Entidad.Enemigo;
 import Entidad.Torre;
 import Objeto.Agua;
 import Objeto.Roca;
+import PowerUp.AumentoVida;
 import PowerUp.PowerUp;
 
-public class VisitorAgua extends Visitor {
-	protected Agua agua;
-
-	public VisitorAgua(Agua agua) {
-		this.agua = agua;
+public class VisitorPUvida extends Visitor{
+	
+	protected AumentoVida pu;
+	
+	public VisitorPUvida(AumentoVida pu) {
+		this.pu = pu;
 	}
-
+	
 	@Override
 	public void visit(Enemigo e) {
 	}
 
 	@Override
 	public void visit(Torre t) {
+		t.setVida(100);
 	}
 
 	@Override
-	public void visit(DisparoAliado d) {
+	public void visit(DisparoAliado d) {		
 	}
 
 	@Override
-	public void visit(DisparoEnemigo e) {
+	public void visit(DisparoEnemigo e) {	
 	}
 
 	@Override
-	public void visit(Agua a) {
+	public void visit(Agua a) {	
 	}
 
 	@Override
@@ -40,7 +43,7 @@ public class VisitorAgua extends Visitor {
 	}
 
 	@Override
-	public void visit(PowerUp p) {
+	public void visit(PowerUp p) {	
 	}
 
 }

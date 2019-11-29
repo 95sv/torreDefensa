@@ -7,10 +7,12 @@ import Entidad.EnemigoLejano;
 import Entidad.Torre;
 import Objeto.Agua;
 import Objeto.Roca;
+import PowerUp.PowerUp;
 
 public class VisitorEnemigoLejano extends Visitor {
-	
+
 	protected EnemigoLejano e;
+
 	public VisitorEnemigoLejano(EnemigoLejano miEnemigo) {
 		this.e = miEnemigo;
 	}
@@ -21,11 +23,13 @@ public class VisitorEnemigoLejano extends Visitor {
 
 	@Override
 	public void visit(Torre t) {
-		e.disparar();
+		e.disparar(t);
 	}
 
 	@Override
 	public void visit(DisparoAliado d) {
+		e.recibirGolpe(d.getGolpe());
+		d.morir();
 	}
 
 	@Override
@@ -38,7 +42,12 @@ public class VisitorEnemigoLejano extends Visitor {
 
 	@Override
 	public void visit(Roca r) {
-		e.disparar();
+		e.disparar(r);
+	}
+
+	@Override
+	public void visit(PowerUp p) {
+	
 	}
 
 }

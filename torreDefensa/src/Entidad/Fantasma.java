@@ -1,30 +1,30 @@
 package Entidad;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Disparo.DisparoEnemigo;
+import Disparo.DisparoVerde;
 import Mapa.Celda;
 import Mapa.Mapa;
-import Visitor.VisitorEnemigo;
+import Visitor.VisitorEnemigoLejano;
 
-public class Fantasma extends EnemigoCombate {
+public class Fantasma extends EnemigoLejano{
 
 	public Fantasma(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
-		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/caminante6.gif")));
-		miVisitor = new VisitorEnemigo(this);
+		imagen = new JLabel();		
+		imagenMover = new ImageIcon(getClass().getResource("/Recursos/Enemigos/caminante6.gif"));
+		imagenAtacar = new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante6.gif"));
+		imagen.setIcon(imagenMover);
 		vida = 100;
 		puntos = 50;
 	}
 
-
-	public int getPuntos() {
-		return puntos;
-	}
-
 	@Override
-	public void disparar() {
+	public DisparoEnemigo crearDisparo() {
+		return new DisparoVerde(miMapa,miCelda,50,50);
 	}
 
 }

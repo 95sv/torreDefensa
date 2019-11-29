@@ -8,7 +8,5 @@ public abstract class Personaje extends Entidad {
 	public Personaje(Mapa mapa, Celda celda) {
 		super(mapa, celda);
 	}
-	
-	public abstract void disparar();
 
 }

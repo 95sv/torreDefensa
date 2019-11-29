@@ -1,5 +1,6 @@
-package Entidad;
+package Entidad; 
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -12,19 +13,13 @@ public class Corona extends EnemigoCombate {
 	public Corona(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
 		imagen = new JLabel();
-		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Enemigos/caminante4.gif")));
+		imagenMover = new ImageIcon(getClass().getResource("/Recursos/Enemigos/caminante4.gif"));
+		imagenAtacar = new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante4.gif"));
+		imagen.setIcon(imagenMover);
 		miVisitor = new VisitorEnemigo(this);
 		vida = 100;
 		puntos = 50;
 	}
 
-
-	public int getPuntos() {
-		return puntos;
-	}
-
-	@Override
-	public void disparar() {
-	}
 
 }

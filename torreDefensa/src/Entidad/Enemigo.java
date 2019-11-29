@@ -2,11 +2,15 @@ package Entidad;
 
 import java.util.Random;
 
+import javax.swing.Icon;
+import javax.swing.JLabel;
+
 import Disparo.DisparoEnemigo;
 import Logica.Logica;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
+import Visitor.VisitorEnemigo;
 
 public abstract class Enemigo extends Personaje {
 
@@ -14,6 +18,8 @@ public abstract class Enemigo extends Personaje {
 	protected Logica logica;
 	protected int alcance;
 	protected int puntos;
+	protected Icon imagenMover;
+	protected Icon imagenAtacar;
 
 	public Enemigo(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
@@ -28,21 +34,13 @@ public abstract class Enemigo extends Personaje {
 		visitor.visit(this);
 	}
 
-	public void recibirDano(int dano) {
-		vida = vida - dano;
-		if (vida <= 0) {
-			morir();
-		}
-
-	}
-	
-	public void ejecutar(){ 
-		mover();
-	}
+	public abstract void disparar(Entidad e);
 
 	public void morir() {
 		Random rnd = new Random();
 		int random = rnd.nextInt(100);
+
+		logica.agregarPuntaje(puntos);
 		/*
 		 * Si muere un enemigo, hay una probabilidad de 0.20 de que aparezca un PowerUP.
 		 */
@@ -52,22 +50,9 @@ public abstract class Enemigo extends Personaje {
 		logica.eliminarEntidad(this);
 
 	}
-
-	public void mover() {
-		if (x == 9) {
-			logica.perder();
-		} else if (miMapa.getCelda(x + 1, y).getEntidad() == null) {
-			miMapa.getCelda(x, y).eliminarEntidad();
-			x = x + 1;
-			miMapa.getCelda(x, y).agregarEntidad(this);
-			miCelda = miMapa.getCelda(x, y);
-			imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL, PIXEL, PIXEL);
-		} else {
-			miMapa.getCelda(x + 1, y).getEntidad().aceptar(miVisitor);
-			miMapa.getCelda(x, y).eliminarEntidad();
-		}
+	
+	public int getPuntos() {
+		return puntos;
 	}
-
-	public abstract int getPuntos();
 
 }

@@ -3,8 +3,6 @@ package Botonera;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
-
-import Entidad.TorreArena;
 import Entidad.TorreBasica;
 import Mapa.Celda;
 import Mapa.Mapa;

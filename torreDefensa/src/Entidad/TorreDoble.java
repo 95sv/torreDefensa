@@ -10,18 +10,8 @@ public class TorreDoble extends Torre {
 
 	public TorreDoble(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
-		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void mover() {}
-
-	@Override
-	public void morir() {}
-
-	@Override
-	public void aceptar(Visitor visitor) {
-	}
 
 	@Override
 	public DisparoAliado crearDisparo() {
