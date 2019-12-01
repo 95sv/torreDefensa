@@ -18,7 +18,7 @@ public class Verde extends EnemigoLejano{
 		imagenAtacar = new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante5.gif"));
 		imagen.setIcon(imagenMover);
 		imagen.setBounds(x, y, PIXEL, PIXEL);
-		vida = 500;
+		vida = 100;
 		puntos = 100;
 	}
 

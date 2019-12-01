@@ -25,14 +25,14 @@ public class VisitorEnemigoLejano extends Visitor {
 
 	@Override
 	public void visit(Torre t) {
-		e.seguirMoviendo(false);
 		e.disparar(t);
+		e.seguirMoviendo(false);
 	}
 
 	@Override
 	public void visit(DisparoAliado d) {
-		e.recibirGolpe(d.getGolpe());
-		d.morir();
+		//e.recibirGolpe(d.getGolpe());
+		//d.morir();
 	}
 
 	@Override
@@ -46,6 +46,8 @@ public class VisitorEnemigoLejano extends Visitor {
 	@Override
 	public void visit(Roca r) {
 		e.disparar(r);
+		//System.out.println("entre al visitorEnemigoLejano");
+		e.seguirMoviendo(false);
 	}
 
 	@Override
@@ -55,10 +57,16 @@ public class VisitorEnemigoLejano extends Visitor {
 
 	@Override
 	public void visit(Fuego f) {
+		if(f.getCelda()==e.getCelda()) {
+		e.recibirGolpe(f.getGolpe());
+		f.morir();
+		System.out.println("entre al visitorEnemigo lejano fuego "+e.getVida());
+		}
 	}
 
 	@Override
 	public void visit(Barricada b) {
+	e.seguirMoviendo(false);
 	}
 
 }

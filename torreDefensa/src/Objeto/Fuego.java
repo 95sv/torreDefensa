@@ -12,7 +12,7 @@ public class Fuego extends ObjetoTemporal{
 
 	public Fuego(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
-		golpe = 30;
+		golpe = 50;
 		precio = 40;
 		imagen = new JLabel();
 		imagen.setIcon(new ImageIcon(getClass().getResource("/Recursos/Objetos/fire.gif")));

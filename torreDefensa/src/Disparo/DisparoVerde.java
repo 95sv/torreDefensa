@@ -11,7 +11,7 @@ public class DisparoVerde extends DisparoEnemigo {
 
 	@Override
 	public int getGolpe() {
-		return 10;
+		return 50;
 	}
 
 

@@ -36,17 +36,19 @@ public abstract class EnemigoLejano extends Enemigo {
 			x = x + 1;
 			miMapa.getCelda(x, y).agregarEntidad(this);
 			miCelda = miMapa.getCelda(x, y);
-			imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL, PIXEL, PIXEL);
+			imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL, PIXEL, PIXEL);		
 		} else {
 			
 			Entidad [] entidadesArreglo = miMapa.getCelda(x+1, y).getArregloEntidades();
 			int pos=0;
 			while(entidadesArreglo[pos]!=null) {
+				System.out.println("entre al else enemigoLejano"+pos);
 				entidadesArreglo[pos].aceptar(miVisitor);
                 pos++;					
-			}	
-			
+			}
+			System.out.println("seguirMoviendo: "+seguirMoviendo);
 			if (seguirMoviendo) {
+				System.out.println("seguirMoviendo: "+seguirMoviendo);
 				miMapa.getCelda(x, y).eliminarEntidad(this);
 				x = x + 1;
 				miMapa.getCelda(x, y).agregarEntidad(this);
@@ -60,13 +62,30 @@ public abstract class EnemigoLejano extends Enemigo {
 
 	public void ejecutar() {
 
-		if (tiempo == 3) {
-			mover();
+		if (tiempo == 5) {
+			boolean dispare=false;
+			if (x < 9) {
+				for (int i = 0; i < 9; i++) {
+					Entidad [] entidadesArreglo= miMapa.getCelda(9 - i, y).getArregloEntidades();
+					int pos=0;
+					//System.out.println("valor de i"+i);
+					while(entidadesArreglo[pos]!=null) {
+						entidadesArreglo[pos].aceptar(miVisitor);
+		                pos++;					
+					}
+					/* if((miMapa.getCelda(8 - i, y).cantEntidades()>0)&&!dispare) {
+						 disparar(this);
+						 dispare=true;
+					 }*/
+				}
+			}
 		}
 		tiempo--;
+		
 		if (tiempo == 0) {
-			tiempo = 3;
+			tiempo = 5;
+			mover();
+			this.seguirMoviendo(true);
 		}
 	}
-
 }

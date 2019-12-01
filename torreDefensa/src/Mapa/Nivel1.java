@@ -5,6 +5,7 @@ import Entidad.Entidad;
 import Entidad.Fantasma;
 import Entidad.Hielo;
 import Entidad.Magma;
+import Entidad.Verde;
 import Objeto.Agua;
 import Objeto.Fuego;
 import Objeto.Roca;
@@ -65,13 +66,13 @@ public class Nivel1 extends Nivel {
 			Entidad e = null;
 			
 			if (enemigoRandom < 40) {
-				e = new Hielo(mapa, celda);
+				e = new Verde(mapa, celda);
 				mapa.getLogica().agregarEntidad(e, celda);
 			} else if (enemigoRandom < 60) {
-				e = new Fantasma(mapa, celda);
+				e = new Verde(mapa, celda);
 				mapa.getLogica().agregarEntidad(e, celda);
 			} else if (enemigoRandom < 100) {
-				e = new Magma(mapa, celda);
+				e = new Verde(mapa, celda);
 				mapa.getLogica().agregarEntidad(e, celda);
 			}
 			enemigosOleada++;
@@ -88,7 +89,7 @@ public class Nivel1 extends Nivel {
 		int i, j;
 		Entidad e = null;
 
-		while (rocas < 3) {
+		while (rocas < 2) {
 			// Genero rocas en columnas distintas al princio y final del mapa.
 			i = numeroRandom.nextInt(6) + 2;
 			j = numeroRandom.nextInt(6);
@@ -99,7 +100,7 @@ public class Nivel1 extends Nivel {
 			}
 		}
 
-		while (aguas < 3) {
+		while (aguas < 2) {
 			// Genero aguas en columnas distintas al princio y final del mapa.
 			i = numeroRandom.nextInt(6) + 2; // Entre 2 y 6
 			j = numeroRandom.nextInt(6);
