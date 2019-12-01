@@ -20,6 +20,8 @@ public class VisitorDisparoAliado extends Visitor {
 	public void visit(Enemigo e) {
 		e.recibirGolpe(miDisparo.getGolpe());
 		miDisparo.morir();
+		miDisparo.setSeguirMoviendo(false);
+		System.out.println("entre al visitorDisparoAliado");
 	}
 
 	@Override

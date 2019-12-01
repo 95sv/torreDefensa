@@ -42,13 +42,12 @@ public abstract class EnemigoLejano extends Enemigo {
 			Entidad [] entidadesArreglo = miMapa.getCelda(x+1, y).getArregloEntidades();
 			int pos=0;
 			while(entidadesArreglo[pos]!=null) {
-				System.out.println("entre al else enemigoLejano"+pos);
 				entidadesArreglo[pos].aceptar(miVisitor);
                 pos++;					
 			}
-			System.out.println("seguirMoviendo: "+seguirMoviendo);
+			//System.out.println("seguirMoviendo: "+seguirMoviendo);
 			if (seguirMoviendo) {
-				System.out.println("seguirMoviendo: "+seguirMoviendo);
+				//System.out.println("seguirMoviendo: "+seguirMoviendo);
 				miMapa.getCelda(x, y).eliminarEntidad(this);
 				x = x + 1;
 				miMapa.getCelda(x, y).agregarEntidad(this);

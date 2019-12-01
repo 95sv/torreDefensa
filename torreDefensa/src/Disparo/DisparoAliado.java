@@ -43,8 +43,10 @@ public abstract class DisparoAliado extends Disparo {
 					entidadesArreglo[pos].aceptar(miVisitor);
                     pos++;					
 				}
+				miMapa.getCelda(x, y).eliminarEntidad(this);
 				if (seguirMoviendo) {
-					miMapa.getCelda(x, y).eliminarEntidad(this);
+					System.out.println("entre seguir mo");
+					//miMapa.getCelda(x, y).eliminarEntidad(this);
 					x = x - 1;
 					miMapa.getCelda(x, y).agregarEntidad(this);
 					miCelda = miMapa.getCelda(x, y);

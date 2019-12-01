@@ -35,7 +35,7 @@ public class Nivel1 extends Nivel {
 				Thread.sleep(3000 / oleada);
 				cantEnemigos += 3000 / oleada / 1000;
 				cargarOleada();
-				if (cantEnemigos >= 10) {
+				if (cantEnemigos >= 2) {
 					Thread.sleep(10000);
 					cantEnemigos = 0;
 					oleada++;

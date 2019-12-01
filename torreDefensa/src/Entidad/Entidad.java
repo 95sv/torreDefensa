@@ -23,7 +23,7 @@ public abstract class Entidad {
 		this.y = celda.getY();
 		miCelda = celda;
 		miMapa = mapa;
-		vida = 100;
+		vida = 1000;
 	}
 
 	public void recibirGolpe(int golpe) {
