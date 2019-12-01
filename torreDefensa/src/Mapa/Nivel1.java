@@ -110,7 +110,7 @@ public class Nivel1 extends Nivel {
 			}
 		}
 
-		while (fuegos < 3) {
+		while (fuegos < 2) {
 			i = numeroRandom.nextInt(6) + 2; // Entre 2 y 6
 			j = numeroRandom.nextInt(6);
 			if (mapa.getCelda(i, j).cantEntidades() == 0){
