@@ -6,9 +6,17 @@ import Mapa.Mapa;
 import Visitor.Visitor;
 
 public class Objeto extends Entidad {
-
+	protected int precio;
 	public Objeto(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
+	}
+	
+	public void setPrecio(int precio) {
+		this.precio = precio;
+	}
+	
+	public int getPrecio() {
+		return precio;
 	}
 
 	public void mover() {

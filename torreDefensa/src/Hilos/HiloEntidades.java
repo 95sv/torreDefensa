@@ -9,6 +9,7 @@ public class HiloEntidades extends Thread {
 	public HiloEntidades(Logica miLogica) {
 		super();
 		this.miLogica = miLogica;
+		perder = false;
 	}
 	
 	/*
@@ -19,7 +20,6 @@ public class HiloEntidades extends Thread {
 	}
 	
 	public void run() {
-		perder = false;
 		while (!perder) {
 			try {
 				Thread.sleep(500);

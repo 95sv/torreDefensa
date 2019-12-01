@@ -8,10 +8,16 @@ import Visitor.VisitorEnemigoLejano;
 public abstract class EnemigoLejano extends Enemigo {
 
 	int tiempo = 3;
+	boolean seguirMoviendo;
 
 	public EnemigoLejano(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
 		miVisitor = new VisitorEnemigoLejano(this);
+		seguirMoviendo = true;
+	}
+
+	public void seguirMoviendo(boolean seguirMoviendo) {
+		this.seguirMoviendo = seguirMoviendo;
 	}
 
 	public void disparar(Entidad e) {
@@ -21,40 +27,46 @@ public abstract class EnemigoLejano extends Enemigo {
 
 	public abstract DisparoEnemigo crearDisparo();
 
-	public void mover() {	
+	public void mover() {
 		imagen.setIcon(imagenMover);
 		if (x == 9) {
 			logica.perder();
-		} else if (miMapa.getCelda(x + 1, y).getEntidad() == null) {
-			miMapa.getCelda(x, y).eliminarEntidad();
+		} else if (miMapa.getCelda(x + 1, y).cantEntidades() == 0) {
+			miMapa.getCelda(x, y).eliminarEntidad(this);
 			x = x + 1;
 			miMapa.getCelda(x, y).agregarEntidad(this);
 			miCelda = miMapa.getCelda(x, y);
 			imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL, PIXEL, PIXEL);
 		} else {
-			miMapa.getCelda(x + 1, y).getEntidad().aceptar(miVisitor);
-			miMapa.getCelda(x, y).eliminarEntidad();
+			
+			Entidad [] entidadesArreglo = miMapa.getCelda(x+1, y).getArregloEntidades();
+			int pos=0;
+			while(entidadesArreglo[pos]!=null) {
+				entidadesArreglo[pos].aceptar(miVisitor);
+                pos++;					
+			}	
+			
+			if (seguirMoviendo) {
+				miMapa.getCelda(x, y).eliminarEntidad(this);
+				x = x + 1;
+				miMapa.getCelda(x, y).agregarEntidad(this);
+				miCelda = miMapa.getCelda(x, y);
+				imagen.setBounds(miCelda.getX() * PIXEL, miCelda.getY() * PIXEL, PIXEL, PIXEL);
+				imagen.setIcon(imagenMover);
+			}
 		}
 
 	}
 
 	public void ejecutar() {
 
-		Entidad e;
 		if (tiempo == 3) {
-			if (x < 9) {
-				for (int i = 1; i < 9; i++) {
-					e = miMapa.getCelda(9 - i, y).getEntidad();
-					if (e != null) {
-						e.aceptar(miVisitor);
-					}
-				}
-			}
+			mover();
 		}
 		tiempo--;
 		if (tiempo == 0) {
 			tiempo = 3;
-			mover();
 		}
 	}
+
 }

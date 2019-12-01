@@ -1,14 +1,11 @@
 package Entidad;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import Disparo.DisparoEnemigo;
 import Disparo.DisparoVerde;
 import Mapa.Celda;
 import Mapa.Mapa;
-import Visitor.VisitorEnemigoLejano;
 
 public class Fantasma extends EnemigoLejano{
 
@@ -18,6 +15,7 @@ public class Fantasma extends EnemigoLejano{
 		imagenMover = new ImageIcon(getClass().getResource("/Recursos/Enemigos/caminante6.gif"));
 		imagenAtacar = new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante6.gif"));
 		imagen.setIcon(imagenMover);
+		imagen.setBounds(x, y, PIXEL, PIXEL);
 		vida = 100;
 		puntos = 50;
 	}

@@ -5,6 +5,8 @@ import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;
 import Objeto.Agua;
+import Objeto.Barricada;
+import Objeto.Fuego;
 import Objeto.Roca;
 import PowerUp.PowerUp;
 
@@ -21,6 +23,10 @@ public abstract class Visitor {
 	public abstract void visit(Agua a);
 	
 	public abstract void visit(Roca r);
+	
+	public abstract void visit(Fuego f);
+	
+	public abstract void visit(Barricada b);
 	
 	public abstract void visit(PowerUp p);
 	

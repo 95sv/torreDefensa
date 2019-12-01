@@ -1,8 +1,5 @@
 package Disparo;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import Entidad.Torre;
 import Mapa.Celda;
 import Mapa.Mapa;

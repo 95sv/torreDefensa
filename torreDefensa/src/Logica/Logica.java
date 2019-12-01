@@ -8,6 +8,7 @@ import Grafica.Grafica;
 import Hilos.HiloEntidades;
 import Mapa.Celda;
 import Mapa.Mapa;
+import Mapa.Nivel2;
 import PowerUp.AumentoMoneda;
 import PowerUp.AumentoVida;
 import PowerUp.DobleGolpe;
@@ -19,13 +20,10 @@ public class Logica {
 	protected Grafica grafica;
 	protected Mapa mapa;
 	protected Collection<Entidad> misEntidades;
-	
 	protected HiloEntidades hiloEntidades;
-
 	private int puntaje;
 	private int moneda;
 
-	protected boolean perder = false;
 
 	public Logica(Grafica grafica) {
 		this.grafica = grafica;
@@ -33,31 +31,62 @@ public class Logica {
 
 		puntaje = 0;
 		moneda = 1000;
-		
+
 		mapa = new Mapa(this);
 		cargarOleada();
+		crearHilos();
 	}
 
 	public void cargarOleada() {
 		mapa.getNivel().cargarOleada();
-		crearHilos();
 	}
 
 	public void crearHilos() {
 		hiloEntidades = new HiloEntidades(this);
 		hiloEntidades.start();
 	}
-	
 
-	public boolean perder() {
-		perder = true;
+	public void cambiarNivel() {
+		mapa.setNivel(new Nivel2(mapa));
+	}
+	
+	public void reiniciarNivel() {
+		misEntidades = new ConcurrentLinkedDeque<Entidad>();
+
+		puntaje = 0;
+		moneda = 1000;
+
+		mapa = new Mapa(this);
+		cargarOleada();
+		crearHilos();
+	}
+
+
+	public void perder() {
 		hiloEntidades.perder();
-		for(Entidad e : misEntidades) {
-			e.morir();
+		mapa.getNivel().perder();
+		for (Entidad e : misEntidades) {
+			eliminarEntidad(e);
 		}
-		hiloEntidades.stop();
-		mapa.getNivel().stop();
-		return perder;
+		grafica.perder();
+	}
+
+	public void ganar() {
+		if (mapa.getNivel().getNivel() == 1) {
+			hiloEntidades.perder();
+			for (Entidad e : misEntidades) {
+				eliminarEntidad(e);
+			}
+			cambiarNivel();
+			grafica.cambiarNivel();
+		}
+		else if(mapa.getNivel().getNivel() == 2){
+			hiloEntidades.perder();
+			for (Entidad e : misEntidades) {
+				eliminarEntidad(e);
+			}
+			grafica.terminar();
+		}
 	}
 
 	public void agregarPuntaje(int puntaje) {
@@ -70,41 +99,40 @@ public class Logica {
 		grafica.actualizarMoneda();
 	}
 
-	public boolean terminar() {
-		return perder;
+	public void terminar() {
 	}
-	
+
 	public void ejecutarEntidades() {
-		for(Entidad e : misEntidades) {
+		for (Entidad e : misEntidades) {
 			e.ejecutar();
 		}
 	}
-	
+
 	public void visitarEntidades(Visitor v) {
 		for (Entidad e : misEntidades) {
 			e.aceptar(v);
 		}
-		
+
 	}
-	
-	public void agregarEntidad(Entidad e,Celda celda) {
+
+	public void agregarEntidad(Entidad e, Celda celda) {
 		misEntidades.add(e);
 		celda.agregarEntidad(e);
 		e.setCelda(celda);
 		grafica.graficarEntidad(e);
 	}
-	
+
 	public void eliminarEntidad(Entidad e) {
 		Celda celda = e.getCelda();
 		grafica.eliminarEntidad(e);
-		celda.eliminarEntidad();
+		celda.eliminarEntidad(e);
 		misEntidades.remove(e);
 	}
 
 	public void setGrafica(Grafica grafica) {
 		this.grafica = grafica;
 	}
-	
+
 	public void seleccionarPowerUp(Celda celda) {
 		/*
 		 * 
@@ -128,7 +156,7 @@ public class Logica {
 			grafica.graficarEntidad(powerUp);
 		}
 	}
-	
+
 	public int getPuntaje() {
 		return puntaje;
 	}
@@ -144,7 +172,7 @@ public class Logica {
 	public Mapa getMapa() {
 		return mapa;
 	}
-	
+
 	public void eliminarPowerUp(PowerUp p) {
 		grafica.eliminarEntidad(p);
 	}

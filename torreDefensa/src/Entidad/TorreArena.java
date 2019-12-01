@@ -2,15 +2,12 @@ package Entidad;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import Disparo.DisparoAliado;
 import Disparo.DisparoBasico;
 import Mapa.Celda;
 import Mapa.Mapa;
-import Visitor.Visitor;
 
 public class TorreArena extends Torre {
 
@@ -38,6 +35,7 @@ public class TorreArena extends Torre {
 			miTorre.getLogica().agregarMoneda(miTorre.getPrecio());
 			miTorre.morir();
 		}
+		
 	}
 
 }

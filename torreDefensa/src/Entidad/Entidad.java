@@ -8,7 +8,6 @@ import Visitor.Visitor;
 
 public abstract class Entidad {
 
-	
 	public static final int PIXEL = 64;
 	protected Celda miCelda;
 	protected JLabel imagen;
@@ -26,14 +25,14 @@ public abstract class Entidad {
 		miMapa = mapa;
 		vida = 100;
 	}
-	
+
 	public void recibirGolpe(int golpe) {
 		vida = vida - golpe;
-		if(vida<=0) {
+		if (vida <= 0) {
 			morir();
 		}
 	}
-	
+
 	public void morir() {
 		miMapa.getLogica().eliminarEntidad(this);
 	}
@@ -41,9 +40,8 @@ public abstract class Entidad {
 	public abstract void aceptar(Visitor visitor);
 
 	public abstract void ejecutar();
-	
+
 	public abstract void mover();
-	
 
 	public void setCelda(Celda c) {
 		miCelda = c;
@@ -80,17 +78,21 @@ public abstract class Entidad {
 	public Visitor getVisitor() {
 		return miVisitor;
 	}
-	
+
+	public void setGolpe(int golpe) {
+		this.golpe = golpe;
+	}
+
 	public int getGolpe() {
 		return golpe;
 	}
-	
+
 	public int getVida() {
 		return vida;
 	}
-	
+
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
-	
+
 }

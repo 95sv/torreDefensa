@@ -1,6 +1,6 @@
 package Entidad;
 
-import javax.swing.Icon;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import Mapa.Celda;
@@ -15,8 +15,9 @@ public class Magma extends EnemigoCombate{
 		imagenMover = new ImageIcon(getClass().getResource("/Recursos/Enemigos/caminante3.gif"));
 		imagenAtacar = new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante3.gif"));
 		imagen.setIcon(imagenMover);
+		imagen.setBounds(x, y, PIXEL, PIXEL);
 		miVisitor = new VisitorEnemigo(this);
-		vida = 20;
+		vida = 50;
 		golpe = 50;
 		puntos = 200;
 	}

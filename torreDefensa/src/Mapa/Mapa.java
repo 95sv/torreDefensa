@@ -1,9 +1,7 @@
 package Mapa;
 
 import java.util.LinkedList;
-
 import Entidad.Enemigo;
-import Entidad.Entidad;
 import Logica.Logica;
 
 public class Mapa {
@@ -13,6 +11,7 @@ public class Mapa {
 	protected Nivel siguienteNivel;
 	protected Logica logica;
 	protected LinkedList<Enemigo> misEnemigos;
+
 
 	public Mapa(Logica logica) {
 		filas = 6;
@@ -66,8 +65,5 @@ public class Mapa {
 		return null;
 	}
 
-	public Entidad getEntidad(int x, int y) {
-		return mapa[x][y].getEntidad();
-	}
 
 }

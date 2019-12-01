@@ -2,16 +2,12 @@ package Entidad;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import Disparo.DisparoAliado;
 import Disparo.DisparoBasico;
-import Entidad.TorreArena.torreListener;
 import Mapa.Celda;
 import Mapa.Mapa;
-import Visitor.Visitor;
 
 public class TorreBasica extends Torre {
 

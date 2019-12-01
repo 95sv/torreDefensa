@@ -17,5 +17,5 @@ public abstract class Boton extends JButton{
 	    addActionListener(accion);
 	}
 	
-	public abstract void crearTorre(Mapa mapa,Celda celda);
+	public abstract void crearEntidad(Mapa mapa,Celda celda);
 }

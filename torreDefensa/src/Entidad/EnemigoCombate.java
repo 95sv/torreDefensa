@@ -4,7 +4,7 @@ import Mapa.Celda;
 import Mapa.Mapa;
 
 public abstract class EnemigoCombate extends Enemigo {
-	protected boolean seguirMoviendo;
+
 	int tiempo = 3;
 
 	public EnemigoCombate(Mapa miMapa, Celda miCelda) {
@@ -12,19 +12,18 @@ public abstract class EnemigoCombate extends Enemigo {
 		seguirMoviendo = true;
 	}
 
-	public void seguirMoviendo(boolean b) {
-		seguirMoviendo = b;
+	public void seguirMoviendo(boolean seguirMoviendo) {
+		this.seguirMoviendo = seguirMoviendo;
 	}
 
 	public void ejecutar() {
-		Entidad e;
 
-		if(x == 9) {
+		if(x== 9) {
 			logica.perder();
 		}
 		else 
-			if(miMapa.getCelda(x+1,y).getEntidad() == null) {
-				miMapa.getCelda(x,y).eliminarEntidad();
+			if(miMapa.getCelda(x+1,y).cantEntidades() == 0) {
+				miMapa.getCelda(x,y).eliminarEntidad(this);
 				x = x + 1;
 				miMapa.getCelda(x,y).agregarEntidad(this);
 				miCelda = miMapa.getCelda(x,y);
@@ -32,13 +31,19 @@ public abstract class EnemigoCombate extends Enemigo {
 				imagen.setIcon(imagenMover);
 			}
 			else {
-				miMapa.getCelda(x+1,y).getEntidad().aceptar(miVisitor);
-				miMapa.getCelda(x,y).eliminarEntidad();
-				if(seguirMoviendo) {
+				
+				Entidad [] entidadesArreglo = miMapa.getCelda(x+1, y).getArregloEntidades();
+				int pos=0;
+				while(entidadesArreglo[pos]!=null) {
+					entidadesArreglo[pos].aceptar(miVisitor);
+                    pos++;					
+				}	
+				 if(seguirMoviendo) {
+					miMapa.getCelda(x,y).eliminarEntidad(this);
 					x = x + 1;
 					miMapa.getCelda(x,y).agregarEntidad(this);
 					miCelda = miMapa.getCelda(x,y);
-					imagen.setBounds(miCelda.getX()*64,miCelda.getY()*64,PIXEL,PIXEL);
+					imagen.setBounds(miCelda.getX()*PIXEL,miCelda.getY()*PIXEL,PIXEL,PIXEL);
 					imagen.setIcon(imagenMover);
 				}
 			}

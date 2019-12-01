@@ -15,7 +15,7 @@ public class BotonTorreBasica extends Boton{
 	}
 
 	@Override
-	public void crearTorre(Mapa mapa, Celda celda) {
+	public void crearEntidad(Mapa mapa, Celda celda) {
 		TorreBasica torre = new TorreBasica(mapa,celda);
 		if(torre.getPrecio() <= mapa.getLogica().getMoneda()) {
 			mapa.getLogica().agregarEntidad(torre,celda);

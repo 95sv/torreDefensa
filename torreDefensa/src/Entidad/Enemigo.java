@@ -3,14 +3,11 @@ package Entidad;
 import java.util.Random;
 
 import javax.swing.Icon;
-import javax.swing.JLabel;
-
 import Disparo.DisparoEnemigo;
 import Logica.Logica;
 import Mapa.Celda;
 import Mapa.Mapa;
 import Visitor.Visitor;
-import Visitor.VisitorEnemigo;
 
 public abstract class Enemigo extends Personaje {
 
@@ -20,10 +17,13 @@ public abstract class Enemigo extends Personaje {
 	protected int puntos;
 	protected Icon imagenMover;
 	protected Icon imagenAtacar;
+	protected boolean seguirMoviendo;
 
 	public Enemigo(Mapa miMapa, Celda miCelda) {
 		super(miMapa, miCelda);
 		this.logica = miMapa.getLogica();
+		seguirMoviendo = true;
+		
 	}
 
 	public void setPuntos(int puntos) {
@@ -39,7 +39,7 @@ public abstract class Enemigo extends Personaje {
 	public void morir() {
 		Random rnd = new Random();
 		int random = rnd.nextInt(100);
-
+		logica.getMapa().getNivel().eliminarEnemigo();
 		logica.agregarPuntaje(puntos);
 		/*
 		 * Si muere un enemigo, hay una probabilidad de 0.20 de que aparezca un PowerUP.
@@ -55,4 +55,7 @@ public abstract class Enemigo extends Personaje {
 		return puntos;
 	}
 
+	public void seguirMoviendo(boolean seguirMoviendo) {
+		this.seguirMoviendo = seguirMoviendo;
+	}
 }

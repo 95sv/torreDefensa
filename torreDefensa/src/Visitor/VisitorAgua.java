@@ -5,6 +5,8 @@ import Disparo.DisparoEnemigo;
 import Entidad.Enemigo;
 import Entidad.Torre;
 import Objeto.Agua;
+import Objeto.Barricada;
+import Objeto.Fuego;
 import Objeto.Roca;
 import PowerUp.PowerUp;
 
@@ -41,6 +43,14 @@ public class VisitorAgua extends Visitor {
 
 	@Override
 	public void visit(PowerUp p) {
+	}
+
+	@Override
+	public void visit(Fuego f) {
+	}
+
+	@Override
+	public void visit(Barricada b) {
 	}
 
 }
