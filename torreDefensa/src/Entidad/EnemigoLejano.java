@@ -62,20 +62,16 @@ public abstract class EnemigoLejano extends Enemigo {
 	public void ejecutar() {
 
 		if (tiempo == 5) {
-			boolean dispare=false;
 			if (x < 9) {
 				for (int i = 0; i < 9; i++) {
 					Entidad [] entidadesArreglo= miMapa.getCelda(9 - i, y).getArregloEntidades();
 					int pos=0;
-					//System.out.println("valor de i"+i);
+					
 					while(entidadesArreglo[pos]!=null) {
 						entidadesArreglo[pos].aceptar(miVisitor);
 		                pos++;					
 					}
-					/* if((miMapa.getCelda(8 - i, y).cantEntidades()>0)&&!dispare) {
-						 disparar(this);
-						 dispare=true;
-					 }*/
+					
 				}
 			}
 		}

@@ -50,7 +50,6 @@ public class VisitorEnemigoLejano extends Visitor {
 	@Override
 	public void visit(Roca r) {
 		e.disparar(r);
-		//System.out.println("entre al visitorEnemigoLejano");
 		e.seguirMoviendo(false);
 	}
 

@@ -48,6 +48,7 @@ public class Logica {
 
 	public void cambiarNivel() {
 		mapa.setNivel(new Nivel2(mapa));
+		cargarOleada();
 	}
 	
 	public void reiniciarNivel() {

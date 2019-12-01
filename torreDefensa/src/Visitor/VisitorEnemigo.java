@@ -25,7 +25,6 @@ public class VisitorEnemigo extends Visitor {
 	@Override
 	public void visit(Torre t) {
 		e.disparar(t);
-		//System.out.println("entre al visitorEnemigo");
 		e.seguirMoviendo(false);
 	}
 
@@ -33,7 +32,6 @@ public class VisitorEnemigo extends Visitor {
 	public void visit(DisparoAliado d) {
 		e.recibirGolpe(d.getGolpe());
 		d.morir();
-		//System.out.println("entre al visitorEnemigo");
 	}
 
 	@Override

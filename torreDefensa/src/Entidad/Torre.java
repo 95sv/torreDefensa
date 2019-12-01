@@ -52,8 +52,6 @@ public abstract class Torre extends Personaje {
 	public abstract DisparoAliado crearDisparo();
 	
 	public void disparar() {
-		Celda celdaAux= miMapa.getCelda(x-1,y);
-		//problema de concurrencia 
 		logica.agregarEntidad(crearDisparo(),miCelda);
 	}
 }
