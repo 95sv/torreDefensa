@@ -52,7 +52,7 @@ public class VisitorTorre extends Visitor {
 	public void visit(Fuego f) {
 	}
 
-	@Override
+	///visitor
 	public void visit(Barricada b) {
 	}
 
