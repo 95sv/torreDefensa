@@ -3,7 +3,7 @@ package Entidad;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import Disparo.DisparoEnemigo;
-import Disparo.DisparoVerde;
+import Disparo.DisparoTierra;
 import Mapa.Celda;
 import Mapa.Mapa;
 
@@ -17,12 +17,12 @@ public class Tierra extends EnemigoLejano{
 		imagen.setIcon(imagenMover);
 		imagen.setBounds(x, y, PIXEL, PIXEL);
 		vida = 100;
-		puntos = 100;
+		puntos = 80;
 	}
 
 	@Override
 	public DisparoEnemigo crearDisparo() {
-		return new DisparoVerde(miMapa,miCelda,50,50);
+		return new DisparoTierra(miMapa,miCelda,50,50);
 	}
 
 }

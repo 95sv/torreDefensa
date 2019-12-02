@@ -16,8 +16,8 @@ public class Fantasma extends EnemigoLejano{
 		imagenAtacar = new ImageIcon(getClass().getResource("/Recursos/Enemigos/a_caminante6.gif"));
 		imagen.setIcon(imagenMover);
 		imagen.setBounds(x, y, PIXEL, PIXEL);
-		vida = 100;
-		puntos = 50;
+		vida = 200;
+		puntos = 200;
 	}
 
 	@Override

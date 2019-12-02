@@ -17,8 +17,9 @@ public class Corona extends EnemigoCombate {
 		imagen.setIcon(imagenMover);
 		imagen.setBounds(x, y, PIXEL, PIXEL);
 		miVisitor = new VisitorEnemigo(this);
-		vida = 100;
-		puntos = 50;
+		vida = 150;
+		puntos = 150;
+		golpe=80;
 	}
 
 

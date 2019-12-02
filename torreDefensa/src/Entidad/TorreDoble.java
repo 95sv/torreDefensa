@@ -19,7 +19,6 @@ public class TorreDoble extends Torre {
 		torreListener tl = new torreListener(this);
 		imagen.addMouseListener(tl);
 		super.setPrecio(100);
-		golpe = 100;
 	}
 
 	@Override

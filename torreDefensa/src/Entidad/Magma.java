@@ -17,9 +17,9 @@ public class Magma extends EnemigoCombate{
 		imagen.setIcon(imagenMover);
 		imagen.setBounds(x, y, PIXEL, PIXEL);
 		miVisitor = new VisitorEnemigo(this);
-		vida = 50;
+		vida = 100;
 		golpe = 50;
-		puntos = 200;
+		puntos = 100;
 	}
 	
 }

@@ -16,8 +16,9 @@ public class Hielo extends EnemigoCombate {
 		imagen.setIcon(imagenMover);
 		imagen.setBounds(x, y, PIXEL, PIXEL);
 		miVisitor = new VisitorEnemigo(this);
-		vida = 150;
+		vida = 120;
 		puntos = 75;
+		golpe= 25;
 	}
 
 }
