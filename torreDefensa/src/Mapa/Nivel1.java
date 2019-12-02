@@ -35,7 +35,7 @@ public class Nivel1 extends Nivel {
 				Thread.sleep(3000 / oleada);
 				cantEnemigos += 3000 / oleada / 1000;
 				cargarOleada();
-				if (cantEnemigos >= 2) {
+				if (cantEnemigos >= 10) {
 					Thread.sleep(10000);
 					cantEnemigos = 0;
 					oleada++;
@@ -69,10 +69,10 @@ public class Nivel1 extends Nivel {
 				e = new Verde(mapa, celda);
 				mapa.getLogica().agregarEntidad(e, celda);
 			} else if (enemigoRandom < 60) {
-				e = new Verde(mapa, celda);
+				e = new Magma(mapa, celda);
 				mapa.getLogica().agregarEntidad(e, celda);
 			} else if (enemigoRandom < 100) {
-				e = new Verde(mapa, celda);
+				e = new Hielo(mapa, celda);
 				mapa.getLogica().agregarEntidad(e, celda);
 			}
 			enemigosOleada++;

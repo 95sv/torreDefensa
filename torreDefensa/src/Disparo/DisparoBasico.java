@@ -10,7 +10,7 @@ public class DisparoBasico extends DisparoAliado {
 	}
 
 	public int getGolpe() {
-		return 50;
+		return 100;
 	}
 
 }

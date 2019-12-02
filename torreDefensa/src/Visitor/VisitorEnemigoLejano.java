@@ -32,7 +32,6 @@ public class VisitorEnemigoLejano extends Visitor {
 	@Override
 	public void visit(DisparoAliado d) {
 		if(d.getCelda()==e.getCelda()) {
-		System.out.println("entre VisitorEnemigoLejano");
 		e.recibirGolpe(d.getGolpe());
 		d.morir();
 		d.setSeguirMoviendo(false);
@@ -63,7 +62,6 @@ public class VisitorEnemigoLejano extends Visitor {
 		if(f.getCelda()==e.getCelda()) {
 		e.recibirGolpe(f.getGolpe());
 		f.morir();
-		System.out.println("entre al visitorEnemigo lejano fuego "+e.getVida());
 		}
 	}
 

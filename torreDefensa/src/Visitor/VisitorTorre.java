@@ -21,7 +21,6 @@ public class VisitorTorre extends Visitor {
 	public void visit(Enemigo e) {
 		e.disparar(miTorre);
 		e.seguirMoviendo(false);
-		System.out.println("entre a visitorTorre");
 	}
 
 	@Override
